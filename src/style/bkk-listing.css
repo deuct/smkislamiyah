@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.card-bkk {
+  border-bottom: 1px solid rgb(211, 211, 211);
+  padding: 10px;
+  overflow: auto;
+  margin: 15px;
+}
+
+.cbkk-img {
+  float: left;
+  width: 120px;
+}
+
+.cbkk-fill {
+  display: inline-block !important;
+}
+
+.cbkk-fill h1 {
+  font-size: 2rem;
+  color: rgb(31, 31, 31);
+}
+
+.cbkk-fill h2 {
+  font-size: 1.4rem;
+}
+
+.cbkk-fill p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.status {
+  border-radius: 4px;
+  color: rgb(221, 221, 221);
+  padding: 0px 10px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.st-open {
+  background: rgb(34, 177, 34);
+}
+
+.st-close {
+  background: rgb(218, 54, 54);
+}
+
+.btn-loadmore {
+  margin-top: 100px !important;
+  font-size: 1rem !important;
+}
+
+.cbkk-btn {
+  padding: 5px 0px !important;
+  background: none !important;
+  text-align: left !important;
+  color: rgb(8, 51, 189) !important;
+  border: none !important;
+  margin-bottom: 10px;
+  text-decoration: underline !important;
+}

@@ -39,5 +39,67 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <!--Farhan: Javascript-->
+    <script
+      src="https://unpkg.com/react/umd/react.production.min.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
+      crossorigin
+    ></script>
+
+    <script
+      src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
+      crossorigin
+    ></script>
+
+    <script>
+      const navbar = document.getElementById("navbarfarhan");
+      window.onscroll = function () {
+        // console.log(navbar);
+        scrollNav();
+      };
+
+      // const navbar = document.getElementById("navbarfarhan");
+      // console.log(navbar);
+      // console.log(document.getElementById("navbarfarhan"));
+      // var sticky = navbar.offsetTop;
+
+      function scrollNav() {
+        if (window.pageYOffset) {
+          const navbar = document.getElementById("navbarfarhan");
+          navbar.setAttribute("style", "background: white !important");
+
+          const navbarBrand = document.getElementById("nb-ttl");
+          navbarBrand.style.color = "#272727";
+
+          const navLink = document.querySelectorAll(".nav-link");
+          var i;
+
+          for (i = 0; i < navLink.length; i++) {
+            navLink[i].setAttribute("style", "color: #272727 !important");
+          }
+        } else {
+          const navbar = document.getElementById("navbarfarhan");
+          navbar.setAttribute(
+            "style",
+            "background-color: transparent !important"
+          );
+
+          const navbarBrand = document.getElementById("nb-ttl");
+          navbarBrand.style.color = "white";
+
+          const navLink = document.querySelectorAll(".nav-link");
+          var i;
+
+          for (i = 0; i < navLink.length; i++) {
+            navLink[i].setAttribute("style", "color: white !important");
+          }
+        }
+      }
+    </script>
   </body>
 </html>

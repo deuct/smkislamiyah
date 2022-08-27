@@ -1,0 +1,35 @@
+#header-img {
+  height: 100vh;
+  background: maroon;
+  position: relative;
+}
+
+#header-img img {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.headerimg-black {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 5;
+}
+
+.headerfill {
+  z-index: 6;
+  font-size: 2.6rem;
+  color: white;
+  position: absolute;
+  font-weight: 700;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#divider-header {
+  height: 10vh;
+}

@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bg-card {
+  background: #034748 !important;
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+.login-card {
+  width: 600px;
+  background: whitesmoke;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px 2px rgb(48, 48, 48);
+}
+
+.login-card img {
+  width: 120px;
+}
+
+.login-card h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 10px;
+  background: #1481ba !important;
+}
+
+p.return-home {
+  font-size: 0.95rem;
+  margin-top: 10px;
+}

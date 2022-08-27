@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#header-img {
+  height: 100vh;
+  background: maroon;
+  position: relative;
+}
+
+#header-img img {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.headerimg-black {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 5;
+}
+
+.headerfill {
+  z-index: 6;
+  font-size: 2.6rem;
+  color: white;
+  position: absolute;
+  font-weight: 700;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#divider-header {
+  height: 10vh;
+}
+
+.cb-program {
+  width: 100%;
+  background: rgb(235, 235, 235);
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.card-program {
+  padding: 0 !important;
+  margin: 10px;
+}
+
+.btn-program {
+  background: none !important;
+  color: rgb(6, 32, 78) !important;
+  padding: 10px 20px !important;
+  margin: 20px !important;
+  border: 1px solid rgb(6, 32, 78) !important;
+}
