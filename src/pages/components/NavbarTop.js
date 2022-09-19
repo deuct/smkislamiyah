@@ -24,7 +24,7 @@ function NavbarTop() {
             />
             {""}
             <Row className="align-items-center ms-1">
-              <div id="nb-ttl">SMK Islamiyah</div>
+              <div id="nb-ttl">SMK ISLAMIYAH</div>
             </Row>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
