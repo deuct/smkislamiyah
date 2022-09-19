@@ -12,7 +12,7 @@
   position: fixed !important;
   top: 0;
   width: 100%;
-  background-color: transparent !important;
+  background-color: white !important;
 }
 
 .sticky-top {
@@ -24,7 +24,7 @@
 a#basic-nav-dropdown,
 .nav-link,
 .navbar-brand {
-  color: white !important;
+  color: #0E3E65 !important;
 }
 
 #header {
