@@ -13,13 +13,23 @@ import {
 } from "react-icons/io5";
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
+import Image from "react-bootstrap";
+import Carousel from "react-bootstrap/Carousel";
+
+import headerOne from "../../images/Header-2.jpg";
+import headerTwo from "../../images/Header-3.jpg";
+import headerThree from "../../images/Header-4.jpg";
+import overviewYt from "../../images/overview-youtube.jpg";
 
 function Home() {
   return (
     <>
       <NavbarTop />
       <Row id="header" className="align-items-center justify-content-center">
-        {/* <img src={headerImg} /> */}
+        {/* <img
+          src={headerImg}
+          style={{ position: "absolute", height: "100vh" }}
+        />
         <div className="black-cover-header"></div>
         <Col xs={8} className="header-fill text-center">
           <h1>SMK ISLAMIYAH CIPUTAT</h1>
@@ -28,6 +38,47 @@ function Home() {
             pariatur, neque deserunt consequatur molestiae iste.
           </p>
           <Button className="btn-header">Know More</Button>
+        </Col> */}
+        <Carousel style={{ color: "black" }}>
+          <Carousel.Item style={{ height: "100vh" }}>
+            <img className="d-block w-100" src={headerOne} alt="First slide" />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "100vh" }}>
+            <img className="d-block w-100" src={headerTwo} alt="Second slide" />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item style={{ height: "100vh" }}>
+            <img
+              className="d-block w-100"
+              src={headerThree}
+              alt="Third slide"
+            />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </Row>
+      <Row id="welcome">
+        <Col xs={8}>
+          <h1 class="text-center my-3">
+            SELAMAT DATANG DI SMK ISLAMIYAH CIPUTAT
+          </h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius vel,
+            perspiciatis, natus, itaque nemo rem earum consectetur porro
+            assumenda tenetur provident quo temporibus est aliquam libero
+            nesciunt error molestiae. Commodi?
+          </p>
+          <div class="divider-welcome"></div>
         </Col>
       </Row>
       <Row
@@ -35,51 +86,41 @@ function Home() {
         className="align-items-center justify-content-center"
       >
         <Col xs={8}>
-          <h1 className="text-center mb-5">Headmaster Greetings</h1>
           <div className="hdm-greeting-fill d-flex">
-            <img src={hdm} />
-            <div className="hdm-greeting-desc mt-5">
+            <div id="hdm-image">
+              <img src={hdm} />
               <h2 className="d-inline-block">Dian Rostikawati, S.E, M.M</h2>
+            </div>
+            <div className="hdm-greeting-desc mt-5">
+              <h1 className="text-start mb-5">Headmaster Greetings</h1>
               <p className="d-inline-block">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Necessitatibus aut dicta esse. Deleniti quos reiciendis vel
-                ullam eos, et numquam?Lorem ipsum, dolor sit amet consectetur
-                adipisicing elit. Molestiae, asperiores!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Recusandae eveniet voluptate dicta doloribus voluptates natus
+                voluptatibus eaque libero impedit voluptatum blanditiis debitis,
+                dolorum rem, expedita minima numquam repudiandae consectetur
+                vel. Ut veritatis sed, consequatur dolorem consectetur sequi
+                autem voluptas est iure?
               </p>
             </div>
           </div>
         </Col>
       </Row>
-      <Row className="justify-content-center align-items-center" id="facility">
-        <Container className="text-center">
-          <h1 className="text-center">Facility</h1>
-          {/* <Col xs={12} className="card-holder d-flex justify-content-center"> */}
-          <Col xs={3} className="d-inline-block mx-5">
-            <div className="card-facility">
-              <div className="cf-icon">
-                <IoBasketballOutline size={50} />
-                <h2>Lapangan</h2>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3} className="d-inline-block mx-5">
-            <div className="card-facility">
-              <div className="cf-icon">
-                <IoDesktopOutline size={50} />
-                <h2>Lab Komputer</h2>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3} className="d-inline-block mx-5">
-            <div className="card-facility">
-              <div className="cf-icon">
-                <IoRestaurantOutline size={50} />
-                <h2>Lab Tata Boga</h2>
-              </div>
-            </div>
-          </Col>
-          {/* </Col> */}
-        </Container>
+      <Row id="overview">
+        <Col xs={4}>
+          <img src={overviewYt} />
+        </Col>
+        <Col xs={6}>
+          <h1>OVERVIEW</h1>
+          <h1>WHY US</h1>
+          <div className="divider-overview"></div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+            laboriosam exercitationem officia vel, molestias sint iusto adipisci
+            odio laborum quisquam pariatur fugiat earum dolorem facere quaerat
+            ipsum dolorum tempore mollitia.
+          </p>
+          <Button>KNOW MORE</Button>
+        </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
         <h1 className="ac-ttl">Our Activities</h1>

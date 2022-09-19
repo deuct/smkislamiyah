@@ -28,7 +28,8 @@ a#basic-nav-dropdown,
 }
 
 #header {
-  background: url("../images/header-1.jpg");
+  /* background: url("../images/header-1.jpg"); */
+  background: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -312,4 +313,29 @@ a#basic-nav-dropdown,
 .footer-lock {
   position: relative;
   width: 100%;
+}
+
+#welcome {
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.divider-welcome {
+  height: 5px;
+  background: rgb(0, 0, 100);
+  border-radius: 2px;
+  width: 300px;
+  margin: auto;
+}
+
+#overview {
+  justify-content: center;
+}
+
+.divider-overview {
+  height: 2px;
+  width: 150px;
+  background: rgb(226, 226, 29);
+  border-radius: 2px;
 }
