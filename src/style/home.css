@@ -339,3 +339,23 @@ a#basic-nav-dropdown,
   background: rgb(226, 226, 29);
   border-radius: 2px;
 }
+
+.yellow-line {
+  height: 2px;
+  width: 100px !important;
+  background: rgb(226, 226, 29);
+  display: inline-block;
+}
+
+.testi-alumni-img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.card-testimonials {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgb(207, 207, 207);
+  margin: 10px;
+}

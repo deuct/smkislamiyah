@@ -10,6 +10,7 @@ import {
   IoDesktopOutline,
   IoRestaurantOutline,
   IoMapOutline,
+  IoTimeOutline,
 } from "react-icons/io5";
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
@@ -20,6 +21,7 @@ import headerOne from "../../images/Header-2.jpg";
 import headerTwo from "../../images/Header-3.jpg";
 import headerThree from "../../images/Header-4.jpg";
 import overviewYt from "../../images/overview-youtube.jpg";
+import sampleAlumni from "../../images/sample-alumni.jpg";
 
 function Home() {
   return (
@@ -123,132 +125,159 @@ function Home() {
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
-        <h1 className="ac-ttl">Our Activities</h1>
+        <Row id="announcement-title">
+          <Col xs={4}>
+            <Row>
+              <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                <h3>ANNOUNCEMENT</h3>
+                <div className="yellow-line"></div>
+              </Col>
+            </Row>
+            <Row>
+              <h1>RELATED ANNOUNCEMENT</h1>
+            </Row>
+          </Col>
+          <Col xs={5}>
+            <br />
+            <Button variant="primary">Preview All</Button>
+            <Button variant="primary">&lt;</Button>
+            <Button variant="primary">&gt;</Button>
+          </Col>
+        </Row>
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={lksSample} />
             <Card.Body>
-              <Card.Title>Activity Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
+              <Card.Title>Lorem, ipsum dolor.</Card.Title>
+              <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                <div className="kategori">
+                  <Button>Announcement</Button>
+                  <Button>Akademik</Button>
+                </div>
+                <div className="time-card">
+                  <p>
+                    <IoTimeOutline size={20} /> 14 Sept, 2022
+                  </p>
+                </div>
               </Card.Text>
             </Card.Body>
           </Card>
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={lksSample} />
             <Card.Body>
-              <Card.Title>Activity Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
+              <Card.Title>Lorem, ipsum dolor.</Card.Title>
+              <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                <div className="kategori">
+                  <Button>Announcement</Button>
+                  <Button>Akademik</Button>
+                </div>
+                <div className="time-card">
+                  <p>
+                    <IoTimeOutline size={20} /> 14 Sept, 2022
+                  </p>
+                </div>
               </Card.Text>
             </Card.Body>
           </Card>
-          <br />
-          <Card style={{ width: "18rem" }} className="post-card">
-            <Card.Img variant="top" src={lksSample} />
-            <Card.Body>
-              <Card.Title>Activity Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          <Card style={{ width: "18rem" }} className="post-card">
-            <Card.Img variant="top" src={lksSample} />
-            <Card.Body>
-              <Card.Title>Activity Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          <Card style={{ width: "18rem" }} className="post-card">
-            <Card.Img variant="top" src={lksSample} />
-            <Card.Body>
-              <Card.Title>Activity Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col xs={2} className="text-center">
-          <Button className="btn-post">See All Activities</Button>
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
-        <h1 className="ac-ttl">Announcement</h1>
+        <Row id="announcement-title">
+          <Col xs={4}>
+            <Row>
+              <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                <h3>ACTIVITY</h3>
+                <div className="yellow-line"></div>
+              </Col>
+            </Row>
+            <Row>
+              <h1>OUR ACTIVITIES</h1>
+            </Row>
+          </Col>
+          <Col xs={5}>
+            <br />
+            <Button variant="primary">Preview All</Button>
+            <Button variant="primary">&lt;</Button>
+            <Button variant="primary">&gt;</Button>
+          </Col>
+        </Row>
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
-            <Card.Img variant="top" src={ppdb} />
+            <Card.Img variant="top" src={lksSample} />
             <Card.Body>
-              <Card.Title>Announcement Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
+              <Card.Title>Lorem, ipsum dolor.</Card.Title>
+              <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                <div className="kategori">
+                  <Button>Announcement</Button>
+                  <Button>Akademik</Button>
+                </div>
+                <div className="time-card">
+                  <p>
+                    <IoTimeOutline size={20} /> 14 Sept, 2022
+                  </p>
+                </div>
               </Card.Text>
             </Card.Body>
           </Card>
           <Card style={{ width: "18rem" }} className="post-card post-top">
-            <Card.Img variant="top" src={ppdb} />
+            <Card.Img variant="top" src={lksSample} />
             <Card.Body>
-              <Card.Title>Announcement Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          <br />
-          <Card style={{ width: "18rem" }} className="post-card">
-            <Card.Img variant="top" src={ppdb} />
-            <Card.Body>
-              <Card.Title>Announcement Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          <Card style={{ width: "18rem" }} className="post-card">
-            <Card.Img variant="top" src={ppdb} />
-            <Card.Body>
-              <Card.Title>Announcement Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          <Card style={{ width: "18rem" }} className="post-card">
-            <Card.Img variant="top" src={ppdb} />
-            <Card.Body>
-              <Card.Title>Announcement Title</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                est provident tempore cumque facere eveniet ea, tenetur sunt
-                expedita nesciunt labore...
+              <Card.Title>Lorem, ipsum dolor.</Card.Title>
+              <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                <div className="kategori">
+                  <Button>Announcement</Button>
+                  <Button>Akademik</Button>
+                </div>
+                <div className="time-card">
+                  <p>
+                    <IoTimeOutline size={20} /> 14 Sept, 2022
+                  </p>
+                </div>
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={2} className="text-center">
-          <Button className="btn-post">See All Announcement</Button>
-        </Col>
+      </Row>
+      <Row id="testimonials">
+        <Row>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <h3>TESTIMONIALS</h3>
+            <div className="yellow-line"></div>
+          </Col>
+        </Row>
+        <Row>
+          <h1>PROFILE ALUMNI</h1>
+        </Row>
+        <Row>
+          <Col xs={10} style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <div className="card-testimonials">
+              <img src={sampleAlumni} className="testi-alumni-img" />
+              <div className="body-testimonials">
+                <h3>Name</h3>
+                <h4>Profesi</h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aspernatur dolorum ex consequatur atque nulla laborum quae
+                  iure! Sint expedita voluptatibus odio incidunt minima
+                  doloremque? Quod repellat vel facilis id iure!
+                </p>
+              </div>
+            </div>
+            <div className="card-testimonials">
+              <img src={sampleAlumni} className="testi-alumni-img" />
+              <div className="body-testimonials">
+                <h3>Name</h3>
+                <h4>Profesi</h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aspernatur dolorum ex consequatur atque nulla laborum quae
+                  iure! Sint expedita voluptatibus odio incidunt minima
+                  doloremque? Quod repellat vel facilis id iure!
+                </p>
+              </div>
+            </div>
+          </Col>
+        </Row>
       </Row>
       {/* <div className="map-bg">
         <IoMapOutline size={40} />
