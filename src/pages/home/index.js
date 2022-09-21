@@ -245,10 +245,20 @@ function Home() {
             </div>
           </Col>
         </Row>
+        <Row className="my-3 justify-content-center">
+          <Col xs={3} style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <div className="circle-slider-outline"></div>
+            <div className="circle-slider-fill"></div>
+            <div className="circle-slider-outline"></div>
+          </Col>
+        </Row>
+      </Row>
+      <Row id="faq">
         <Row>
-          <div className="circle-slider-outline"></div>
-          <div className="circle-slider-fill"></div>
-          <div className="circle-slider-outline"></div>
+          <Col xs={4}>
+            <h3>F.A.Q</h3>
+            <div className="yellow-line"></div>
+          </Col>
         </Row>
       </Row>
       {/* <div className="map-bg">
