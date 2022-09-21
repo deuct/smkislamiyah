@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../style/home.css";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import headerImg from "../../images/header-1.jpg";
@@ -11,6 +11,9 @@ import {
   IoRestaurantOutline,
   IoMapOutline,
   IoTimeOutline,
+  IoLocationOutline,
+  IoCallOutline,
+  IoMailOutline,
 } from "react-icons/io5";
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
@@ -22,8 +25,12 @@ import headerTwo from "../../images/Header-3.jpg";
 import headerThree from "../../images/Header-4.jpg";
 import overviewYt from "../../images/overview-youtube.jpg";
 import sampleAlumni from "../../images/sample-alumni.jpg";
+import Collapse from "react-bootstrap/Collapse";
 
 function Home() {
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+
   return (
     <>
       <NavbarTop />
@@ -256,8 +263,83 @@ function Home() {
       <Row id="faq">
         <Row>
           <Col xs={4}>
-            <h3>F.A.Q</h3>
-            <div className="yellow-line"></div>
+            <div style={{ display: "flex", "flex-wrap": "nowrap" }}>
+              <h3>F.A.Q</h3>
+              <div className="yellow-line"></div>
+            </div>
+            <p style={{ display: "block !important" }}>
+              FREQUENTLY ASKED QUESTION
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Button
+            onClick={() => setOpen1(!open1)}
+            aria-controls="faq1"
+            aria-expanded={open1}
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias,
+            rerum.?
+          </Button>
+          <Collapse in={open1}>
+            <div id="faq1">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Distinctio maxime voluptatem dicta eaque odio. Accusantium
+              repudiandae voluptate nulla error aperiam voluptas rem voluptatum,
+              explicabo, blanditiis, accusamus repellendus voluptates eligendi
+              nostrum.
+            </div>
+          </Collapse>
+          <Button
+            onClick={() => setOpen2(!open2)}
+            aria-controls="faq2"
+            aria-expanded={open2}
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias,
+            rerum.?
+          </Button>
+          <Collapse in={open2}>
+            <div id="faq2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Distinctio maxime voluptatem dicta eaque odio. Accusantium
+              repudiandae voluptate nulla error aperiam voluptas rem voluptatum,
+              explicabo, blanditiis, accusamus repellendus voluptates eligendi
+              nostrum.
+            </div>
+          </Collapse>
+        </Row>
+      </Row>
+      <Row>
+        <Row>
+          <Col xs={4}>
+            <div style={{ display: "flex", "flex-wrap": "nowrap" }}>
+              <h3>CONTACT US</h3>
+              <div className="yellow-line"></div>
+            </div>
+            <p style={{ display: "block !important" }}>VISIT OUR SCHOOL</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={3}>
+            <IoLocationOutline size={25} />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+              recusandae tempora aliquid reiciendis sunt nam.
+            </p>
+          </Col>
+          <Col xs={3}>
+            <IoCallOutline size={25} />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+              recusandae tempora aliquid reiciendis sunt nam.
+            </p>
+          </Col>
+          <Col xs={3}>
+            <IoMailOutline size={25} />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+              recusandae tempora aliquid reiciendis sunt nam.
+            </p>
           </Col>
         </Row>
       </Row>
@@ -266,7 +348,6 @@ function Home() {
       </div>
       <div className="divider-maps"></div> */}
       <Row id="contact" className="justify-content-center">
-        <h1 className="ct-ttl">Visit Our School</h1>
         <Col xs={12} className="text-center">
           <div class="mapouter mx-auto">
             <div class="gmap_canvas">
@@ -282,24 +363,8 @@ function Home() {
               ></iframe>
             </div>
           </div>
-          <div className="contact-addr">
-            <h2>Address</h2>
-            <p>
-              Jl. Ki Hajar Dewantara No.23, RT.1/RW.6, Ciputat, Kec. Ciputat,
-              Kota Tangerang Selatan, Banten 15411
-            </p>
-          </div>
         </Col>
       </Row>
-      <div className="contact-ready align-items-center">
-        <div className="cr-left d-inline-block">
-          <h1>Willing to contact us ?</h1>
-          <h2>Hit the Get Started button</h2>
-        </div>
-        <div className="cr-right d-inline-block">
-          <Button className="btn-cr">Get Started</Button>
-        </div>
-      </div>
       <div className="footer-lock" style={{ height: "20vh" }}>
         <FooterBot />
       </div>
