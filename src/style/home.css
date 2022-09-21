@@ -77,11 +77,11 @@ a#basic-nav-dropdown,
   text-align: center;
   padding-top: 20px;
 }
-  #welcome h1 {
-    color: #0E3E65;
-    font-size: 28px;
-    font-weight: 800 ;
-  }
+#welcome h1 {
+  color: #0e3e65;
+  font-size: 28px;
+  font-weight: 800;
+}
 
 .divider-welcome {
   height: 5px;
@@ -100,15 +100,15 @@ a#basic-nav-dropdown,
 }
 #hdm-greeting h1 {
   font-size: 2.2rem;
-  color: #0E3E65;
+  color: #0e3e65;
   font-weight: 700;
   margin-left: 40px;
   margin-top: -10px;
 }
-#hdm-greeting h2{
+#hdm-greeting h2 {
   width: 120%;
   font-weight: 600;
-  color: #0E3E65;
+  color: #0e3e65;
 }
 #hdm-greeting p {
   margin-left: 40px;
@@ -147,10 +147,10 @@ a#basic-nav-dropdown,
 }
 #overview .OV {
   font-size: 20px;
-  color: #74A4CB;
+  color: #74a4cb;
 }
 #overview .WU {
-  color: #0E3E65;
+  color: #0e3e65;
   font-weight: 700;
 }
 #overview p {
@@ -160,8 +160,8 @@ a#basic-nav-dropdown,
   margin-top: 60px;
   border-radius: 15px;
 }
-#overview img{
-  box-shadow: 3px 2px,rgba(0, 0, 0, 0.2);
+#overview img {
+  box-shadow: 3px 2px, rgba(0, 0, 0, 0.2);
 }
 
 /* /////// */
@@ -213,14 +213,13 @@ a#basic-nav-dropdown,
   font-size: 25px;
   margin-left: 120px;
 }
-#activities .ACT{
+#activities .ACT {
   font-size: 20px;
-  color: #74A4CB;
+  color: #74a4cb;
 }
 #activities .OACT {
-  color: #0E3E65;
+  color: #0e3e65;
   font-weight: 700;
-
 }
 /* #activities .divider-overview1 {
   height: 3px;
@@ -234,14 +233,13 @@ a#basic-nav-dropdown,
 #activities .ac-ttl {
   margin-top: -30px;
   font-size: 25px;
-  color: #74A4CB;
-
+  color: #74a4cb;
 }
 
 #activities .ac-ttl1 {
   font-weight: 700;
   font-size: 30px;
-  color: #0E3E65;
+  color: #0e3e65;
 }
 
 .post-card {
@@ -301,7 +299,7 @@ a#basic-nav-dropdown,
   font-weight: 600;
   text-align: center;
   margin: 30px;
-  color: #0E3E65;
+  color: #0e3e65;
 }
 
 .mapouter {
@@ -328,7 +326,7 @@ a#basic-nav-dropdown,
   font-size: 1.8rem;
   font-weight: 600;
   margin-top: 20px;
-  color: #0E3E65;
+  color: #0e3e65;
 }
 
 .contact-addr p {
@@ -422,4 +420,9 @@ a#basic-nav-dropdown,
   width: 100%;
 }
 
-
+/* Farhan */
+.testi-alumni-img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}

@@ -125,9 +125,9 @@ function Home() {
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
-          <h1 className="ACT">ACTIVITY</h1>
-          {/* <div className="divider-overview1"></div>  */}
-          <h1 className="OACT">OUR ACTIVITIES</h1>
+        <h1 className="ACT">ACTIVITY</h1>
+        {/* <div className="divider-overview1"></div>  */}
+        <h1 className="OACT">OUR ACTIVITIES</h1>
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={lksSample} />
@@ -166,8 +166,8 @@ function Home() {
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
-      <h1 className="ac-ttl">Announcement</h1>
-      <h1 className="ac-ttl1">Related Announcement</h1>
+        <h1 className="ac-ttl">Announcement</h1>
+        <h1 className="ac-ttl1">Related Announcement</h1>
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={lksSample} />
