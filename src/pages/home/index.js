@@ -245,6 +245,11 @@ function Home() {
             </div>
           </Col>
         </Row>
+        <Row>
+          <div className="circle-slider-outline"></div>
+          <div className="circle-slider-fill"></div>
+          <div className="circle-slider-outline"></div>
+        </Row>
       </Row>
       {/* <div className="map-bg">
         <IoMapOutline size={40} />
