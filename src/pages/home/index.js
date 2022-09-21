@@ -43,7 +43,7 @@ function Home() {
           <Carousel.Item style={{ height: "100vh" }}>
             <img className="d-block w-100" src={headerOne} alt="First slide" />
             <Carousel.Caption>
-              <h3>First slide label</h3>
+              <h3 className="slide">First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -110,8 +110,8 @@ function Home() {
           <img src={overviewYt} />
         </Col>
         <Col xs={6}>
-          <h1>OVERVIEW</h1>
-          <h1>WHY US</h1>
+          <h1 className="OV">OVERVIEW</h1>
+          <h1 className="WU">WHY US</h1>
           <div className="divider-overview"></div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
@@ -123,7 +123,9 @@ function Home() {
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
-        <h1 className="ac-ttl">Our Activities</h1>
+          <h1 className="ACT">ACTIVITY</h1>
+          {/* <div className="divider-overview1"></div>  */}
+          <h1 className="OACT">OUR ACTIVITIES</h1>
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={lksSample} />
@@ -187,7 +189,8 @@ function Home() {
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
-        <h1 className="ac-ttl">Announcement</h1>
+      <h1 className="ac-ttl">Announcement</h1>
+      <h1 className="ac-ttl1">Related Announcement</h1>
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={ppdb} />

@@ -24,7 +24,8 @@
 a#basic-nav-dropdown,
 .nav-link,
 .navbar-brand {
-  color: #0E3E65 !important;
+  color: #154d7a;
+  font-weight: 600;
 }
 
 #header {
@@ -69,24 +70,59 @@ a#basic-nav-dropdown,
   border: none;
   border-radius: 2px;
 }
+/* welcome section */
+#welcome {
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  padding-top: 20px;
+}
+  #welcome h1 {
+    color: #0E3E65;
+    font-size: 28px;
+    font-weight: 800 ;
+  }
 
+.divider-welcome {
+  height: 5px;
+  background: rgb(0, 0, 100);
+  border-radius: 9px;
+  width: 300px;
+  margin-top: 31px;
+  margin-left: 300px;
+}
+
+/* headmaster greeting */
 #hdm-greeting {
   height: 90vh;
+  margin-top: -154px;
+  margin-left: -100px;
 }
-
 #hdm-greeting h1 {
   font-size: 2.2rem;
-  font-weight: 500;
+  color: #0E3E65;
+  font-weight: 700;
+  margin-left: 40px;
+  margin-top: -10px;
 }
-
+#hdm-greeting h2{
+  width: 120%;
+  font-weight: 600;
+  color: #0E3E65;
+}
+#hdm-greeting p {
+  margin-left: 40px;
+  margin-top: -15px;
+}
 .hdm-greeting-fill {
   margin-top: 50px !important;
   position: relative;
 }
 
 .hdm-greeting-fill img {
+  padding: 5px 5px 15px;
   width: 270px;
-  margin-right: 25px;
+  margin-right: 30px;
   border-radius: 50%;
 }
 
@@ -94,6 +130,41 @@ a#basic-nav-dropdown,
   font-size: 1.6rem;
 }
 
+/* yt overview */
+#overview {
+  justify-content: center;
+  margin-top: -100px;
+}
+
+.divider-overview {
+  height: 3px;
+  width: 85px;
+  background: rgb(226, 226, 29);
+  border-radius: 2px;
+}
+#overview h1 {
+  font-size: 25px;
+}
+#overview .OV {
+  font-size: 20px;
+  color: #74A4CB;
+}
+#overview .WU {
+  color: #0E3E65;
+  font-weight: 700;
+}
+#overview p {
+  padding: 10px 10px;
+}
+#overview button {
+  margin-top: 60px;
+  border-radius: 15px;
+}
+#overview img{
+  box-shadow: 3px 2px,rgba(0, 0, 0, 0.2);
+}
+
+/* /////// */
 #facility {
   height: 100vh;
   background: rgb(0, 15, 56);
@@ -131,23 +202,52 @@ a#basic-nav-dropdown,
   text-align: center;
 }
 
+/* card activities */
 #activities {
-  padding: 25px;
+  padding: 45px;
+  margin-top: 20px;
 }
 
 #activities h1 {
-  font-size: 2.2rem;
-  text-align: center;
+  text-align: left;
+  font-size: 25px;
+  margin-left: 120px;
+}
+#activities .ACT{
+  font-size: 20px;
+  color: #74A4CB;
+}
+#activities .OACT {
+  color: #0E3E65;
+  font-weight: 700;
+
+}
+/* #activities .divider-overview1 {
+  height: 3px;
+  width: 85px;
+  background: rgb(226, 226, 29);
+  border-radius: 2px;
+  margin-left: 10px;
+} */
+
+/* announcement */
+#activities .ac-ttl {
+  margin-top: -30px;
+  font-size: 25px;
+  color: #74A4CB;
+
 }
 
-#activities .ac-ttl {
-  margin-bottom: 20px;
+#activities .ac-ttl1 {
+  font-weight: 700;
+  font-size: 30px;
+  color: #0E3E65;
 }
 
 .post-card {
   display: inline-block !important;
   text-align: left;
-  border-radius: 2px !important;
+  border-radius: 12px !important;
   margin: 10px;
   font-size: 0.9rem;
 }
@@ -160,10 +260,13 @@ a#basic-nav-dropdown,
 
 .post-top img {
   height: 250px;
+  position: relative;
+  overflow: hidden;
 }
 
 .card-title {
   text-align: center;
+  /* font-weight: 900; */
 }
 
 .btn-post {
@@ -185,7 +288,7 @@ a#basic-nav-dropdown,
   height: 200px;
   width: 100%;
 }
-
+/* contact footer */
 #contact {
   margin-top: 20px;
   /* background-color: rgb(0, 15, 56); */
@@ -195,8 +298,10 @@ a#basic-nav-dropdown,
 
 .ct-ttl {
   font-size: 2.2rem;
+  font-weight: 600;
   text-align: center;
   margin: 30px;
+  color: #0E3E65;
 }
 
 .mapouter {
@@ -221,11 +326,13 @@ a#basic-nav-dropdown,
 
 .contact-addr h2 {
   font-size: 1.8rem;
+  font-weight: 600;
   margin-top: 20px;
+  color: #0E3E65;
 }
 
 .contact-addr p {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .divider-maps {
@@ -315,27 +422,4 @@ a#basic-nav-dropdown,
   width: 100%;
 }
 
-#welcome {
-  margin: auto;
-  justify-content: center;
-  text-align: center;
-}
 
-.divider-welcome {
-  height: 5px;
-  background: rgb(0, 0, 100);
-  border-radius: 2px;
-  width: 300px;
-  margin: auto;
-}
-
-#overview {
-  justify-content: center;
-}
-
-.divider-overview {
-  height: 2px;
-  width: 150px;
-  background: rgb(226, 226, 29);
-  border-radius: 2px;
-}
