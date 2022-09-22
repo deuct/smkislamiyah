@@ -49,7 +49,11 @@ a#basic-nav-dropdown,
   position: absolute;
   z-index: 2;
 }
-
+#header .slide {
+  color: #003cff;
+  text-align: center;
+  margin-bottom: 250px;
+}
 .header-fill {
   z-index: 3;
 }
@@ -94,6 +98,7 @@ a#basic-nav-dropdown,
 
 /* headmaster greeting */
 #hdm-greeting {
+  /* background-color: rgb(150, 145, 145); */
   height: 90vh;
   margin-top: -154px;
   margin-left: -100px;
@@ -145,6 +150,22 @@ a#basic-nav-dropdown,
 #overview h1 {
   font-size: 25px;
 }
+/* #contact h3 {
+  margin-top: -30px;
+  font-size: 23px;
+  color: #74a4cb;
+}
+#contact .yellow-line {
+  margin-left: -133px;
+  width: 100px;
+  height: 3px;
+}
+#contact h1 {
+  color: #0e3e65;
+  font-weight: 700;
+  font-size: 28px;
+} */
+
 #overview .OV {
   font-size: 20px;
   color: #74a4cb;
@@ -187,6 +208,7 @@ a#basic-nav-dropdown,
   width: 300px;
   margin: 0 10px;
   margin-top: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .card-facility:hover {
@@ -204,8 +226,8 @@ a#basic-nav-dropdown,
 
 /* card activities */
 #activities {
-  padding: 45px;
-  margin-top: 20px;
+  padding: 24px;
+  margin-top: 32px;
 }
 
 #activities h1 {
@@ -213,14 +235,35 @@ a#basic-nav-dropdown,
   font-size: 25px;
   margin-left: 120px;
 }
-#activities .ACT {
-  font-size: 20px;
+#activities h3 {
+  margin-top: -30px;
+  font-size: 23px;
   color: #74a4cb;
+  margin-left: 23px;
 }
-#activities .OACT {
+#activities .yellow-line {
+  margin-left: -93px;
+  width: 100px;
+  height: 3px;
+}
+#activities h1 {
   color: #0e3e65;
   font-weight: 700;
+  font-size: 28px;
+  margin-left: 23px;
 }
+
+#activities .kategori {
+  margin-top: 40px;
+  margin-right: 10px;
+}
+#activities .kategori .an {
+  margin-right: 10px;
+}
+#activities .time-card {
+  margin-top: 53px;
+}
+
 /* #activities .divider-overview1 {
   height: 3px;
   width: 85px;
@@ -266,7 +309,6 @@ a#basic-nav-dropdown,
   text-align: center;
   /* font-weight: 900; */
 }
-
 .btn-post {
   padding: 10px 15px;
   background-color: transparent !important;
@@ -286,14 +328,141 @@ a#basic-nav-dropdown,
   height: 200px;
   width: 100%;
 }
-/* contact footer */
-#contact {
-  margin-top: 20px;
-  /* background-color: rgb(0, 15, 56); */
-  /* padding: 45px; */
-  /* color: white; */
+
+/* Farhan -testimonial */
+#testimonials {
+  margin-left: 50px;
+  margin-top: 30px;
+}
+#testimonials .testi {
+  margin-top: -30px;
+  font-size: 23px;
+  color: #74a4cb;
+}
+#testimonials .yellow-line {
+  margin-left: -150px;
+  width: 100px;
+  height: 3px;
+}
+#testimonials .prof{
+  color: #0e3e65;
+  font-weight: 700;
+  font-size: 28px;
 }
 
+#testimonials .card-testimonials {
+  display: flex;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+#testimonials .body-testimonials {
+  padding: 10px 20px;
+}
+.testi-alumni-img {
+  height: 81px;
+  width: 81%;
+  border-radius: 50%;
+  margin-left: 13px;
+  margin-top: 13px;
+}
+#testimonials .body-testimonials h3 {
+  font-weight: 700;
+}
+#testimonials .body-testimonials p {
+  /* margin-left: 5px; */
+  text-align: center;
+}
+.circle-slider-outline,
+.circle-slider-fill {
+  width: 15px;
+  background: white;
+  border: 1px solid rgb(5, 5, 129);
+  height: 15px;
+  border-radius: 50%;
+  margin: 5px;
+  /* margin-left: 20px; */
+}
+
+.circle-slider-outline {
+  background: white;
+}
+
+.circle-slider-fill {
+  background: rgb(5, 5, 129);
+}
+
+.yellow-line {
+  width: 100px;
+  height: 2px;
+  background: rgb(236, 236, 2);
+}
+
+/* FAQ */
+#faq {
+  margin-left: 50px;
+  margin-top: 70px;
+}
+#faq h3 {
+  margin-top: -30px;
+  font-size: 23px;
+  color: #74a4cb;
+}
+#faq .yellow-line {
+  margin-left: -55px;
+  width: 100px;
+  height: 3px;
+}
+#faq h1 {
+  color: #0e3e65;
+  font-weight: 700;
+  font-size: 28px;
+}
+#faq .faq-btn {
+  max-width: 80%;
+  margin-left: 110px;
+  margin-top: 20px;
+}
+#faq .faq-capt {
+  text-align: center;
+  margin-left: 240px;
+  max-width: 60%;
+}
+/* contact footer */
+#contact {
+  margin-left: 50px;
+  margin-top: 70px;
+}
+#contact h3 {
+  margin-top: -30px;
+  font-size: 23px;
+  color: #74a4cb;
+}
+#contact .yellow-line {
+  margin-left: -133px;
+  width: 100px;
+  height: 3px;
+}
+#contact h1 {
+  color: #0e3e65;
+  font-weight: 700;
+  font-size: 28px;
+}
+#contact .ctc-menu {
+  margin-top: 20px;
+  margin-left: 76px;
+  margin-bottom: 40px;
+}
+#contact .simbol{
+  height: 45px;
+  color: #0e3e65;
+  margin-left: 128px;
+  width: 35px
+}
+#contact .ctc-menu p {
+  text-align: center;
+}
 .ct-ttl {
   font-size: 2.2rem;
   font-weight: 600;
@@ -420,33 +589,4 @@ a#basic-nav-dropdown,
   width: 100%;
 }
 
-/* Farhan */
-.testi-alumni-img {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-}
 
-.circle-slider-outline,
-.circle-slider-fill {
-  width: 20px;
-  background: white;
-  border: 1px solid rgb(5, 5, 129);
-  height: 20px;
-  border-radius: 50%;
-  margin: 5px;
-}
-
-.circle-slider-outline {
-  background: white;
-}
-
-.circle-slider-fill {
-  background: rgb(5, 5, 129);
-}
-
-.yellow-line {
-  width: 100px;
-  height: 2px;
-  background: rgb(236, 236, 2);
-}
