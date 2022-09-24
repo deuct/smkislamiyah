@@ -51,14 +51,14 @@ function Home() {
         <Carousel style={{ color: "black" }}>
           <Carousel.Item style={{ height: "100vh" }}>
             <img className="d-block w-100" src={headerOne} alt="First slide" />
-            <Carousel.Caption>
-              <h3 className="slide">First slide label</h3>
+            <Carousel.Caption className="slide">
+              <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item style={{ height: "100vh" }}>
             <img className="d-block w-100" src={headerTwo} alt="Second slide" />
-            <Carousel.Caption>
+            <Carousel.Caption className="slide">
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
@@ -69,7 +69,7 @@ function Home() {
               src={headerThree}
               alt="Third slide"
             />
-            <Carousel.Caption>
+            <Carousel.Caption className="slide">
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
@@ -132,9 +132,16 @@ function Home() {
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
-        <h1 className="ACT">ACTIVITY</h1>
-        {/* <div className="divider-overview1"></div>  */}
-        <h1 className="OACT">OUR ACTIVITIES</h1>
+        <Row>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <h3 >ACTIVITY</h3>
+            <div className="yellow-line"></div>
+          </Col>
+        </Row>
+        <Row>
+          <h1>OUR ACTIVITIES</h1>
+        </Row>
+        <div className="divider-overview1"></div>         
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={lksSample} />
@@ -142,7 +149,7 @@ function Home() {
               <Card.Title>Lorem, ipsum dolor.</Card.Title>
               <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
                 <div className="kategori">
-                  <Button>Announcement</Button>
+                  <Button className="an">Announcement</Button>
                   <Button>Akademik</Button>
                 </div>
                 <div className="time-card">
@@ -159,7 +166,7 @@ function Home() {
               <Card.Title>Lorem, ipsum dolor.</Card.Title>
               <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
                 <div className="kategori">
-                  <Button>Announcement</Button>
+                  <Button className="an">Announcement</Button>
                   <Button>Akademik</Button>
                 </div>
                 <div className="time-card">
@@ -182,7 +189,7 @@ function Home() {
               <Card.Title>Lorem, ipsum dolor.</Card.Title>
               <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
                 <div className="kategori">
-                  <Button>Announcement</Button>
+                  <Button className="an">Announcement</Button>
                   <Button>Akademik</Button>
                 </div>
                 <div className="time-card">
@@ -199,7 +206,7 @@ function Home() {
               <Card.Title>Lorem, ipsum dolor.</Card.Title>
               <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
                 <div className="kategori">
-                  <Button>Announcement</Button>
+                  <Button className="an">Announcement</Button>
                   <Button>Akademik</Button>
                 </div>
                 <div className="time-card">
@@ -215,12 +222,12 @@ function Home() {
       <Row id="testimonials">
         <Row>
           <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
-            <h3>TESTIMONIALS</h3>
+            <h3 className="testi">TESTIMONIALS</h3>
             <div className="yellow-line"></div>
           </Col>
         </Row>
         <Row>
-          <h1>PROFILE ALUMNI</h1>
+          <h1 className="prof">PROFILE ALUMNI</h1>
         </Row>
         <Row>
           <Col xs={10} style={{ display: "flex", "flex-wrap": "nowrap" }}>
@@ -262,27 +269,26 @@ function Home() {
       </Row>
       <Row id="faq">
         <Row>
-          <Col xs={4}>
-            <div style={{ display: "flex", "flex-wrap": "nowrap" }}>
-              <h3>F.A.Q</h3>
-              <div className="yellow-line"></div>
-            </div>
-            <p style={{ display: "block !important" }}>
-              FREQUENTLY ASKED QUESTION
-            </p>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <h3 >F.A.Q</h3>
+            <div className="yellow-line"></div>
           </Col>
+        </Row>
+        <Row>
+          <h1>FREQUENTLY ASKED QUESTION</h1>
         </Row>
         <Row>
           <Button
             onClick={() => setOpen1(!open1)}
             aria-controls="faq1"
             aria-expanded={open1}
+            className="faq-btn"
           >
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias,
             rerum.?
           </Button>
           <Collapse in={open1}>
-            <div id="faq1">
+            <div id="faq1" className="faq-capt">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Distinctio maxime voluptatem dicta eaque odio. Accusantium
               repudiandae voluptate nulla error aperiam voluptas rem voluptatum,
@@ -294,12 +300,13 @@ function Home() {
             onClick={() => setOpen2(!open2)}
             aria-controls="faq2"
             aria-expanded={open2}
+            className="faq-btn"
           >
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias,
             rerum.?
           </Button>
           <Collapse in={open2}>
-            <div id="faq2">
+            <div id="faq2" className="faq-capt">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Distinctio maxime voluptatem dicta eaque odio. Accusantium
               repudiandae voluptate nulla error aperiam voluptas rem voluptatum,
@@ -309,33 +316,33 @@ function Home() {
           </Collapse>
         </Row>
       </Row>
-      <Row>
+      <Row id="contact">
         <Row>
-          <Col xs={4}>
-            <div style={{ display: "flex", "flex-wrap": "nowrap" }}>
-              <h3>CONTACT US</h3>
-              <div className="yellow-line"></div>
-            </div>
-            <p style={{ display: "block !important" }}>VISIT OUR SCHOOL</p>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <h3 >CONTACT US</h3>
+            <div className="yellow-line"></div>
           </Col>
         </Row>
         <Row>
-          <Col xs={3}>
-            <IoLocationOutline size={25} />
+          <h1>VISIT OUR SCHOOL</h1>
+        </Row>
+        <Row>
+          <Col xs={3} className="ctc-menu">
+            <IoLocationOutline size={25} className="simbol" />
+            <p>
+              (map)Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+              recusandae tempora aliquid reiciendis sunt nam.
+            </p>
+          </Col>
+          <Col xs={3} className="ctc-menu">
+            <IoCallOutline size={25} className="simbol" />
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
               recusandae tempora aliquid reiciendis sunt nam.
             </p>
           </Col>
-          <Col xs={3}>
-            <IoCallOutline size={25} />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-              recusandae tempora aliquid reiciendis sunt nam.
-            </p>
-          </Col>
-          <Col xs={3}>
-            <IoMailOutline size={25} />
+          <Col xs={3} className="ctc-menu">
+            <IoMailOutline size={25} className="simbol" />
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
               recusandae tempora aliquid reiciendis sunt nam.
@@ -347,7 +354,7 @@ function Home() {
         <IoMapOutline size={40} />
       </div>
       <div className="divider-maps"></div> */}
-      <Row id="contact" className="justify-content-center">
+      <Row id="lokasi" className="justify-content-center">
         <Col xs={12} className="text-center">
           <div class="mapouter mx-auto">
             <div class="gmap_canvas">
