@@ -23,21 +23,23 @@ function FooterBot() {
               Kota Tangerang Selatan, Banten 15411
             </p>
             <table>
-              <tr>
-                <td>Phone</td>
-                <td>&nbsp;:&nbsp;</td>
-                <td>0821 - xxxx - xxxx</td>
-              </tr>
-              <tr>
-                <td>Email</td>
-                <td>&nbsp;:&nbsp;</td>
-                <td>smkislamiyah@gmail.com</td>
-              </tr>
-              <tr>
-                <td>Operasional</td>
-                <td>&nbsp;:&nbsp;</td>
-                <td>07:00 - 16:00 WIB</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>Phone</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>0821 - xxxx - xxxx</td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>smkislamiyah@gmail.com</td>
+                </tr>
+                <tr>
+                  <td>Operasional</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>07:00 - 16:00 WIB</td>
+                </tr>
+              </tbody>
             </table>
             <p>
               <a href="#">

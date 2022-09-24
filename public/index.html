@@ -58,43 +58,76 @@
 
     <!-- Farhan : Change navbar style when scroll down (temporary disabled) -->
     <script>
-      const navbar = document.getElementById("navbarfarhan");
-      window.onscroll = function () {
-        scrollNav();
-      };
+      window.onload = function () {
+        navbarId = document.getElementById("navbar-id").value;
+        console.log("navbar id top : ", navbarId);
 
-      function scrollNav() {
-        if (window.pageYOffset) {
-          const navbar = document.getElementById("navbarfarhan");
-          navbar.setAttribute("style", "background: white !important");
+        // const navbar = document.getElementById("navbarfarhan");
+        // navbarId = navbarId;
+        console.log("navbar id middle = ", navbarId);
 
-          const navbarBrand = document.getElementById("nb-ttl");
-          navbarBrand.style.color = "#272727";
+        const navbar = document.getElementById("navbarfarhan");
+        const navbarBrand = document.getElementById("nb-ttl");
+        const navLink = document.querySelectorAll(".nav-link");
 
-          const navLink = document.querySelectorAll(".nav-link");
+        if (navbarId == "bkk-listing") {
+          // navbar.setAttribute("style", "background: #0e3e65 !important");
+          navbarBrand.style.color = "black";
           var i;
-
           for (i = 0; i < navLink.length; i++) {
-            navLink[i].setAttribute("style", "color: #272727 !important");
+            navLink[i].setAttribute("style", "color: black");
           }
         } else {
-          const navbar = document.getElementById("navbarfarhan");
-          navbar.setAttribute(
-            "style",
-            "background-color: transparent !important"
-          );
-
-          const navbarBrand = document.getElementById("nb-ttl");
           navbarBrand.style.color = "white";
-
-          const navLink = document.querySelectorAll(".nav-link");
           var i;
-
           for (i = 0; i < navLink.length; i++) {
-            navLink[i].setAttribute("style", "color: white !important");
+            navLink[i].setAttribute("style", "color: black");
           }
         }
-      }
+        window.onscroll = function () {
+          scrollNav();
+        };
+
+        function scrollNav() {
+          const navbar = document.getElementById("navbarfarhan");
+          const navbarBrand = document.getElementById("nb-ttl");
+          const navLink = document.querySelectorAll(".nav-link");
+
+          console.log("Navbar ID = " + navbarId);
+          if (window.pageYOffset) {
+            navbar.setAttribute(
+              "style",
+              "background: white !important;border-bottom: none; box-shadow: 0 1px 0 0 rgb(219, 219, 219)"
+            );
+            navbarBrand.style.color = "#272727";
+            var i;
+            for (i = 0; i < navLink.length; i++) {
+              navLink[i].setAttribute("style", "color: #272727 !important");
+            }
+          } else {
+            if (navbarId == "bkk-listing") {
+              navbarBrand.style.color = "black";
+              var i;
+
+              for (i = 0; i < navLink.length; i++) {
+                navLink[i].setAttribute("style", "color: black !important");
+              }
+            } else if (navbarId == "home") {
+              navbar.setAttribute(
+                "style",
+                "background-color: transparent !important; border-bottom: 0; box-shadow: 0"
+              );
+              console.log("horray");
+              navbarBrand.style.color = "white";
+              var i;
+
+              for (i = 0; i < navLink.length; i++) {
+                navLink[i].setAttribute("style", "color: white !important");
+              }
+            }
+          }
+        }
+      };
     </script>
   </body>
 </html>

@@ -76,11 +76,36 @@
   color: whitesmoke;
 }
 
-/* Navbar */
-#nb-ttl {
-  color: black !important;
+#navbar-bgz {
+  height: 13vh;
 }
 
-.nav-link {
-  color: black !important;
+/* Left job */
+#list-job {
+  height: 100vh;
+  position: static;
+  overflow-y: auto;
+}
+
+#list-job-left {
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  height: 100vh;
+  display: block;
+  position: relative;
+}
+
+.cbkk-img {
+  position: relative;
+  top: 0;
+}
+
+.bkkdetail-body {
+  overflow-y: auto;
+  display: block;
+  position: relative;
+}
+
+img.comp-logo-detail {
+  width: 220px !important;
 }

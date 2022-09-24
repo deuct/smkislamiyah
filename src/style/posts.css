@@ -32,3 +32,26 @@
   border: 1px solid rgb(6, 32, 78) !important;
   border-radius: 4px !important;
 }
+
+/* Breadcrumb */
+#breadcrumb {
+  background: #1768a8;
+  border-radius: 8px;
+  color: whitesmoke;
+}
+
+#navbar-bgz {
+  height: 13vh;
+}
+
+.paginate {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginate ul li {
+  list-style-type: none;
+  display: inline-block;
+}
