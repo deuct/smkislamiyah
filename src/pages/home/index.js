@@ -365,9 +365,9 @@ function Home() {
           </div>
         </Col>
       </Row>
-      <div className="footer-lock" style={{ height: "20vh" }}>
-        <FooterBot />
-      </div>
+      {/* <div className="footer-lock"> */}
+      <FooterBot />
+      {/* </div> */}
     </>
   );
 }
