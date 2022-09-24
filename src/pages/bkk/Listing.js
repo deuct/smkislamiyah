@@ -16,7 +16,7 @@ function Listing() {
     <>
       <NavbarTop />
       {/* <HeaderImg title="BKK" /> */}
-      <Container>
+      <Container style={{ "margin-top": "10vh" }}>
         <Row id="title-bkk">
           <Col xs={4}>
             <h1>BKK</h1>

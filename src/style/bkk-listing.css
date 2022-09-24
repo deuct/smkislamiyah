@@ -68,3 +68,19 @@
   margin-bottom: 10px;
   text-decoration: underline !important;
 }
+
+/* Breadcrumb */
+#breadcrumb {
+  background: #1768a8;
+  border-radius: 8px;
+  color: whitesmoke;
+}
+
+/* Navbar */
+#nb-ttl {
+  color: black !important;
+}
+
+.nav-link {
+  color: black !important;
+}
