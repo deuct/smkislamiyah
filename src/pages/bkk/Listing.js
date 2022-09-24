@@ -15,8 +15,25 @@ function Listing() {
   return (
     <>
       <NavbarTop />
-      <HeaderImg title="BKK" />
+      {/* <HeaderImg title="BKK" /> */}
       <Container>
+        <Row id="title-bkk">
+          <Col xs={4}>
+            <h1>BKK</h1>
+            <h1>Bursa Kerja Khusus</h1>
+          </Col>
+          <Col xs={8}>
+            <h3>Bursa Kerja Khusus</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis a consectetur provident dolor odit, at laborum
+              aliquam eos suscipit magni labore, est cum animi eligendi
+              necessitatibus modi asperiores, maxime2
+              <a href="#">More information...</a>
+            </p>
+          </Col>
+        </Row>
+        <Row id="breadcrumb">Home &gt; BKK</Row>
         <Row id="search-bar" className="justify-content-center">
           <Col xs={12}>
             <InputGroup className="mb-3">
