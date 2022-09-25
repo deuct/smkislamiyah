@@ -55,3 +55,26 @@
   list-style-type: none;
   display: inline-block;
 }
+
+.yellow-line {
+  background: yellow;
+  height: 4px;
+  width: 100px;
+}
+
+.cs-outline,
+.cs-fill {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.cs-outline {
+  background: none;
+  border: 1px solid #1768a8;
+}
+
+.cs-fill {
+  background: #1768a8;
+  border: none;
+}
