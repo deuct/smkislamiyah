@@ -25,7 +25,7 @@ function Listing() {
       />
       {/* <div id="navbar-id">test</div> */}
       <div id="navbar-bgz"></div>
-      <Container style={{ marginTop: "10vh" }}>
+      <Container style={{ marginTop: "5vh" }}>
         <Row id="title-bkk">
           <Col xs={4}>
             <h1>BKK</h1>
@@ -36,13 +36,12 @@ function Listing() {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Perspiciatis a consectetur provident dolor odit, at laborum
-              aliquam eos suscipit magni labore, est cum animi eligendi
-              necessitatibus modi asperiores, maxime2
-              <a href="#">More information...</a>
+              aliquam eos suscipit magni labore,              
             </p>
+            <a href="#">More information...</a>
           </Col>
         </Row>
-        <Row id="breadcrumb">Home &gt; BKK</Row>
+        <Row id="breadcrumb"><p>Home &gt; BKK</p></Row>
         <Row id="search-bar" className="justify-content-center">
           <Col xs={12}>
             <InputGroup className="mb-3">
@@ -75,7 +74,7 @@ function Listing() {
                       voluptas magnam, odit quis quibusdam dolores eaque beatae.
                       Aspernatur?
                     </p>
-                    <Button className="cbkk-btn">More Information</Button>
+                    <a className="cbkk-MI">More Information</a>
                   </div>
                 </Col>
               </div>
@@ -96,7 +95,7 @@ function Listing() {
                       voluptas magnam, odit quis quibusdam dolores eaque beatae.
                       Aspernatur?
                     </p>
-                    <Button className="cbkk-btn">More Information</Button>
+                    <a className="cbkk-MI">More Information</a>
                   </div>
                 </Col>
               </div>
@@ -117,7 +116,7 @@ function Listing() {
                       voluptas magnam, odit quis quibusdam dolores eaque beatae.
                       Aspernatur?
                     </p>
-                    <Button className="cbkk-btn">More Information</Button>
+                    <a className="cbkk-MI">More Information</a>
                   </div>
                 </Col>
               </div>
@@ -138,7 +137,7 @@ function Listing() {
                       voluptas magnam, odit quis quibusdam dolores eaque beatae.
                       Aspernatur?
                     </p>
-                    <Button className="cbkk-btn">More Information</Button>
+                    <a href="#" className="cbkk-MI" >More Information</a>
                   </div>
                 </Col>
               </div>
@@ -159,7 +158,7 @@ function Listing() {
                       voluptas magnam, odit quis quibusdam dolores eaque beatae.
                       Aspernatur?
                     </p>
-                    <Button className="cbkk-btn">More Information</Button>
+                    <a className="cbkk-MI">More Information</a>
                   </div>
                 </Col>
               </div>
@@ -184,7 +183,7 @@ function Listing() {
                 magni deserunt corrupti porro accusantium quidem facilis
                 voluptate!
               </div>
-              <div className="jobreq">
+              <div className="bkk-d-desc">
                 <h2>JOB REQUIREMENT : </h2>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -194,7 +193,7 @@ function Listing() {
                   quasi.
                 </p>
               </div>
-              <div className="jobdesc">
+              <div className="bkk-d-desc">
                 <h2>JOB DESCRIPTION : </h2>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
@@ -202,7 +201,7 @@ function Listing() {
                   nostrum nisi, sunt repellendus odio ut rem velit!
                 </p>
               </div>
-              <div className="comp-addr">
+              <div className="bkk-d-desc">
                 <h2>COMPANY ADDRESS : </h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
               </div>

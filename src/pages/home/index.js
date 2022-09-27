@@ -34,14 +34,6 @@ function Home() {
   return (
     <>
       <NavbarTop />
-      {/* Navbar styling ketika di halaman tertentu */}
-      <input
-        type="text"
-        id="navbar-id"
-        value="home"
-        style={{ display: "none" }}
-        readOnly
-      />
       <Row id="header" className="align-items-center justify-content-center">
         {/* <img
           src={headerImg}
@@ -86,7 +78,7 @@ function Home() {
       </Row>
       <Row id="welcome">
         <Col xs={8}>
-          <h1 className="text-center my-3">
+          <h1 class="text-center my-3">
             SELAMAT DATANG DI SMK ISLAMIYAH CIPUTAT
           </h1>
           <p>
@@ -95,7 +87,7 @@ function Home() {
             assumenda tenetur provident quo temporibus est aliquam libero
             nesciunt error molestiae. Commodi?
           </p>
-          <div className="divider-welcome"></div>
+          <div class="divider-welcome"></div>
         </Col>
       </Row>
       <Row
@@ -141,21 +133,21 @@ function Home() {
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
         <Row>
-          <Col style={{ display: "flex", flexWrap: "nowrap" }}>
-            <h3>ACTIVITY</h3>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <h3 >ACTIVITY</h3>
             <div className="yellow-line"></div>
           </Col>
         </Row>
         <Row>
           <h1>OUR ACTIVITIES</h1>
         </Row>
-        <div className="divider-overview1"></div>
+        <div className="divider-overview1"></div>         
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={lksSample} />
             <Card.Body>
               <Card.Title>Lorem, ipsum dolor.</Card.Title>
-              <Card.Text style={{ display: "flex", flexWrap: "nowrap" }}>
+              <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
                 <div className="kategori">
                   <Button className="an">Announcement</Button>
                   <Button>Akademik</Button>
@@ -172,7 +164,7 @@ function Home() {
             <Card.Img variant="top" src={lksSample} />
             <Card.Body>
               <Card.Title>Lorem, ipsum dolor.</Card.Title>
-              <Card.Text style={{ display: "flex", flexWrap: "nowrap" }}>
+              <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
                 <div className="kategori">
                   <Button className="an">Announcement</Button>
                   <Button>Akademik</Button>
@@ -187,15 +179,22 @@ function Home() {
           </Card>
         </Col>
       </Row>
-      <Row className="justify-content-center d-flex" id="activities">
-        <h1 className="ac-ttl">Announcement</h1>
-        <h1 className="ac-ttl1">Related Announcement</h1>
+      <Row className="justify-content-center d-flex" id="announcement">
+        <Row>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <h3 >Announcement</h3>
+            <div className="yellow-line"></div>
+          </Col>
+        </Row>
+        <Row>
+          <h1>Related Announcement</h1>
+        </Row>
         <Col xs={12} className="text-center">
           <Card style={{ width: "18rem" }} className="post-card post-top">
             <Card.Img variant="top" src={lksSample} />
             <Card.Body>
               <Card.Title>Lorem, ipsum dolor.</Card.Title>
-              <Card.Text style={{ display: "flex", flexWrap: "nowrap" }}>
+              <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
                 <div className="kategori">
                   <Button className="an">Announcement</Button>
                   <Button>Akademik</Button>
@@ -212,7 +211,7 @@ function Home() {
             <Card.Img variant="top" src={lksSample} />
             <Card.Body>
               <Card.Title>Lorem, ipsum dolor.</Card.Title>
-              <Card.Text style={{ display: "flex", flexWrap: "nowrap" }}>
+              <Card.Text style={{ display: "flex", "flex-wrap": "nowrap" }}>
                 <div className="kategori">
                   <Button className="an">Announcement</Button>
                   <Button>Akademik</Button>
@@ -229,7 +228,7 @@ function Home() {
       </Row>
       <Row id="testimonials">
         <Row>
-          <Col style={{ display: "flex", flexWrap: "nowrap" }}>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
             <h3 className="testi">TESTIMONIALS</h3>
             <div className="yellow-line"></div>
           </Col>
@@ -238,7 +237,7 @@ function Home() {
           <h1 className="prof">PROFILE ALUMNI</h1>
         </Row>
         <Row>
-          <Col xs={10} style={{ display: "flex", flexWrap: "nowrap" }}>
+          <Col xs={10} style={{ display: "flex", "flex-wrap": "nowrap" }}>
             <div className="card-testimonials">
               <img src={sampleAlumni} className="testi-alumni-img" />
               <div className="body-testimonials">
@@ -268,7 +267,7 @@ function Home() {
           </Col>
         </Row>
         <Row className="my-3 justify-content-center">
-          <Col xs={3} style={{ display: "flex", flexWrap: "nowrap" }}>
+          <Col xs={3} style={{ display: "flex", "flex-wrap": "nowrap" }}>
             <div className="circle-slider-outline"></div>
             <div className="circle-slider-fill"></div>
             <div className="circle-slider-outline"></div>
@@ -277,8 +276,8 @@ function Home() {
       </Row>
       <Row id="faq">
         <Row>
-          <Col style={{ display: "flex", flexWrap: "nowrap" }}>
-            <h3>F.A.Q</h3>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <h3 >F.A.Q</h3>
             <div className="yellow-line"></div>
           </Col>
         </Row>
@@ -326,8 +325,8 @@ function Home() {
       </Row>
       <Row id="contact">
         <Row>
-          <Col style={{ display: "flex", flexWrap: "nowrap" }}>
-            <h3>CONTACT US</h3>
+          <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+            <h3 >CONTACT US</h3>
             <div className="yellow-line"></div>
           </Col>
         </Row>
@@ -338,8 +337,8 @@ function Home() {
           <Col xs={3} className="ctc-menu">
             <IoLocationOutline size={25} className="simbol" />
             <p>
-              (map)Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Officia recusandae tempora aliquid reiciendis sunt nam.
+              (map)Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+              recusandae tempora aliquid reiciendis sunt nam.
             </p>
           </Col>
           <Col xs={3} className="ctc-menu">
@@ -364,17 +363,17 @@ function Home() {
       <div className="divider-maps"></div> */}
       <Row id="lokasi" className="justify-content-center">
         <Col xs={12} className="text-center">
-          <div className="mapouter mx-auto">
-            <div className="gmap_canvas">
+          <div class="mapouter mx-auto">
+            <div class="gmap_canvas">
               <iframe
                 width="100%"
                 height="500"
                 id="gmap_canvas"
                 src="https://maps.google.com/maps?q=smk%20islamiyah%20ciputat&t=&z=19&ie=UTF8&iwloc=&output=embed"
-                frameBorder="0"
+                frameborder="0"
                 scrolling="no"
-                marginHeight="0"
-                marginWidth="0"
+                marginheight="0"
+                marginwidth="0"
               ></iframe>
             </div>
           </div>

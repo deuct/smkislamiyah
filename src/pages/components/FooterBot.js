@@ -41,7 +41,7 @@ function FooterBot() {
                 </tr>
               </tbody>
             </table>
-            <p>
+            <p className="sm-icon">
               <a href="#">
                 <IoLogoInstagram size={35} />
               </a>

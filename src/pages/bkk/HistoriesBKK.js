@@ -22,17 +22,19 @@ export default function HistoriesBKK() {
       />
       <Container className="mt-3">
         <Row id="breadcrumb">Home &gt; BKK &gt; Details BKK</Row>
-        <Row>
-          <Col xs={3} style={{ fontWeight: "bold", textAlign: "center" }}>
-            <h2>BKK</h2>
-            <h2>BURSA KERJA KHUSUS</h2>
+        <Row id="title-bkk" style={{ marginTop: "5vh" }}>
+          <Col xs={4}>
+            <h1>BKK</h1>
+            <h1>Bursa Kerja Khusus</h1>
           </Col>
-          <Col xs={9}>
+          <Col xs={8}>
             <h3>Bursa Kerja Khusus</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae
-              error natus perferendis ullam dolorum ea!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis a consectetur provident dolor odit, at laborum
+              aliquam eos suscipit magni labore,              
             </p>
+            <a href="#">More information...</a>
           </Col>
         </Row>
         <Row className="mt-4">

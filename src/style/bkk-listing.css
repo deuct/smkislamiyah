@@ -3,14 +3,58 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* #title-bkk {
+  box-shadow: 2px, rgb(31, 31, 31);
+} */
+#title-bkk h1 {
+  text-align: center;
+  font-size: x-large;
+  font-weight: 700;
+  color: #0E3E65;
+}
+#title-bkk h3 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #0E3E65;
+}
 
+#title-bkk p {
+  margin-bottom: 10px;
+}
+
+#title-bkk a:hover {
+  color: #EEEB3C;
+}
+
+/* Breadcrumb */
+#breadcrumb {
+  background: #1768a8;
+  border-radius: 8px;
+  color: whitesmoke;
+  margin: 10px;
+  padding: 2px;
+}
+#breadcrumb p {
+  margin-left: 10px;
+  margin-bottom: 3px;
+}
+#search-bar {
+  padding: 5px;
+}
+#navbar-bgz {
+  height: 13vh;
+}
+/* card list */
 .card-bkk {
   border-bottom: 1px solid rgb(211, 211, 211);
   padding: 10px;
   overflow: auto;
   margin: 15px;
 }
-
+.card-bkk p {
+  text-align: left;
+  width: 95%;
+}
 .cbkk-img {
   float: left;
   width: 120px;
@@ -21,12 +65,13 @@
 }
 
 .cbkk-fill h1 {
-  font-size: 2rem;
-  color: rgb(31, 31, 31);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0E3E65;
 }
 
 .cbkk-fill h2 {
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 .cbkk-fill p {
@@ -35,9 +80,9 @@
 }
 
 .status {
-  border-radius: 4px;
+  border-radius: 7px;
   color: rgb(221, 221, 221);
-  padding: 0px 10px;
+  padding: 2px 10px;
   text-align: left;
   vertical-align: middle;
   font-weight: 600;
@@ -48,6 +93,8 @@
 
 .st-open {
   background: rgb(34, 177, 34);
+  margin-left: 20px;
+  width: 80%;
 }
 
 .st-close {
@@ -58,28 +105,19 @@
   margin-top: 100px !important;
   font-size: 1rem !important;
 }
-
-.cbkk-btn {
+.btn-loadmore:hover {
+  background-color: #EEEB3C;
+}
+.cbkk-MI {
   padding: 5px 0px !important;
-  background: none !important;
   text-align: left !important;
   color: rgb(8, 51, 189) !important;
-  border: none !important;
   margin-bottom: 10px;
   text-decoration: underline !important;
 }
-
-/* Breadcrumb */
-#breadcrumb {
-  background: #1768a8;
-  border-radius: 8px;
-  color: whitesmoke;
+.cbkk-MI:hover {
+  color: #EEEB3C;
 }
-
-#navbar-bgz {
-  height: 13vh;
-}
-
 /* Left job */
 #list-job {
   height: 100vh;
@@ -99,13 +137,39 @@
   position: relative;
   top: 0;
 }
-
+/* BKK Detail */
+.bkkdetail-title img {
+  position: relative;
+}
+.bkkdetail-title h1 {
+  margin-top: 10px;
+  margin-left: 9px;
+  font-weight: 600;
+  color: #0E3E65;
+  font-size: 1.5rem;
+}
+.bkkdetail-title h3 {
+  margin-left: 9px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 .bkkdetail-body {
   overflow-y: auto;
   display: block;
   position: relative;
 }
-
+.detail-intro {
+  margin: 5px;
+}
+.bkk-d-desc h2 {
+  margin: 10px;
+  font-weight: 600;
+  color: #0E3E65;
+}
 img.comp-logo-detail {
   width: 220px !important;
+}
+
+.mt-4 {
+  margin-bottom: 20px;
 }
