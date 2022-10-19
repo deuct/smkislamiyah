@@ -174,7 +174,7 @@ function Listing() {
               <img src={PepsiLogo} className="comp-logo-detail" />
               <h1>PT PEPSI</h1>
               <h3>Co - Worker</h3>
-              <span className="status st-open">Open</span>
+              <span className="status st-open-desc">Open</span>
             </Row>
             <Row className="bkkdetail-body">
               <div className="detail-intro">

@@ -3,17 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* #title-bkk {
-  box-shadow: 2px, rgb(31, 31, 31);
-} */
+.title-bkk {
+  box-shadow: 2px solid #64636352;
+  border-radius: 12px;
+}
 #title-bkk h1 {
   text-align: center;
   font-size: x-large;
+  margin-top: 2vh;
   font-weight: 700;
-  color: #0E3E65;
+  color: #0e0f65;
 }
 #title-bkk h3 {
   font-weight: 600;
+  font-size: 1.2rem;
   margin-bottom: 20px;
   color: #0E3E65;
 }
@@ -89,20 +92,26 @@
   font-size: 1rem;
   margin-top: 5px;
   margin-bottom: 5px;
+  /* margin-left: -5vh; */
 }
 
 .st-open {
   background: rgb(34, 177, 34);
-  margin-left: 20px;
-  width: 80%;
+  /* margin-left: 20px; */
+  width: fit-content;
 }
+.st-open-desc {
+  background: rgb(34, 177, 34);
+  /* margin-left: 20px; */
+  width: 80%;
 
+}
 .st-close {
   background: rgb(218, 54, 54);
 }
 
 .btn-loadmore {
-  margin-top: 100px !important;
+  /* margin-top: 100px !important; */
   font-size: 1rem !important;
 }
 .btn-loadmore:hover {
@@ -128,7 +137,7 @@
 #list-job-left {
   overflow-x: hidden;
   overflow-y: auto !important;
-  height: 100vh;
+  height: 100%;
   display: block;
   position: relative;
 }
@@ -156,6 +165,8 @@
 .bkkdetail-body {
   overflow-y: auto;
   display: block;
+  height: 100%;
+  width: 100%;
   position: relative;
 }
 .detail-intro {

@@ -6,7 +6,7 @@ import programsCard from "../../images/programs-card.jpg";
 import imgPpdb from "../../images/ppdb.jpg";
 import lksSample from "../../images/lks-sample.jpg";
 
-import "../../style/posts.css";
+import "../../style/posts-detail.css";
 
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { IoTimeOutline, IoEye } from "react-icons/io5";
@@ -25,22 +25,22 @@ function DetailPost() {
           style={{ display: "none" }}
           readOnly
         />
-        <Row id="breadcrumb">Home &gt; Announcement &gt; Detail</Row>
+        <Row id="breadcrumb-pd">Home &gt; Announcement &gt; Detail</Row>
         <Row>
           <Col xs={10}>
-            <Row>
+            <Row className="pd-img" >
               <img src={programsCard} />
             </Row>
-            <Row>
+            <Row id="title-pd-cat">
               <h1>PEMENANG LOMBA LKS TINGKAT KOTA TANGERANG SELATAN</h1>
             </Row>
-            <Row>
-              <Button>Activities</Button>
-              <Button>Design Graphic</Button>
+            <Row id="pd-category" >
+              <Button className="cat-btn">Activities</Button>
+              <Button className="cat-btn">Design Graphic</Button>
               <IoTimeOutline size={20} />
               <span>14 Sept, 2022</span>
             </Row>
-            <Row>
+            <Row id="pd-isi">
               <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut,
                 accusamus! Veniam reprehenderit labore eligendi? Cupiditate enim
@@ -95,47 +95,53 @@ function DetailPost() {
               </p>
             </Row>
             <Row id="ra-card-title">
-              <span>
-                <h1>ARTICLE </h1> <div className="yellow-line"></div>
-              </span>
-              <h2>RELATED ARTICLE</h2>
+                  <Row>
+                <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                  <h3 >Article</h3>
+                  <div className="yellow-line"></div>
+                </Col>
+              </Row>
+              <Row>
+                <h1>Related Article</h1>
+              </Row>
             </Row>
             <Row id="ra-card">
-              <Col xs={3} className="ra-card-detail">
+              <Col xs={4} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
                 <span>
-                  <Button>ANNOUNCEMENT</Button>
-                  <Button>Akademik</Button>
+                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                  <Button className="ra-btn">Akademik</Button>
                   <IoTimeOutline size={20} />
                   14 Sept, 2022
                 </span>
               </Col>
-              <Col xs={3} className="ra-card-detail">
+              <Col xs={4} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
                 <span>
-                  <Button>ANNOUNCEMENT</Button>
-                  <Button>Akademik</Button>
+                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                  <Button className="ra-btn">Akademik</Button>
                   <IoTimeOutline size={20} />
                   14 Sept, 2022
                 </span>
+                
               </Col>
-              <Col xs={3} className="ra-card-detail">
+              <Col xs={4} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
                 <span>
-                  <Button>ANNOUNCEMENT</Button>
-                  <Button>Akademik</Button>
+                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                  <Button className="ra-btn">Akademik</Button>
                   <IoTimeOutline size={20} />
                   14 Sept, 2022
                 </span>
@@ -150,14 +156,16 @@ function DetailPost() {
             </Row>
           </Col>
           <Col xs={2} id="new-post-right">
-            <Row>Postingan Terbaru</Row>
-            <Row>
+            <Row id="npr-title">
+              <h3>Postingan Terbaru</h3>
               <div className="yellow-line"></div>
             </Row>
             <Row className="npr-card">
-              <Col xs={6}>
-                <Button>Activities</Button>
-                <Button>Technology</Button>
+              <Col xs={6} className="npr-body">
+                <div className="npr-body-btn">
+                  <Button className="npr-btn">Activities</Button>
+                  <Button className="npr-btn">Technology</Button>
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
                   consequatur?
@@ -171,9 +179,11 @@ function DetailPost() {
               </Col>
             </Row>
             <Row className="npr-card">
-              <Col xs={6}>
-                <Button>Activities</Button>
-                <Button>Technology</Button>
+              <Col xs={6} className="npr-body">
+                <div className="npr-body-btn">
+                  <Button className="npr-btn">Activities</Button>
+                  <Button className="npr-btn">Technology</Button>
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
                   consequatur?
@@ -187,9 +197,11 @@ function DetailPost() {
               </Col>
             </Row>
             <Row className="npr-card">
-              <Col xs={6}>
-                <Button>Activities</Button>
-                <Button>Technology</Button>
+              <Col xs={6} className="npr-body">
+                <div className="npr-body-btn">
+                  <Button className="npr-btn">Activities</Button>
+                  <Button className="npr-btn">Technology</Button>
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
                   consequatur?
@@ -203,9 +215,11 @@ function DetailPost() {
               </Col>
             </Row>
             <Row className="npr-card">
-              <Col xs={6}>
-                <Button>Activities</Button>
-                <Button>Technology</Button>
+              <Col xs={6} className="npr-body">
+                <div className="npr-body-btn">
+                  <Button className="npr-btn">Activities</Button>
+                  <Button className="npr-btn">Technology</Button>
+                </div>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
                   consequatur?

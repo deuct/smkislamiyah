@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+/* breadcrumb */
+#breadcrumb-pd {
+    background: #1768a8;
+    border-radius: 8px;
+    color: whitesmoke;
+    margin: 10px;
+    padding: 2px;  
+}
+#breadcrumb-pd p {
+    margin-left: 8vh;
+    margin-bottom: 3px;
+}
+/* big-img */
+.pd-img {
+    width: 872px;
+    height: 517px;
+}
+#title-pd-cat {
+    margin-top: 10vh;
+    font-weight: bolder;
+    font-size: 24px;
+}
+#pd-category {
+    margin-top: 2vh;
+    margin-left: 2vh;
+    display: flex;
+}
+#pd-category .cat-btn {
+    width: fit-content;
+    margin-right: 2vh;
+}
+#pd-isi {
+    text-align: justify;
+    line-height: 1.5;
+    padding: 5px;
+    /* box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px; */
+}
+#ra-card-title {
+    margin-top: 3vh;
+}
+#ra-card-title h3 {
+    font-size: 25px;
+    color: #74a4cb;  
+}
+#ra-card-title h1 {
+    font-weight: 700;
+    font-size: 30px;
+    color: #0e3e65;
+}
+#ra-card-title .yellow-line {
+    margin-left: 8px;
+    margin-top: 17px;
+    width: 120px;
+    height: 3px;
+}
+#ra-card {
+    margin-top: 3vh;
+}
+#ra-card .ra-card-detail {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.ra-card-detail h3 {
+    font-weight: 700;
+    font-size: 15px;
+    margin: 5px;
+}
+.ra-card-detail .ra-btn {
+    width: fit-content;
+    height: fit-content;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: 400;
+}
+#circle-slider {
+    align-items: center;
+    margin: 20px;
+    margin-left: 70vh;
+}
+#npr-title h3 {
+    font-weight: 500;
+    font-size: 20px;
+    color: #0E3E65;
+    line-height: 30px;
+}
+#npr-title .yellow-line {
+    height: 3px;
+    margin-bottom: 2vh;
+}
+.npr-card {
+    width: 260px;
+    height: 275px;
+    margin: 2vh;
+    margin-left: 5vh;
+    padding: 7px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+}
+.npr-card .npr-body-btn {
+    display: flex;
+}
+.npr-card .npr-btn {
+    width: fit-content;
+    height: fit-content;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: 400;
+}
+.npr-card img {
+    margin-top: 10vh;
+}

@@ -7,7 +7,7 @@ function Login() {
   return (
     <>
       <div className="bg-card">
-        <div className="login-card text-center">
+        <div className="login-card">
           <img src="https://osissmkislamiyahciputat.files.wordpress.com/2020/02/yayasan.png" />
           <h1>SMK Islamiyah Login</h1>
           <p>Please login to access these features.</p>
@@ -22,7 +22,7 @@ function Login() {
               Login
             </Button>
           </Form>
-          <p className="return-home">
+          <p>
             Change your mind ? <Link to={"/"}>Return home</Link>
           </p>
         </div>
