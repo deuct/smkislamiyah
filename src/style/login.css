@@ -25,20 +25,29 @@
 
 .login-card img {
   width: 120px;
+  margin-left: 38%;
+  margin-right: 50%;
 }
 
 .login-card h1 {
   font-size: 1.6rem;
   font-weight: 600;
-}
+  margin-left: 27%;
+  /* margin-right: 50%; */
 
+}
+.login-card p {
+  width: 80%;
+  margin-left: 8vh;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  padding: 10px;
+}
 .btn-login {
   width: 100%;
   padding: 10px;
   background: #1481ba !important;
 }
 
-p.return-home {
-  font-size: 0.95rem;
-  margin-top: 10px;
-}
+

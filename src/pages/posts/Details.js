@@ -8,7 +8,7 @@ import programsCard from "../../images/programs-card.jpg";
 import imgPpdb from "../../images/ppdb.jpg";
 import lksSample from "../../images/lks-sample.jpg";
 
-import "../../style/posts.css";
+import "../../style/posts-detail.css";
 
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { IoTimeOutline, IoEye } from "react-icons/io5";
@@ -65,7 +65,7 @@ function DetailPost(props) {
           style={{ display: "none" }}
           readOnly
         />
-        <Row id="breadcrumb">Home &gt; Announcement &gt; Detail</Row>
+        <Row id="breadcrumb-pd">Home &gt; Announcement &gt; Detail</Row>
         <Row>
           <Col xs={10}>
             {post.map((pos) => {
@@ -115,47 +115,52 @@ function DetailPost(props) {
             })}
 
             <Row id="ra-card-title">
-              <span>
-                <h1>ARTICLE </h1> <div className="yellow-line"></div>
-              </span>
-              <h2>RELATED ARTICLE</h2>
+              <Row>
+                <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                  <h3>Article</h3>
+                  <div className="yellow-line"></div>
+                </Col>
+              </Row>
+              <Row>
+                <h1>Related Article</h1>
+              </Row>
             </Row>
             <Row id="ra-card">
-              <Col xs={3} className="ra-card-detail">
+              <Col xs={4} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
                 <span>
-                  <Button>ANNOUNCEMENT</Button>
-                  <Button>Akademik</Button>
+                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                  <Button className="ra-btn">Akademik</Button>
                   <IoTimeOutline size={20} />
                   14 Sept, 2022
                 </span>
               </Col>
-              <Col xs={3} className="ra-card-detail">
+              <Col xs={4} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
                 <span>
-                  <Button>ANNOUNCEMENT</Button>
-                  <Button>Akademik</Button>
+                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                  <Button className="ra-btn">Akademik</Button>
                   <IoTimeOutline size={20} />
                   14 Sept, 2022
                 </span>
               </Col>
-              <Col xs={3} className="ra-card-detail">
+              <Col xs={4} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
                 <span>
-                  <Button>ANNOUNCEMENT</Button>
-                  <Button>Akademik</Button>
+                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                  <Button className="ra-btn">Akademik</Button>
                   <IoTimeOutline size={20} />
                   14 Sept, 2022
                 </span>
@@ -170,8 +175,8 @@ function DetailPost(props) {
             </Row>
           </Col>
           <Col xs={2} id="new-post-right">
-            <Row>Postingan Terbaru</Row>
-            <Row>
+            <Row id="npr-title">
+              <h3>Postingan Terbaru</h3>
               <div className="yellow-line"></div>
             </Row>
             <NewerPostCard />

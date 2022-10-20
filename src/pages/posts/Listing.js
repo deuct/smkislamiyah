@@ -93,7 +93,7 @@ export default function Listing() {
           readOnly
         />
         <Row id="post-intro" className="text-center">
-          <Col xs={10}>
+          <Col xs={12}>
             <h1>Ada apa saja di SMK Islamiyah Ciputat ?</h1>
             <p>
               Cerita pengalaman, berita seru, pengumuman terbaru, artikel
@@ -102,7 +102,9 @@ export default function Listing() {
             </p>
           </Col>
         </Row>
-        <Row id="breadcrumb">Home &gt; Announcement</Row>
+        <Row id="breadcrumb">
+          <p>Home &gt; Announcement</p>
+        </Row>
         <Row id="post-ctg-list">
           <Col xs={12} style={{ display: "flex", flexWrap: "nowrap" }}>
             {postType.map((postType) => {

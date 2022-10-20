@@ -90,7 +90,7 @@ a#basic-nav-dropdown:hover {
 
 .divider-welcome {
   height: 5px;
-  background: rgb(0, 0, 100);
+  background: rgb(226, 226, 29);
   border-radius: 9px;
   width: 300px;
   margin-top: 31px;
@@ -100,9 +100,9 @@ a#basic-nav-dropdown:hover {
 /* headmaster greeting */
 #hdm-greeting {
   /* background-color: rgb(150, 145, 145); */
-  height: 90vh;
-  margin-top: -154px;
-  margin-left: -100px;
+  height: 70vh;
+  margin-top: -15vh;
+  margin-left: -17vh;
 }
 #hdm-greeting h1 {
   font-size: 2.2rem;
@@ -139,7 +139,7 @@ a#basic-nav-dropdown:hover {
 /* yt overview */
 #overview {
   justify-content: center;
-  margin-top: -100px;
+  margin-top: -5vh;
 }
 
 .divider-overview {
@@ -179,7 +179,7 @@ a#basic-nav-dropdown:hover {
   padding: 10px 10px;
 }
 #overview button {
-  margin-top: 60px;
+  margin-top: 9vh;
   border-radius: 15px;
 }
 #overview img {
@@ -243,8 +243,9 @@ a#basic-nav-dropdown:hover {
   margin-left: 23px;
 }
 #activities .yellow-line {
-  margin-left: -93px;
-  width: 100px;
+  margin-left: 3px;
+  margin-top: -15px;
+  width: 117px;
   height: 3px;
 }
 
@@ -256,14 +257,18 @@ a#basic-nav-dropdown:hover {
 }
 
 #activities .kategori {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
   margin-top: 40px;
-  margin-right: 10px;
+  margin-left: -20vh;
 }
 #activities .kategori .an {
   margin-right: 10px;
 }
 #activities .time-card {
-  margin-top: 53px;
+  margin-top: 5vh;
+  margin-left: -23vh;
 }
 
 /* #activities .divider-overview1 {
@@ -277,7 +282,7 @@ a#basic-nav-dropdown:hover {
 /* announcement */
 #announcement {
   padding: 24px;
-  margin-top: 32px;
+  /* margin-top: 3vh; */
 }
 
 #announcement h3 {
@@ -295,20 +300,24 @@ a#basic-nav-dropdown:hover {
 }
 
 #announcement .yellow-line {
-  margin-left: -169px;
-  margin-top: 2px;
-  width: 100px;
+  margin-left: 5px;
+  margin-top: -15px;
+  width: 150px;
   height: 3px;
 }
 #announcement .kategori {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
   margin-top: 40px;
-  margin-right: 10px;
+  margin-left: -20vh;
 }
 #announcement .kategori .an {
   margin-right: 10px;
 }
 #announcement .time-card {
-  margin-top: 53px;
+  margin-top: 5vh;
+  margin-left: -23vh;
 }
 
 .post-card {
@@ -322,7 +331,7 @@ a#basic-nav-dropdown:hover {
 .post-top {
   width: 400px !important;
   height: 400px !important;
-  margin: 30px;
+  margin-top: 2vh;
 }
 
 .post-top img {
@@ -357,7 +366,7 @@ a#basic-nav-dropdown:hover {
 
 /* Farhan -testimonial */
 #testimonials {
-  margin-left: 70px;
+  margin-left: 40px;
   margin-top: 30px;
 }
 #testimonials .testi {
@@ -366,8 +375,9 @@ a#basic-nav-dropdown:hover {
   color: #74a4cb;
 }
 #testimonials .yellow-line {
-  margin-left: -150px;
-  width: 100px;
+  margin-left: 4px;
+  margin-top: -15px;
+  width: 70px;
   height: 3px;
 }
 #testimonials .prof {
@@ -378,6 +388,7 @@ a#basic-nav-dropdown:hover {
 
 #testimonials .card-testimonials {
   display: flex;
+  width: 100%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   margin-left: 20px;
@@ -427,7 +438,7 @@ a#basic-nav-dropdown:hover {
 
 /* FAQ */
 #faq {
-  margin-left: 70px;
+  margin-left: 40px;
   margin-top: 70px;
 }
 #faq h3 {
@@ -436,8 +447,9 @@ a#basic-nav-dropdown:hover {
   color: #74a4cb;
 }
 #faq .yellow-line {
-  margin-left: -55px;
-  width: 100px;
+  margin-left: 5px;
+  margin-top: -15px;
+  width: 360px;
   height: 3px;
 }
 #faq h1 {
@@ -457,7 +469,7 @@ a#basic-nav-dropdown:hover {
 }
 /* contact footer */
 #contact {
-  margin-left: 70px;
+  margin-left: 40px;
   margin-top: 70px;
 }
 #contact h3 {
@@ -466,8 +478,9 @@ a#basic-nav-dropdown:hover {
   color: #74a4cb;
 }
 #contact .yellow-line {
-  margin-left: -133px;
-  width: 100px;
+  margin-left: 5px;
+  margin-top: -17px;
+  width: 110px;
   height: 3px;
 }
 #contact h1 {

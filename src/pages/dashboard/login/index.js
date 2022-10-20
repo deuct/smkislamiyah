@@ -71,7 +71,7 @@ function Login() {
               Login
             </Button>
           </Form>
-          <p className="return-home">
+          <p>
             Change your mind ? <Link to={"/"}>Return home</Link>
           </p>
         </div>
