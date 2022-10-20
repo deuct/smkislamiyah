@@ -2,7 +2,7 @@ import React from "react";
 import FooterBot from "../components/FooterBot";
 import NavbarTop from "../components/NavbarTop";
 
-import programsCard from "../../images/programs-card.jpg";
+import programsCard from "../../images/header-1.jpg";
 import imgPpdb from "../../images/ppdb.jpg";
 import lksSample from "../../images/lks-sample.jpg";
 
@@ -26,19 +26,22 @@ function DetailPost() {
           readOnly
         />
         <Row id="breadcrumb-pd">Home &gt; Announcement &gt; Detail</Row>
-        <Row>
+        <Row id="post-detail-body">
           <Col xs={10}>
-            <Row className="pd-img" >
+            <div className="pd-img" >
               <img src={programsCard} />
-            </Row>
+            </div>
             <Row id="title-pd-cat">
-              <h1>PEMENANG LOMBA LKS TINGKAT KOTA TANGERANG SELATAN</h1>
+              <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut,
+                accusamus! Veniam reprehenderit labore eligendi? </h1>
             </Row>
             <Row id="pd-category" >
               <Button className="cat-btn">Activities</Button>
               <Button className="cat-btn">Design Graphic</Button>
-              <IoTimeOutline size={20} />
-              <span>14 Sept, 2022</span>
+              <div className="pd-cat-time">
+                <IoTimeOutline size={20} />
+                14 Sept, 2022
+              </div>
             </Row>
             <Row id="pd-isi">
               <p>
@@ -106,44 +109,50 @@ function DetailPost() {
               </Row>
             </Row>
             <Row id="ra-card">
-              <Col xs={4} className="ra-card-detail">
+              <Col xs={3} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
-                <span>
-                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                <span className="ra-foot-card">
+                  <Button className="ra-btn">Announcement</Button>
                   <Button className="ra-btn">Akademik</Button>
-                  <IoTimeOutline size={20} />
-                  14 Sept, 2022
+                  <div className="ra-time">
+                    <IoTimeOutline size={20} />
+                    14 Sept, 2022
+                  </div>
                 </span>
               </Col>
-              <Col xs={4} className="ra-card-detail">
+              <Col xs={3} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
-                <span>
-                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                <span className="ra-foot-card">
+                  <Button className="ra-btn">Announcement</Button>
                   <Button className="ra-btn">Akademik</Button>
-                  <IoTimeOutline size={20} />
-                  14 Sept, 2022
+                  <div className="ra-time">
+                    <IoTimeOutline size={20} />
+                    14 Sept, 2022
+                  </div>
                 </span>
                 
               </Col>
-              <Col xs={4} className="ra-card-detail">
+              <Col xs={3} className="ra-card-detail">
                 <img src={imgPpdb} />
                 <h3>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
                   perferendis!
                 </h3>
-                <span>
-                  <Button className="ra-btn">ANNOUNCEMENT</Button>
+                <span className="ra-foot-card">
+                  <Button className="ra-btn">Announcement</Button>
                   <Button className="ra-btn">Akademik</Button>
-                  <IoTimeOutline size={20} />
-                  14 Sept, 2022
+                  <div className="ra-time">
+                    <IoTimeOutline size={20} />
+                    14 Sept, 2022
+                  </div>
                 </span>
               </Col>
             </Row>
