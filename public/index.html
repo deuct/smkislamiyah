@@ -60,11 +60,11 @@
     <script>
       window.onload = function () {
         navbarId = document.getElementById("navbar-id").value;
-        console.log("navbar id top : ", navbarId);
+        // console.log("navbar id top : ", navbarId);
 
         // const navbar = document.getElementById("navbarfarhan");
         // navbarId = navbarId;
-        console.log("navbar id middle = ", navbarId);
+        // console.log("navbar id middle = ", navbarId);
 
         const navbar = document.getElementById("navbarfarhan");
         const navbarBrand = document.getElementById("nb-ttl");
@@ -81,7 +81,7 @@
           navbarBrand.style.color = "white";
           var i;
           for (i = 0; i < navLink.length; i++) {
-            navLink[i].setAttribute("style", "color: black");
+            navLink[i].setAttribute("style", "color: white");
           }
         }
         window.onscroll = function () {
@@ -92,8 +92,9 @@
           const navbar = document.getElementById("navbarfarhan");
           const navbarBrand = document.getElementById("nb-ttl");
           const navLink = document.querySelectorAll(".nav-link");
+          // console.log("running function");
 
-          console.log("Navbar ID = " + navbarId);
+          // console.log("Navbar ID = " + navbarId);
           if (window.pageYOffset) {
             navbar.setAttribute(
               "style",
@@ -117,7 +118,7 @@
                 "style",
                 "background-color: transparent !important; border-bottom: 0; box-shadow: 0"
               );
-              console.log("horray");
+              // console.log("horray");
               navbarBrand.style.color = "white";
               var i;
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
@@ -10,8 +11,48 @@ import { IoSearch } from "react-icons/io5";
 import PepsiLogo from "../../images/pepsi-logo.png";
 
 import "../../style/bkk-listing.css";
+import DetailBkk from "./DetailBkk";
 
 function Listing() {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+  };
+
+  const client = axios.create({
+    baseURL: "http://localhost:5000/jobs",
+  });
+
+  const [jobs, setJobs] = useState([]);
+  const [load, setLoad] = useState(1);
+  const [flag, setFlag] = useState(true);
+
+  useEffect(() => {
+    client.get("?_limit=10", config).then((response) => {
+      setJobs(response.data);
+    });
+  }, [jobs]);
+
+  const loadData = () => {
+    setLoad((prev) => prev + 1);
+  };
+
+  const [bkkId, setBkkId] = useState("");
+  const triggerBKKDetail = (e) => {
+    setBkkId(e.currentTarget.value);
+  };
+
+  const [isShown, setIsShown] = useState(false);
+
+  const clickBkk = (event) => {
+    setBkkId(event.currentTarget.value);
+    setIsShown((current) => !current);
+    console.log("clickBkk running");
+    console.log(bkkId);
+  };
+
   return (
     <>
       <NavbarTop />
@@ -36,12 +77,14 @@ function Listing() {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Perspiciatis a consectetur provident dolor odit, at laborum
-              aliquam eos suscipit magni labore,              
+              aliquam eos suscipit magni labore,
             </p>
             <a href="#">More information...</a>
           </Col>
         </Row>
-        <Row id="breadcrumb"><p>Home &gt; BKK</p></Row>
+        <Row id="breadcrumb">
+          <p>Home &gt; BKK</p>
+        </Row>
         <Row id="search-bar" className="justify-content-center">
           <Col xs={12}>
             <InputGroup className="mb-3">
@@ -58,155 +101,49 @@ function Listing() {
         </Row>
         <Row id="list-job">
           <Col xs={4} id="list-job-left">
-            <Row>
-              <div className="card-bkk">
-                <Col xs={2}>
-                  <img src={PepsiLogo} className="cbkk-img" />
-                </Col>
-                <Col xs={10} className="d-inline-block">
-                  <div className="cbkk-fill">
-                    <h1>Pepsi Ltd.</h1>
-                    <h2>Co - Workers</h2>
-                    <span className="status st-open">Open</span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nisi numquam deleniti laborum molestiae sint eum ullam
-                      voluptas magnam, odit quis quibusdam dolores eaque beatae.
-                      Aspernatur?
-                    </p>
-                    <a className="cbkk-MI">More Information</a>
-                  </div>
-                </Col>
-              </div>
-            </Row>
-            <Row>
-              <div className="card-bkk">
-                <Col xs={2}>
-                  <img src={PepsiLogo} className="cbkk-img" />
-                </Col>
-                <Col xs={10} className="d-inline-block">
-                  <div className="cbkk-fill">
-                    <h1>Pepsi Ltd.</h1>
-                    <h2>Co - Workers</h2>
-                    <span className="status st-open">Open</span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nisi numquam deleniti laborum molestiae sint eum ullam
-                      voluptas magnam, odit quis quibusdam dolores eaque beatae.
-                      Aspernatur?
-                    </p>
-                    <a className="cbkk-MI">More Information</a>
-                  </div>
-                </Col>
-              </div>
-            </Row>
-            <Row>
-              <div className="card-bkk">
-                <Col xs={2}>
-                  <img src={PepsiLogo} className="cbkk-img" />
-                </Col>
-                <Col xs={10} className="d-inline-block">
-                  <div className="cbkk-fill">
-                    <h1>Pepsi Ltd.</h1>
-                    <h2>Co - Workers</h2>
-                    <span className="status st-open">Open</span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nisi numquam deleniti laborum molestiae sint eum ullam
-                      voluptas magnam, odit quis quibusdam dolores eaque beatae.
-                      Aspernatur?
-                    </p>
-                    <a className="cbkk-MI">More Information</a>
-                  </div>
-                </Col>
-              </div>
-            </Row>
-            <Row>
-              <div className="card-bkk">
-                <Col xs={2}>
-                  <img src={PepsiLogo} className="cbkk-img" />
-                </Col>
-                <Col xs={10} className="d-inline-block">
-                  <div className="cbkk-fill">
-                    <h1>Pepsi Ltd.</h1>
-                    <h2>Co - Workers</h2>
-                    <span className="status st-open">Open</span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nisi numquam deleniti laborum molestiae sint eum ullam
-                      voluptas magnam, odit quis quibusdam dolores eaque beatae.
-                      Aspernatur?
-                    </p>
-                    <a href="#" className="cbkk-MI" >More Information</a>
-                  </div>
-                </Col>
-              </div>
-            </Row>
-            <Row>
-              <div className="card-bkk">
-                <Col xs={2}>
-                  <img src={PepsiLogo} className="cbkk-img" />
-                </Col>
-                <Col xs={10} className="d-inline-block">
-                  <div className="cbkk-fill">
-                    <h1>Pepsi Ltd.</h1>
-                    <h2>Co - Workers</h2>
-                    <span className="status st-open">Open</span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nisi numquam deleniti laborum molestiae sint eum ullam
-                      voluptas magnam, odit quis quibusdam dolores eaque beatae.
-                      Aspernatur?
-                    </p>
-                    <a className="cbkk-MI">More Information</a>
-                  </div>
-                </Col>
-              </div>
-            </Row>
+            {jobs.slice(0, load).map((job) => {
+              return (
+                <Row key={job.company_id}>
+                  {/* <input type="text" name="bkkId" value={job.company_id} /> */}
+                  <Button
+                    type="button"
+                    className="card-bkk-button"
+                    value={job.company_id}
+                    onClick={(event) => clickBkk(event)}
+                  >
+                    <div className="card-bkk">
+                      <Col xs={2}>
+                        <img
+                          src={require("../../bkk-images/" + job.company_logo)}
+                          className="cbkk-img"
+                        />
+                      </Col>
+                      <Col xs={10} className="d-inline-block">
+                        <div className="cbkk-fill">
+                          <h1>{job.company_name}</h1>
+                          <h2>{job.job_category}</h2>
+                          <span className="status st-open">
+                            {job.job_status}
+                          </span>
+                          <p>{job.job_short_desc}</p>
+                          {/* <a className="cbkk-MI">More Information</a> */}
+                        </div>
+                      </Col>
+                    </div>
+                  </Button>
+                </Row>
+              );
+            })}
+
             <Row className="text-center">
               <Col>
-                <Button className="btn-loadmore mx-auto">Load More</Button>
+                <Button className="btn-loadmore mx-auto" onClick={loadData}>
+                  Load More
+                </Button>
               </Col>
             </Row>
           </Col>
-          <Col xs={8}>
-            <Row className="bkkdetail-title">
-              <img src={PepsiLogo} className="comp-logo-detail" />
-              <h1>PT PEPSI</h1>
-              <h3>Co - Worker</h3>
-              <span className="status st-open">Open</span>
-            </Row>
-            <Row className="bkkdetail-body">
-              <div className="detail-intro">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Pariatur accusantium aut provident nulla nemo? Quod rem eum
-                magni deserunt corrupti porro accusantium quidem facilis
-                voluptate!
-              </div>
-              <div className="bkk-d-desc">
-                <h2>JOB REQUIREMENT : </h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Cumque, dolorum dolor amet magni itaque placeat! Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Exercitationem
-                  ipsum assumenda id velit tempore sunt ex obcaecati aut natus
-                  quasi.
-                </p>
-              </div>
-              <div className="bkk-d-desc">
-                <h2>JOB DESCRIPTION : </h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                  et necessitatibus qui labore! Perspiciatis quae soluta minima
-                  nostrum nisi, sunt repellendus odio ut rem velit!
-                </p>
-              </div>
-              <div className="bkk-d-desc">
-                <h2>COMPANY ADDRESS : </h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </div>
-            </Row>
-          </Col>
+          <Col xs={8}>{isShown && <DetailBkk bkkId={bkkId} />}</Col>
         </Row>
       </Container>
       <div className="footer-lock mt-5" style={{ height: "50px" }}>

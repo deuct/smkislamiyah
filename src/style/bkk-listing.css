@@ -10,12 +10,12 @@
   text-align: center;
   font-size: x-large;
   font-weight: 700;
-  color: #0E3E65;
+  color: #0e3e65;
 }
 #title-bkk h3 {
   font-weight: 600;
   margin-bottom: 20px;
-  color: #0E3E65;
+  color: #0e3e65;
 }
 
 #title-bkk p {
@@ -23,7 +23,7 @@
 }
 
 #title-bkk a:hover {
-  color: #EEEB3C;
+  color: #eeeb3c;
 }
 
 /* Breadcrumb */
@@ -67,7 +67,7 @@
 .cbkk-fill h1 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0E3E65;
+  color: #0e3e65;
 }
 
 .cbkk-fill h2 {
@@ -106,7 +106,7 @@
   font-size: 1rem !important;
 }
 .btn-loadmore:hover {
-  background-color: #EEEB3C;
+  background-color: #eeeb3c;
 }
 .cbkk-MI {
   padding: 5px 0px !important;
@@ -116,7 +116,7 @@
   text-decoration: underline !important;
 }
 .cbkk-MI:hover {
-  color: #EEEB3C;
+  color: #eeeb3c;
 }
 /* Left job */
 #list-job {
@@ -145,7 +145,7 @@
   margin-top: 10px;
   margin-left: 9px;
   font-weight: 600;
-  color: #0E3E65;
+  color: #0e3e65;
   font-size: 1.5rem;
 }
 .bkkdetail-title h3 {
@@ -164,7 +164,7 @@
 .bkk-d-desc h2 {
   margin: 10px;
   font-weight: 600;
-  color: #0E3E65;
+  color: #0e3e65;
 }
 img.comp-logo-detail {
   width: 220px !important;
@@ -172,4 +172,12 @@ img.comp-logo-detail {
 
 .mt-4 {
   margin-bottom: 20px;
+}
+
+/* Farhan : Button Card BKK */
+.card-bkk-button {
+  background: none !important;
+  color: black !important;
+  border: none !important;
+  text-align: left !important;
 }
