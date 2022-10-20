@@ -57,12 +57,12 @@
   margin-bottom: 3px;
 }
 
-.post-ctg-list button {
+.post-ctg-list .btn {
   display: flex;
   flex-wrap: nowrap;
   margin-left: 20px;
   justify-content: space-between;
-  width: 42%;
+  width: 100%;
 }
 /* .post-ctg-list .btn {
   border-radius: 50%;

@@ -70,7 +70,7 @@ function DetailPost(props) {
           readOnly
         />
         <Row id="breadcrumb-pd">Home &gt; Announcement &gt; Detail</Row>
-        <Row>
+        <Row id="post-detail-body">
           <Col xs={10}>
             {post.map((pos) => {
               return (
