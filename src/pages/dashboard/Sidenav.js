@@ -57,7 +57,7 @@ function Sidenav() {
               &nbsp;Profile
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Button
               onClick={() => setOpen(!open)}
               aria-controls="announcement-collapse"
@@ -84,7 +84,7 @@ function Sidenav() {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           <li>
             <Button
               onClick={() => setOpen2(!open2)}

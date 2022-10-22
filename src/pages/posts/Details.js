@@ -13,6 +13,7 @@ import "../../style/posts-detail.css";
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { IoTimeOutline, IoEye } from "react-icons/io5";
 import axios from "axios";
+import RelatedPost from "./RelatedPost";
 
 function DetailPost(props) {
   // Farhan : Get post id from listing
@@ -110,69 +111,30 @@ function DetailPost(props) {
                       );
                     })}
                   </Row>
+                  <Row id="ra-card-title">
+                    <Row>
+                      <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
+                        <h3>Article</h3>
+                        <div className="yellow-line"></div>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <h1>Related Article</h1>
+                    </Row>
+                  </Row>
+                  <Row id="ra-card">
+                    <RelatedPost postType={pos.post_type} />
+                  </Row>
+                  <Row id="circle-slider">
+                    <Col xs={4} className="d-flex align-items-center">
+                      <div className="cs-outline"></div>
+                      <div className="cs-fill"></div>
+                      <div className="cs-outline"></div>
+                    </Col>
+                  </Row>
                 </>
               );
             })}
-
-            <Row id="ra-card-title">
-              <Row>
-                <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
-                  <h3>Article</h3>
-                  <div className="yellow-line"></div>
-                </Col>
-              </Row>
-              <Row>
-                <h1>Related Article</h1>
-              </Row>
-            </Row>
-            <Row id="ra-card">
-              <Col xs={4} className="ra-card-detail">
-                <img src={imgPpdb} />
-                <h3>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-                  perferendis!
-                </h3>
-                <span>
-                  <Button className="ra-btn">ANNOUNCEMENT</Button>
-                  <Button className="ra-btn">Akademik</Button>
-                  <IoTimeOutline size={20} />
-                  14 Sept, 2022
-                </span>
-              </Col>
-              <Col xs={4} className="ra-card-detail">
-                <img src={imgPpdb} />
-                <h3>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-                  perferendis!
-                </h3>
-                <span>
-                  <Button className="ra-btn">ANNOUNCEMENT</Button>
-                  <Button className="ra-btn">Akademik</Button>
-                  <IoTimeOutline size={20} />
-                  14 Sept, 2022
-                </span>
-              </Col>
-              <Col xs={4} className="ra-card-detail">
-                <img src={imgPpdb} />
-                <h3>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-                  perferendis!
-                </h3>
-                <span>
-                  <Button className="ra-btn">ANNOUNCEMENT</Button>
-                  <Button className="ra-btn">Akademik</Button>
-                  <IoTimeOutline size={20} />
-                  14 Sept, 2022
-                </span>
-              </Col>
-            </Row>
-            <Row id="circle-slider">
-              <Col xs={4} className="d-flex align-items-center">
-                <div className="cs-outline"></div>
-                <div className="cs-fill"></div>
-                <div className="cs-outline"></div>
-              </Col>
-            </Row>
           </Col>
           <Col xs={2} id="new-post-right">
             <Row id="npr-title">
