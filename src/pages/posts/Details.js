@@ -125,13 +125,13 @@ function DetailPost(props) {
                   <Row id="ra-card">
                     <RelatedPost postType={pos.post_type} />
                   </Row>
-                  <Row id="circle-slider">
+                  {/* <Row id="circle-slider">
                     <Col xs={4} className="d-flex align-items-center">
                       <div className="cs-outline"></div>
                       <div className="cs-fill"></div>
                       <div className="cs-outline"></div>
                     </Col>
-                  </Row>
+                  </Row> */}
                 </>
               );
             })}

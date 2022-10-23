@@ -16,7 +16,7 @@ export default function HistoriesBKK() {
       <input
         type="text"
         id="navbar-id"
-        value="bkk-listing"
+        value="bkk"
         style={{ display: "none" }}
         readOnly
       />
@@ -32,7 +32,7 @@ export default function HistoriesBKK() {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Perspiciatis a consectetur provident dolor odit, at laborum
-              aliquam eos suscipit magni labore,              
+              aliquam eos suscipit magni labore,
             </p>
             <a href="#">More information...</a>
           </Col>
