@@ -25,7 +25,7 @@ function DetailPost() {
           style={{ display: "none" }}
           readOnly
         />
-        <Row id="breadcrumb-pd">Home &gt; Announcement &gt; Detail</Row>
+        <Row id="breadcrumb-pd"><p>Home &gt; Announcement &gt; Detail</p></Row>
         <Row id="post-detail-body">
           <Col xs={10}>
             <div className="pd-img" >

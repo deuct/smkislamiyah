@@ -12,7 +12,7 @@
   position: fixed !important;
   top: 0;
   width: 100%;
-  background-color: white !important;
+  background-color: transparent !important;
 }
 
 .sticky-top {
@@ -22,13 +22,12 @@
 }
 
 a#basic-nav-dropdown,
-.nav-link,
+a.nav-link,
 .navbar-brand {
   font-weight: 600;
-  color: #0E3E65;
 }
 a#basic-nav-dropdown:hover {
-  color: #EEEB3C;
+  color: #eeeb3c;
 }
 #header {
   /* background: url("../images/header-1.jpg"); */
@@ -400,7 +399,7 @@ a#basic-nav-dropdown:hover {
 }
 .testi-alumni-img {
   height: 81px;
-  width: 81%;
+  width: 100%;
   border-radius: 50%;
   margin-left: 13px;
   margin-top: 13px;
@@ -700,7 +699,7 @@ a#basic-nav-dropdown:hover {
   color: white;
 }
 .menu-footer ul li a:hover {
-  color: #EEEB3C;
+  color: #eeeb3c;
 }
 
 /* Farhan */

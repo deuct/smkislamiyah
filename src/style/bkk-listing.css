@@ -102,9 +102,8 @@
 }
 .st-open-desc {
   background: rgb(34, 177, 34);
-  /* margin-left: 20px; */
-  width: 80%;
-
+  width: fit-content;
+  /* width: 80%; */
 }
 .st-close {
   background: rgb(218, 54, 54);
