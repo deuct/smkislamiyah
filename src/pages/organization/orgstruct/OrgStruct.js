@@ -12,29 +12,25 @@ function OrgStruct() {
       <input
         type="text"
         id="navbar-id"
-        value="home"
+        value="orgstruct"
         style={{ display: "none" }}
         readOnly
       />
       <div id="navbar-bgz"></div>
       <Container>
-        <Row id="title-bkk">
-          <Col xs={4}>
-            <h1>BKK</h1>
-            <h1>Bursa Kerja Khusus</h1>
-          </Col>
-          <Col xs={8}>
-            <h3>Bursa Kerja Khusus</h3>
+        <Row className="text-center">
+          <Col xs={12}>
+            <h1>Organization Structure</h1>
+            <h1>SMK Islamiyah Ciputat</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Perspiciatis a consectetur provident dolor odit, at laborum
               aliquam eos suscipit magni labore,
             </p>
-            <a href="#">More information...</a>
           </Col>
         </Row>
         <Row id="breadcrumb">
-          <p>Home &gt; BKK</p>
+          <p>Home &gt; Organization Structure</p>
         </Row>
         <div class="tree">
           <ul>
