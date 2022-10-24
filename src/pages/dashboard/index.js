@@ -12,6 +12,12 @@ import Profile from "./Profile";
 import NewPosting from "./NewPosting";
 import EditPosting from "./EditPosting";
 import ManagePosting from "./ManagePosting";
+import NewBkk from "./NewBKK";
+import ManageBKK from "./ManageBKK";
+import NewTeacher from "./NewTeacher";
+import ManageTeacher from "./ManageTeacher";
+import NewStaff from "./NewStaff";
+import ManageStaff from "./ManageStaff";
 
 function Dashboard() {
   const [name, setName] = useState("");
@@ -38,7 +44,9 @@ function Dashboard() {
       setExpired(decoded.exp);
     } catch (error) {
       if (error.response) {
-        navigate("/login");
+        // navigate("/login");
+        // Jika belum login arahkan ke not found (security reason)
+        navigate("/404");
       }
     }
   };
@@ -79,25 +87,19 @@ function Dashboard() {
               element={<NewPosting title="Article" />}
             />
             <Route
-              path="new-announcement"
-              element={<NewPosting title="Announcement" />}
-            />
-            <Route
               path="manage-article"
               element={<ManagePosting title="Article" />}
-            />
-            <Route
-              path="manage-announcement"
-              element={<ManagePosting title="Announcement" />}
             />
             <Route
               path="edit-article"
               element={<EditPosting title="Article" />}
             />
-            <Route
-              path="edit-announcement"
-              element={<EditPosting title="Announcement" />}
-            />
+            <Route path="new-bkk" element={<NewBkk />} />
+            <Route path="manage-bkk" element={<ManageBKK />} />
+            <Route path="new-teacher" element={<NewTeacher />} />
+            <Route path="manage-teacher" element={<ManageTeacher />} />
+            <Route path="new-staff" element={<NewStaff />} />
+            <Route path="manage-staff" element={<ManageStaff />} />
           </Routes>
         </Col>
       </Row>

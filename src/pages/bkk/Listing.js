@@ -121,7 +121,7 @@ function Listing() {
                       <Col xs={10} className="d-inline-block">
                         <div className="cbkk-fill">
                           <h1>{job.company_name}</h1>
-                          <h2>{job.job_category}</h2>
+                          <h2>{job.job_title}</h2>
                           <span className="status st-open">
                             {job.job_status}
                           </span>

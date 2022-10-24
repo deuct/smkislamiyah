@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FooterBot from "../components/FooterBot";
 import NavbarTop from "../components/NavbarTop";
 import NewerPostCard from "./NewerPostCard";
-
-import programsCard from "../../images/programs-card.jpg";
-import imgPpdb from "../../images/ppdb.jpg";
-import lksSample from "../../images/lks-sample.jpg";
 
 import "../../style/posts-detail.css";
 
@@ -21,6 +17,13 @@ function DetailPost(props) {
   console.log(props, " props");
   console.log(location, " useLocation hook");
   const idpost = location.state?.idpost;
+  console.log("============IDPOST : ", idpost, "============");
+
+  // Farhan : Validasi jika akses detail post tanpa post id
+  const navigate = useNavigate();
+  if (idpost === undefined) {
+    navigate("/404");
+  }
 
   // Farhan : Fetch axios based on post id
   const [post, setPost] = useState([]);

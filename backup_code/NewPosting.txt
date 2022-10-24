@@ -10,8 +10,6 @@ function NewPosting({ title }) {
   // Upload Image to Database
   const [image, setImage] = useState({ preview: "", data: "" });
   const [status, setStatus] = useState("");
-  const [arrImgUpload, setArrImgUpload] = useState([]); //array for image upload
-  const [showImgUpload, setShowImgUpload] = useState([]);
 
   const handleSubmit = async (e) => {
     const config = {
@@ -26,15 +24,6 @@ function NewPosting({ title }) {
     formData.append("imgpost_dir", image.data);
     console.log("============Form Data===========");
     console.log(formData);
-    setArrImgUpload((arrImgUpload) => [...arrImgUpload, formData]);
-    setShowImgUpload((showImgUpload) => [...showImgUpload, image.preview]);
-    // const showImg = {
-    //   preview: URL.createObjectURL(e.target.files[0]),
-    //   data: e.target.files[0],
-    // };
-    // console.log("handlefilechange work");
-    // console.log(img);
-    // setImage(img);
     // const response = await axios.post(
     //   "http://localhost:5000/imgpost",
     //   formData,
@@ -76,9 +65,7 @@ function NewPosting({ title }) {
     },
   ];
 
-  const [checked, setChecked] = useState(
-    new Array(showImgUpload.length).fill(false)
-  );
+  const [checked, setChecked] = useState(new Array(imeg.length).fill(false));
   const [imgCheck, setImgCheck] = useState([]);
 
   const handleOnChange = (position) => {
@@ -102,29 +89,11 @@ function NewPosting({ title }) {
     });
   };
 
-  // const [checkedActive, setCheckedActive] = useState(() => checked.map(() => false))
-
   console.log("===========123===========");
-  // URL.createObjectURL(e.target.files[0]);
-  // {
-  //   arrImgUpload.map((imgShow, index) => {
-  console.log(showImgUpload);
   console.log(checked);
-
-  //   });
-  // }
+  console.log(imgCheck);
 
   // End Image State
-
-  // Delete Img
-  const deleteImg = (e) => {
-    // console.log("running deletion image");
-    // console.log(e.target);
-    console.log(e.target.getAttribute("value"));
-    // console.log(showImgUpload[e.target.value]);
-    console.log(checked);
-  };
-  // End Delete Img
 
   // Get date for new post
   var current = new Date();
@@ -207,6 +176,22 @@ function NewPosting({ title }) {
               <Form.Group className="mb-3 d-flex" controlId="formBasicEmail">
                 <Col xs={3}>
                   <Form.Label className="me-3 p-1 text-left ">
+                    Job Status
+                  </Form.Label>
+                </Col>
+                <Col xs={10}>
+                  <Form.Select
+                    aria-label="Default select example"
+                    className="w-75"
+                  >
+                    <option value="1">Open</option>
+                    <option value="2">Closed</option>
+                  </Form.Select>
+                </Col>
+              </Form.Group>
+              <Form.Group className="mb-3 d-flex" controlId="formBasicEmail">
+                <Col xs={3}>
+                  <Form.Label className="me-3 p-1 text-left ">
                     Post Type
                   </Form.Label>
                 </Col>
@@ -226,6 +211,12 @@ function NewPosting({ title }) {
                   <h2 className="me-3 p-1 text-left mb-3">Description</h2>
                 </Col>
                 <Col xs={12}>
+                  {/* <FloatingLabel
+                    controlId="floatingTextarea2"
+                    label="Insert Description"
+                  >
+                    <Form.Control as="textarea" style={{ height: "100px" }} />
+                  </FloatingLabel> */}
                   <CKEditor
                     editor={ClassicEditor}
                     config={{
@@ -261,33 +252,9 @@ function NewPosting({ title }) {
                   <h2 className="my-3">Post Photo Gallery</h2>
                   <div id="image-box">
                     <div className="imgbox-photos mb-4">
-                      {showImgUpload.map((showImg, index) => {
+                      {imeg.map((imge, index) => {
                         return (
                           <>
-                            <div
-                              className="imgbox-detail"
-                              key={index}
-                              style={{
-                                backgroundColor: checked[index]
-                                  ? "salmon"
-                                  : "blue",
-                              }}
-                            >
-                              <img
-                                src={showImg}
-                                alt="img upload"
-                                className="m-1"
-                                onClick={() => handleOnChange(index)}
-                                value={index}
-                                key={index}
-                              />
-                            </div>
-                          </>
-                        );
-                      })}
-                      {/* {imeg.map((imge, index) => {
-                        return (
-                          
                             <Button
                               className="imgbox-detail"
                               onClick={() => handleOnChange(index)}
@@ -297,20 +264,20 @@ function NewPosting({ title }) {
                               }}
                               key={index}
                             >
-                              <p>{index}</p> */}
-                      {/* <input
+                              <p>{index}</p>
+                              {/* <input
                                 type="checkbox"
                                 id={`imgpost-${index}`}
                                 name={imge.title}
                                 value={imge.title}
                                 onChange={() => handleOnChange(index)}
                               /> */}
-                      {/* <img src={imge.src} />
+                              <img src={imge.src} />
                               <p className="text-center">{imge.title}</p>
                             </Button>
-                          
+                          </>
                         );
-                      })} */}
+                      })}
                     </div>
                     {/* <Button
                     variant="danger"
@@ -321,43 +288,7 @@ function NewPosting({ title }) {
                   </div>
                 </Col>
               </Row>
-              <Row className="my-5">
-                <Col xs={12}>
-                  <div id="upload-image">
-                    <h1 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>
-                      Upload New Image
-                    </h1>
-                    <p>Preview Image Upload</p>
-                    {image.preview && (
-                      <img
-                        className="my-3"
-                        src={image.preview}
-                        width="100"
-                        height="100"
-                      />
-                    )}
-                    <Form.Group
-                      controlId="formFileMultiple"
-                      className="mb-3 mt-2"
-                    >
-                      <Form.Control
-                        type="file"
-                        name="file"
-                        onChange={handleFileChange}
-                      />
-                      <Button
-                        className="mt-2"
-                        type="button"
-                        onClick={handleSubmit}
-                      >
-                        Upload
-                      </Button>
-                    </Form.Group>
-                    {status && <p>{status}</p>}
-                  </div>
-                </Col>
-              </Row>
-              <Col className="text-end" id="btn-submit-form">
+              <Col className="text-end">
                 <Button variant="success" type="submit" className="mt-3 me-2">
                   Post
                 </Button>
@@ -366,6 +297,21 @@ function NewPosting({ title }) {
                 </Button>
               </Col>
             </Form>
+            {image.preview && (
+              <img src={image.preview} width="100" height="100" />
+            )}
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="formFileMultiple" className="mb-3 mt-2">
+                <Form.Label>Upload new images</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="file"
+                  onChange={handleFileChange}
+                />
+                <Button type="submit">Upload</Button>
+              </Form.Group>
+            </Form>
+            {status && <p>{status}</p>}
           </Col>
         </Row>
       </div>

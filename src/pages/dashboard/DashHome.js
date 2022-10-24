@@ -21,10 +21,12 @@ function DashHome(props) {
 
   return (
     <>
-      <h1 className="dashboard-title">Home, {props.name}</h1>
-      <h1>Welcome, {}</h1>
+      <h1 className="dashboard-title">Dashboard Home</h1>
+      <h1 style={{ fontSize: "1.2rem", fontWeight: "500" }}>
+        Welcome, {props.name}
+      </h1>
       <Row className="justify-content-start">
-        <h1 className="fs-3 mb-3">Posting Acumulation</h1>
+        <h1 className="fs-3 mb-3 mt-5">Posting Acumulation</h1>
         <Col xs={3} className="align-middle">
           <div className="stats-card d-flex">
             <Col xs={2}>
