@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { Col, Row, Button, Collapse } from "react-bootstrap";
 import {
   IoPersonCircle,
@@ -11,11 +11,27 @@ import {
   IoAddOutline,
   IoSettingsOutline,
 } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function Sidenav() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+
+  const navigate = useNavigate();
+  const Logout = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    };
+    try {
+      await axios.delete("http://localhost:5000/logout", config);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="sidenav">
@@ -41,7 +57,7 @@ function Sidenav() {
               &nbsp;Profile
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Button
               onClick={() => setOpen(!open)}
               aria-controls="announcement-collapse"
@@ -68,7 +84,7 @@ function Sidenav() {
                 </ul>
               </div>
             </Collapse>
-          </li>
+          </li> */}
           <li>
             <Button
               onClick={() => setOpen2(!open2)}
@@ -107,7 +123,7 @@ function Sidenav() {
       </div>
       <Col>
         <Row className="sidenav-footer">
-          <Button variant="danger" className="nav-btnexit">
+          <Button onClick={Logout} variant="danger" className="nav-btnexit">
             <IoExit /> Exit
           </Button>
         </Row>

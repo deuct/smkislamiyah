@@ -9,6 +9,9 @@ import ListingBKK from "./pages/bkk/Listing";
 // import DetailBKK from "./pages/bkk/DetailBkk";
 import HistoriesBKK from "./pages/bkk/HistoriesBKK";
 import DetailPost from "./pages/posts/Details";
+import Teachers from "./pages/organization/teachers";
+import Staff from "./pages/organization/staff";
+import OrgStruct from "./pages/organization/orgstruct/OrgStruct";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,6 +27,9 @@ function App() {
         <Route path="/bkk/histories" element={<HistoriesBKK />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="/teachers" element={<Teachers />} />
+        <Route path="/staff" element={<Staff />} />
+        <Route path="/organization" element={<OrgStruct />} />
       </Routes>
     </BrowserRouter>
   );

@@ -3,9 +3,9 @@ import { Row, Col, Form } from "react-bootstrap";
 import BarChart from "./components/BarChart";
 import { IoBook, IoPaperPlaneOutline, IoBriefcaseSharp } from "react-icons/io5";
 import { UserData } from "./Data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function DashHome() {
+function DashHome(props) {
   // Chart JS
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.month),
@@ -21,7 +21,8 @@ function DashHome() {
 
   return (
     <>
-      <h1 className="dashboard-title">Home</h1>
+      <h1 className="dashboard-title">Home, {props.name}</h1>
+      <h1>Welcome, {}</h1>
       <Row className="justify-content-start">
         <h1 className="fs-3 mb-3">Posting Acumulation</h1>
         <Col xs={3} className="align-middle">
