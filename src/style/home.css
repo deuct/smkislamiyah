@@ -267,6 +267,7 @@ a#basic-nav-dropdown:hover {
   margin-right: 10px;
 }
 #activities .time-card {
+  font-size: 15px;
   margin-top: 5vh;
   margin-left: -23vh;
 }

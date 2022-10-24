@@ -30,7 +30,7 @@ function OrgStruct() {
           </Col>
         </Row>
         <Row id="breadcrumb">
-          <p>Home &gt; Organization Structure</p>
+          <p>Home &gt; Organization &gt; Organization Structure</p>
         </Row>
         <div class="tree">
           <ul>

@@ -27,8 +27,10 @@ function NewerPostCard() {
         return (
           <Row className="npr-card" key={pos.post_id}>
             <Col xs={6}>
-              <Button>Activities</Button>
-              <Button>Technology</Button>
+              <div className="npr-body-btn">
+                <Button className="npr-btn">Activities</Button>
+                <Button className="npr-btn">Technology</Button>
+              </div>
               <p>{pos.post_name}</p>
               <span>
                 <IoTimeOutline size={15} /> 14 Sept, 2022
