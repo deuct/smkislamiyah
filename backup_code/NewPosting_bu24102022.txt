@@ -14,20 +14,7 @@ function NewPosting({ title }) {
   const [showImgUpload, setShowImgUpload] = useState([]);
   const [checked, setChecked] = useState([]);
 
-  const setChk = () => {
-    console.log("setchk Work!");
-    console.log(showImgUpload.length);
-    setChecked(new Array(showImgUpload.length).fill(false));
-  };
-
-  useEffect(() => {
-    if (showImgUpload.length !== 0) {
-      console.log("useeffect img : " + showImgUpload.length);
-      setChecked(new Array(showImgUpload.length).fill(false));
-    }
-  }, [showImgUpload]);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -62,6 +49,11 @@ function NewPosting({ title }) {
     // }
   };
   console.log("showImgUpload :" + showImgUpload.length);
+  const setChk = () => {
+    setChecked(new Array(showImgUpload.length).fill(false));
+  };
+
+  // useEffect(() => {},[])
 
   const handleFileChange = (e) => {
     const img = {
@@ -75,45 +67,65 @@ function NewPosting({ title }) {
   // End upload image
 
   // Upload Image to State
+  const [imgState, setImgState] = useState([]);
+  const imeg = [
+    {
+      title: "image 1",
+      src: "https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=",
+    },
+    {
+      title: "image 2",
+      src: "https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=",
+    },
+    {
+      title: "image 3",
+      src: "https://media.istockphoto.com/photos/hot-air-balloons-flying-over-the-botan-canyon-in-turkey-picture-id1297349747?b=1&k=20&m=1297349747&s=170667a&w=0&h=oH31fJty_4xWl_JQ4OIQWZKP8C6ji9Mz7L4XmEnbqRU=",
+    },
+  ];
+
+  const [imgCheck, setImgCheck] = useState([]);
+
   const handleOnChange = (position) => {
     const updateCheckedState = checked.map((item, index) =>
       index === position ? !item : item
     );
     console.log("Updatesetchecked " + updateCheckedState);
     setChecked(updateCheckedState);
+    // setImgCheck(position);
+    // setActive();
+  };
+  const setActive = () => {
+    const activeImg = checked.map((itemCheck, index) => {
+      console.log("item check index : ", itemCheck);
+      if (itemCheck === true) {
+        setImgCheck((imgCheck) => ({ ...imgCheck, index }));
+        console.log("true function");
+      } else {
+        setImgCheck(imgCheck.slice(1, index));
+      }
+    });
   };
 
+  // const [checkedActive, setCheckedActive] = useState(() => checked.map(() => false))
+
   console.log("===========123===========");
+  // URL.createObjectURL(e.target.files[0]);
+  // {
+  //   arrImgUpload.map((imgShow, index) => {
   console.log(showImgUpload);
   console.log(checked);
-  console.log(arrImgUpload);
+
+  //   });
+  // }
 
   // End Image State
 
   // Delete Img
-  const deleteImg = () => {
-    const imgCheckDel = checked.map((chk, index) => {
-      if (chk === true) {
-        console.log("deleted index: " + index);
-        console.log(arrImgUpload[index]);
-        const imgtoDelete = arrImgUpload[index];
-        const imgshowToDelete = showImgUpload[index];
-        console.log("========== arr img up ^ =======");
-        setArrImgUpload((prev) =>
-          prev.filter((arrImgUpload) => {
-            console.log("============");
-            console.log(imgtoDelete);
-            console.log("============");
-            return arrImgUpload !== imgtoDelete;
-          })
-        );
-        setShowImgUpload((prev) =>
-          prev.filter((showImgUpload) => {
-            return showImgUpload !== imgshowToDelete;
-          })
-        );
-      }
-    });
+  const deleteImg = (e) => {
+    // console.log("running deletion image");
+    // console.log(e.target);
+    console.log(e.target.getAttribute("value"));
+    // console.log(showImgUpload[e.target.value]);
     console.log(checked);
   };
   // End Delete Img
@@ -304,16 +316,13 @@ function NewPosting({ title }) {
                         );
                       })} */}
                     </div>
+                    {/* <Button
+                    variant="danger"
+                    className="fs-8 btn-imgdelete mb-2 me-2 mt-4"
+                  >
+                    Delete image
+                  </Button> */}
                   </div>
-                  <Col xs={3} className="justify-content-end ms-auto text-end">
-                    <Button
-                      variant="danger"
-                      className="fs-8 mb-2 mt-4"
-                      onClick={deleteImg}
-                    >
-                      Delete image
-                    </Button>
-                  </Col>
                 </Col>
               </Row>
               <Row className="my-5">
