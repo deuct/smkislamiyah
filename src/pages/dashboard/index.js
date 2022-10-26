@@ -44,7 +44,6 @@ function Dashboard() {
       setExpired(decoded.exp);
     } catch (error) {
       if (error.response) {
-        // navigate("/login");
         // Jika belum login arahkan ke not found (security reason)
         navigate("/404");
       }
