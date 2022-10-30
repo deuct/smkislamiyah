@@ -33,7 +33,7 @@ function Listing() {
     client.get("?_limit=10", config).then((response) => {
       setJobs(response.data);
     });
-  }, [jobs]);
+  }, []);
 
   const loadData = () => {
     setLoad((prev) => prev + 1);

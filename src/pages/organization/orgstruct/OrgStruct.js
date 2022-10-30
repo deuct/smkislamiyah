@@ -37,28 +37,25 @@ function OrgStruct() {
             <li>
               <a href="#">
                 <img src={require("../../../images/1.jpg")} />
-                <span>Child</span>
+                <span>Headmaster</span>
               </a>
               <ul>
                 <li>
                   <a href="#">
                     <img src={require("../../../images/2.jpg")} />
-                    <span>Grand Child</span>
+                    <span>Wakil</span>
                   </a>
                   <ul>
                     <li>
                       <a href="#">
                         <img src={require("../../../images/3.jpg")} />
-                        <span>
-                          Great Grand Child <br />
-                          Headmaster
-                        </span>
+                        <span>Guru</span>
                       </a>
                     </li>
                     <li>
                       <a href="#">
                         <img src={require("../../../images/4.jpg")} />
-                        <span>Great Grand Child</span>
+                        <span>Guru</span>
                       </a>
                     </li>
                   </ul>
@@ -66,25 +63,25 @@ function OrgStruct() {
                 <li>
                   <a href="#">
                     <img src={require("../../../images/5.jpg")} />
-                    <span>Grand Child</span>
+                    <span>Wakil</span>
                   </a>
                   <ul>
                     <li>
                       <a href="#">
                         <img src={require("../../../images/6.jpg")} />
-                        <span>Great Grand Child</span>
+                        <span>Guru</span>
                       </a>
                     </li>
                     <li>
                       <a href="#">
                         <img src={require("../../../images/7.jpg")} />
-                        <span>Great Grand Child</span>
+                        <span>Guru</span>
                       </a>
                       <ul>
                         <li>
                           <a href="#">
                             <img src={require("../../../images/3.jpg")} />
-                            <span>Great Grand Child</span>
+                            <span>Guru</span>
                           </a>
                         </li>
                       </ul>
@@ -92,15 +89,7 @@ function OrgStruct() {
                         <li>
                           <a href="#">
                             <img src={require("../../../images/3.jpg")} />
-                            <span>Great Grand Child</span>
-                          </a>
-                        </li>
-                      </ul>
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <img src={require("../../../images/3.jpg")} />
-                            <span>Great Grand Child</span>
+                            <span>Staff</span>
                           </a>
                         </li>
                       </ul>
@@ -108,7 +97,49 @@ function OrgStruct() {
                     <li>
                       <a href="#">
                         <img src={require("../../../images/8.jpg")} />
-                        <span>Great Grand Child</span>
+                        <span>Staff</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src={require("../../../images/5.jpg")} />
+                    <span>Wakil</span>
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src={require("../../../images/6.jpg")} />
+                        <span>Guru</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src={require("../../../images/7.jpg")} />
+                        <span>Guru</span>
+                      </a>
+                      <ul>
+                        <li>
+                          <a href="#">
+                            <img src={require("../../../images/3.jpg")} />
+                            <span>Guru</span>
+                          </a>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li>
+                          <a href="#">
+                            <img src={require("../../../images/3.jpg")} />
+                            <span>Staff</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src={require("../../../images/8.jpg")} />
+                        <span>Staff</span>
                       </a>
                     </li>
                   </ul>

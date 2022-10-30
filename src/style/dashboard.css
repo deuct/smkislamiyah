@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+/* Modal */
+.modal-backdrop {
+  z-index: 5 !important;
+}
+
 /* Ck Editor */
 .ck-editor__editable_inline {
   min-height: 300px !important;

@@ -27,9 +27,10 @@ function Dashboard() {
 
   useEffect(() => {
     refreshToken();
-  }, [name, token, expired]);
+  }, []);
 
   const refreshToken = async () => {
+    console.log("running refresh");
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -56,12 +57,17 @@ function Dashboard() {
     async (config) => {
       const currentDate = new Date();
       if (expired * 1000 < currentDate.getTime()) {
-        const response = await axios.get("http://localhost:5000/token");
+        const response = await axios.get("http://localhost:5000/token", {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+        // config.withCredentials = true;
         setToken(response.data.accessToken);
         const decoded = jwt_decode(response.data.accessToken);
         setName(decoded.name);
         setExpired(decoded.exp);
+        console.log("running axios interceptor");
       }
       return config;
     },
@@ -69,21 +75,28 @@ function Dashboard() {
       return Promise.reject(error);
     }
   );
-
+  console.log("expired passing: " + expired);
   return (
     <>
       <Row>
         <Col xs={2}>
           <Sidenav />
-          <h2>Welcome</h2>
+          {/* <h2>Welcome</h2> */}
         </Col>
-        <Col xs={9} className="pt-4">
+        <Col xs={10} style={{ marginLeft: "-10px" }} className="pt-4">
           <Routes>
             <Route path="/" element={<DashHome name={name} />} />
             <Route path="profile" element={<Profile />} />
             <Route
               path="new-article"
-              element={<NewPosting title="Article" />}
+              element={
+                <NewPosting
+                  title="Article"
+                  token={token}
+                  name={name}
+                  expired={expired}
+                />
+              }
             />
             <Route
               path="manage-article"

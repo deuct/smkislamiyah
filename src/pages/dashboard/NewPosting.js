@@ -1,13 +1,67 @@
 // React Needed
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import viewToPlainText from "@ckeditor/ckeditor5-clipboard/src/utils/viewtoplaintext";
 // Styling
-import { Row, Col, Form, Button } from "react-bootstrap";
-import { IoTrashOutline } from "react-icons/io5";
+import { Row, Col, Form, Button, Modal } from "react-bootstrap";
+import { IoTrashOutline, IoSunnySharp } from "react-icons/io5";
 
-function NewPosting({ title }) {
+function NewPosting(props) {
+  // Navigation
+  const navigate = useNavigate();
+
+  // Modal after post
+  const [paramModals, setParamModals] = useState("");
+  const [isModalClose, setIsModalClose] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleCloseModal = () => setShow(false);
+  const handleShowModal = (paramModal) => {
+    setParamModals(paramModal);
+    setShow(true);
+  };
+  const navigateAfterPost = () => {
+    // if (show === false) {
+    navigate("/dashboard/manage-article");
+    // }
+  };
+
+  const [name, setName] = useState(props.name);
+  const [token, setToken] = useState(props.token);
+  const [expired, setExpired] = useState(props.expired);
+
+  console.log("token posting: " + token);
+
+  const axiosJWT = axios.create();
+
+  axiosJWT.interceptors.request.use(
+    async (config) => {
+      const currentDate = new Date();
+      const expr = expired * 1000;
+      const curDate = currentDate.getTime();
+      const exprRes = currentDate.getTime() - expr;
+      // if (expired * 1000 > currentDate.getTime()) {
+      // if (config.status === 401) {
+      const response = await axios.get("http://localhost:5000/token", {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+      config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+      setToken(response.data.accessToken);
+      const decoded = jwt_decode(response.data.accessToken);
+      setName(decoded.name);
+      setExpired(decoded.exp);
+      // }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
   // Get id post
   const [idPost, setIdPost] = useState("");
   useEffect(() => {
@@ -15,15 +69,15 @@ function NewPosting({ title }) {
   }, []);
 
   const getIdPost = async () => {
-    const responseToken = await axios.get("http://localhost:5000/token");
+    console.log("props token in idpost: " + token);
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${responseToken.data.accessToken}`,
+        Authorization: `Bearer ${token}`,
       },
       withCredentials: true,
     };
-    const response = await axios.get(
+    const response = await axiosJWT.get(
       "http://localhost:5000/posts/getid/getidpost",
       config
     );
@@ -34,8 +88,6 @@ function NewPosting({ title }) {
       idSplit = idSplit.join("");
       idSplit = parseInt(idSplit);
       idSplit += 1;
-      console.log("wumbo");
-      console.log(idSplit);
       setIdPost(idSplit);
     } else {
       console.log("failed getting ID");
@@ -52,59 +104,91 @@ function NewPosting({ title }) {
   const [postPhoto, setpostPhoto] = useState(null); //sama dengan arrImgUpload
   const [postStatus, setPostStatus] = useState("");
   const [statusCounter, setStatusCounter] = useState(0);
-  const [postShortDesc, setPostShortDesc] = useState(
-    "lorem ipsum doler sit amet babaudin dit amet balaka umanika tuturuse"
-  );
+  const [postShortDesc, setPostShortDesc] = useState("");
 
   // Jalankan fungsi handleUploadPost setelah state statusCounter selesai di ubah
-  useEffect(() => {
-    if (statusCounter !== 0) {
-      handleUploadPost();
-    }
-  }, [postStatus]);
+  // useEffect(() => {
+  //   if (statusCounter !== 0) {
+  //     handleUploadPost();
+  //   }
+  // }, []);
+  console.log("statuscounter: " + statusCounter);
 
   const handleUploadPost = async (e) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    };
-    const postDataInsert = {
-      data: {
-        postCode: postCode,
-        postTitle: postTitle,
-        postStatus: postStatus,
-        postType: postType,
-        postShortDesc: postShortDesc,
-        postDesc: postDesc,
-        createdAt: postDate,
-      },
-    };
-    const response = await axios.post(
-      "http://localhost:5000/posts/newpost",
-      config,
-      postDataInsert
-    );
-    // console.log(status);
-    if (response) {
-      setStatus(response.statusText);
-      console.log("post success");
-    } else {
-      // console.log("failed");
-    }
-    console.log("============DEBUGGING============");
-    // console.log(e.target.value);
-    console.log(postCode);
-    console.log(postStatus);
-    console.log(postTitle);
-    console.log(postDate);
-    const postCateg = postCategory.split(",");
-    console.log(postCateg);
-    console.log(postType);
-    console.log(postDesc);
-    console.log(arrImgUpload);
+    console.log("token in handleupload: " + token);
+    const statusPost = e.target.value;
+    const shortDesc = postShortDesc.slice(0, 250);
 
+    if (
+      postCode.length < 1 ||
+      postTitle.length < 1 ||
+      postCategory.length < 1 ||
+      postType.length < 1 ||
+      postDesc.length < 1 ||
+      arrImgUpload < 1
+    ) {
+      handleShowModal(false);
+      setIsModalClose(true);
+    } else {
+      // Insert post to database
+      const response = await axiosJWT.post(
+        "http://localhost:5000/posts/newpost",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+          data: {
+            postCode: postCode,
+            postTitle: postTitle,
+            postStatus: statusPost,
+            postType: postType,
+            postShortDesc: shortDesc,
+            postDesc: postDesc,
+            createdAt: postDate,
+          },
+        }
+      );
+      if (response) {
+        // Start upload image to database based on postcode
+        const uploadImgProcess = await axios.all([
+          arrImgUpload.map((item) => {
+            axiosJWT.post("http://localhost:5000/imgpost", item, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              withCredentials: true,
+            });
+          }),
+        ]);
+        if (uploadImgProcess) {
+          // Upload category based on post code
+          const postCateg = postCategory.split(",");
+          const categoryPost = await axios.all([
+            postCateg.map((item) => {
+              axiosJWT.post("http://localhost:5000/posts/categorypost", {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                  "Content-Type": "application/json",
+                },
+                withCredentials: true,
+                data: { postCode: postCode, postCategory: item },
+              });
+            }),
+          ]);
+          if (categoryPost) {
+            setStatus(response.statusText);
+            handleShowModal(true);
+            setIsModalClose(true);
+          }
+        }
+        // End upload image to database
+      } else {
+        console.log("failed");
+      }
+    }
     setStatusCounter(0);
   };
 
@@ -124,19 +208,16 @@ function NewPosting({ title }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("handlesubmit work");
     let formData = new FormData();
     formData.append("imgpost_dir", image.data);
-    // console.log("============Form Data===========");
-    // console.log(formData);
+    // Tes form data
+    formData.append("value_id", JSON.stringify(postCode));
     setArrImgUpload((arrImgUpload) => [...arrImgUpload, formData]);
     setShowImgUpload((showImgUpload) => [...showImgUpload, image.preview]);
     // const showImg = {
     //   preview: URL.createObjectURL(e.target.files[0]),
     //   data: e.target.files[0],
     // };
-    // // console.log("handlefilechange work");
-    // // console.log(img);
     // setImage(img);
   };
 
@@ -145,8 +226,6 @@ function NewPosting({ title }) {
       preview: URL.createObjectURL(e.target.files[0]),
       data: e.target.files[0],
     };
-    // console.log("handlefilechange work");
-    // console.log(img);
     setImage(img);
   };
   // End upload image
@@ -156,7 +235,6 @@ function NewPosting({ title }) {
     const updateCheckedState = checked.map((item, index) =>
       index === position ? !item : item
     );
-    // console.log("Updatesetchecked " + updateCheckedState);
     setChecked(updateCheckedState);
   };
 
@@ -164,6 +242,16 @@ function NewPosting({ title }) {
   // console.log(showImgUpload);
   // console.log(checked);
   // console.log(arrImgUpload);
+  console.log("============DEBUGGING============");
+  console.log(postCode);
+  console.log(postStatus);
+  console.log(postTitle);
+  console.log(postDate);
+  const postCateg = postCategory.split(",");
+  console.log(postCateg);
+  console.log(postType);
+  console.log(postDesc);
+  console.log(arrImgUpload);
 
   // End Image State
 
@@ -171,16 +259,10 @@ function NewPosting({ title }) {
   const deleteImg = () => {
     const imgCheckDel = checked.map((chk, index) => {
       if (chk === true) {
-        // console.log("deleted index: " + index);
-        // console.log(arrImgUpload[index]);
         const imgtoDelete = arrImgUpload[index];
         const imgshowToDelete = showImgUpload[index];
-        // console.log("========== arr img up ^ =======");
         setArrImgUpload((prev) =>
           prev.filter((arrImgUpload) => {
-            // console.log("============");
-            // console.log(imgtoDelete);
-            // console.log("============");
             return arrImgUpload !== imgtoDelete;
           })
         );
@@ -191,7 +273,6 @@ function NewPosting({ title }) {
         );
       }
     });
-    // console.log(checked);
   };
   // End Delete Img
 
@@ -207,11 +288,43 @@ function NewPosting({ title }) {
     setPostDate(dateNoow);
   };
   // End Get Date
-  // console.log("=========post status=============");
-  // console.log(postStatus);
 
   return (
     <>
+      {/* Modal After Insert Posting */}
+      <Modal
+        backdrop="static"
+        keyboard={false}
+        show={show}
+        onHide={handleCloseModal}
+      >
+        <Modal.Body className="text-center">
+          {paramModals ? (
+            <>
+              <h3 style={{ fontSize: "1.2rem", padding: "15px" }}>
+                Successfully added new post. Please check your post in listing
+                menu. Have a nice day!
+                <IoSunnySharp size={25} style={{ color: "#ffaa00" }} />
+              </h3>
+              <Button
+                variant="danger"
+                onClick={(handleCloseModal, navigateAfterPost)}
+              >
+                Close
+              </Button>{" "}
+            </>
+          ) : (
+            <>
+              <h3 style={{ fontSize: "1.2rem", padding: "15px" }}>
+                failed added post. Please check your form.
+              </h3>
+              <Button variant="danger" onClick={handleCloseModal}>
+                Close
+              </Button>
+            </>
+          )}
+        </Modal.Body>
+      </Modal>
       <div>
         <h1 className="my-3 fs-2 text-center">New Post</h1>
         <hr />
@@ -299,8 +412,8 @@ function NewPosting({ title }) {
                     className="w-75"
                     onClick={(e) => setPostType(e.target.value)}
                   >
-                    <option value="1">Announcement</option>
-                    <option value="2">Activity</option>
+                    <option value="Announcement">Announcement</option>
+                    <option value="Activity">Activity</option>
                   </Form.Select>
                 </Col>
               </Form.Group>
@@ -328,6 +441,12 @@ function NewPosting({ title }) {
                     }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
+                      // console.log(
+                      //   viewToPlainText(editor.editing.view.document.getRoot())
+                      // );
+                      setPostShortDesc(
+                        viewToPlainText(editor.editing.view.document.getRoot())
+                      );
                       setPostDesc(data);
                       // console.log({ event, editor, data });
                     }}
@@ -436,7 +555,7 @@ function NewPosting({ title }) {
                       <Button
                         className="mt-2"
                         type="button"
-                        onClick={handleSubmit}
+                        onClick={(e) => handleSubmit(e)}
                       >
                         Upload
                       </Button>
@@ -450,10 +569,10 @@ function NewPosting({ title }) {
                   variant="success"
                   value="posted"
                   onClick={(e) => {
-                    setPostStatus(e.target.value);
-                    setStatusCounter(1);
+                    // setPostStatus(e.target.value);
+                    // setStatusCounter(1);
                     // setPostShortDesc()
-                    // handleUploadPost(e);
+                    handleUploadPost(e);
                   }}
                   type="button"
                   className="mt-3 me-2"
@@ -464,9 +583,9 @@ function NewPosting({ title }) {
                   variant="primary"
                   value="draft"
                   onClick={(e) => {
-                    setPostStatus(e.target.value);
-                    setStatusCounter(1);
-                    // handleUploadPost(e);
+                    // setPostStatus(e.target.value);
+                    // setStatusCounter(1);
+                    handleUploadPost(e);
                   }}
                   type="button"
                   className="mt-3"

@@ -20,8 +20,55 @@ function PostCard(props) {
       setCategories(response.data);
       console.log("respon data: " + response.data);
     });
-    setIdPost(props.idpost);
+    setIdPost(props.idpost); // untuk link ke detail post
   }, [idpost]);
+
+  const [imgPostListing, setImgPostListing] = useState([]);
+  useEffect(() => {
+    // const response = axios.get(
+    //   `http://localhost:5000/posts/imgpost/${props.idpost}`
+    // );
+    // if (response) {
+    //   setImgPostListing(response.data);
+    //   console.log("resssponsss");
+    //   console.log(response);
+    // } else {
+    //   console.log("errrrrooooorrrr");
+    // }
+    getImgpostListing();
+  }, []);
+
+  const getImgpostListing = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/posts/imgpost/${props.idpost}`,
+        {
+          params: {
+            _limit: 1,
+          },
+        }
+      );
+      console.log("success response image");
+      if (response) {
+        setImgPostListing(response.data);
+        console.log("resssponsss");
+        console.log(response);
+      } else {
+        console.log("errrrrooooorrrr");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    // if (response) {
+    //   setImgPostListing(response.data);
+    // } else {
+    //   console.log("error");
+    // }
+  };
+
+  console.log("===========response============");
+  console.log(props.idpost);
+  console.log(imgPostListing);
 
   if (!categories) return console.log("failed get category");
 
@@ -61,7 +108,20 @@ function PostCard(props) {
           </Row>
         </Col>
         <Col xs={3}>
-          <img src={lksSample} alt="post-image" />
+          {imgPostListing.slice(0, 1).map((img) => {
+            return (
+              <>
+                <img
+                  src={`http://localhost:5000/${img.imgpost_dir.replace(
+                    "\\",
+                    "/"
+                  )}`}
+                  // src={lksSample}
+                  alt="post-image"
+                />
+              </>
+            );
+          })}
         </Col>
       </Row>
     </>
