@@ -27,8 +27,6 @@ function RelatedPost(props) {
     setRelPost(response.data.result);
   };
 
-  console.log(relPost);
-  console.log(limit);
   // Farhan : Carousel
   const responsive = {
     0: { items: 3 },
@@ -62,27 +60,31 @@ function RelatedPost(props) {
 
   const handleDragStart = (e) => e.preventDefault();
   const itemz = relPost.map((relPos, index) => [
-    // return (
-    // <>
-    <Col
-      // xs={4}
-      // lg={4}
-      className="d-inline-block ra-card-detail item"
-      data-value={index}
-      onDragStart={handleDragStart}
-    >
-      <div className="ra-bd mx-2 p-3" style={{ width: "100%" }}>
-        <img src={require("../../post-images/" + relPos.imgpost_dir)} />
-        <h3>{relPos.post_shortdesc}</h3>
-        <span>
-          <Button className="ra-btn">{relPos.post_type}</Button>
-          <IoTimeOutline size={20} />
-          14 Sept, 2022
-        </span>
-      </div>
-    </Col>,
-    // </>
-    // );
+    // const relPosz = relPosz.imgpost_dir.replace("\\", "/");
+    // const urlimg = "http:localhost:5000/" + imgdir;
+    <>
+      <Col
+        className="d-inline-block ra-card-detail item"
+        data-value={index}
+        onDragStart={handleDragStart}
+      >
+        <div className="ra-bd mx-2 p-3" style={{ width: "100%" }}>
+          <img
+            src={`http://localhost:5000/${relPos.imgpost_dir.replace(
+              "\\",
+              "/"
+            )}`}
+            style={{ width: "280px", height: "200px" }}
+          />
+          <h3>{relPos.post_shortdesc}</h3>
+          <span>
+            <Button className="ra-btn">{relPos.post_type}</Button>
+            <IoTimeOutline size={20} />
+            14 Sept, 2022
+          </span>
+        </div>
+      </Col>
+    </>,
   ]);
 
   console.log("===========itemz==========");

@@ -15,7 +15,7 @@ function NavbarTop() {
     <>
       <Navbar expand="lg" id="navbarfarhan">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               src={logo}
               width="55"
@@ -24,39 +24,45 @@ function NavbarTop() {
             />
             {""}
             <Row className="align-items-center ms-1">
-              <div id="nb-ttl">SMK ISLAMIYAH</div>
+              <div id="nb-ttl">SMK ISLAMIYAH CIPUTAT</div>
             </Row>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <NavDropdown title="About" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                  Visi & Misi
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+                <NavDropdown.Item href="#">Programs</NavDropdown.Item>
+                <NavDropdown.Item href="#">Curriculum</NavDropdown.Item>
+                <NavDropdown.Item href="#">Facility</NavDropdown.Item>
+                <NavDropdown.Item href="#">Ekstrakulikuler</NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Profile" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#">
                   Headmaster Greetings
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">History</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Programs</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Curriculum
-                </NavDropdown.Item>
+                <NavDropdown.Item href="#">Visi & Misi</NavDropdown.Item>
+                <NavDropdown.Item href="#">History</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Organization" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
+                <NavDropdown.Item href="/organization/orgstruct">
                   Structure
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Teachers</NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Post" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Activity</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Announcement
+                <NavDropdown.Item href="/organization/teachers">
+                  Teachers
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/organization/staff">
+                  Staff
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#">BKK</Nav.Link>
-              <NavDropdown
+              <NavDropdown title="Post" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/posts/">Activity</NavDropdown.Item>
+                <NavDropdown.Item href="/posts/">Announcement</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link href="/bkk">BKK</Nav.Link>
+              <Nav.Link href="#">Dapodik</Nav.Link>
+              <Nav.Link href="#">PPDB</Nav.Link>
+              <Nav.Link href="#">PIP</Nav.Link>
+              {/* Fitur Bahasa (disabled) <NavDropdown
                 title={
                   <span>
                     <IoGlobeOutline />
@@ -66,7 +72,7 @@ function NavbarTop() {
               >
                 <NavDropdown.Item href="#action/3.1">EN</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">ID</NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

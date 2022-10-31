@@ -1,6 +1,10 @@
+// React Need
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+// Component
+import NavbarTop from "../components/NavbarTop";
+import FooterBot from "../components/FooterBot";
+// Styling
 import {
   Col,
   Row,
@@ -11,9 +15,6 @@ import {
   Pagination,
 } from "react-bootstrap";
 
-import NavbarTop from "../components/NavbarTop";
-import FooterBot from "../components/FooterBot";
-
 import {
   IoSearch,
   IoTimeOutline,
@@ -21,7 +22,6 @@ import {
   IoChevronForwardOutline,
 } from "react-icons/io5";
 import "../../style/posts.css";
-import lksSample from "../../images/lks-sample.jpg";
 import PostCard from "./PostCard";
 import ReactPaginate from "react-paginate";
 

@@ -83,15 +83,64 @@
   font-size: 1.6rem;
 }
 
-.card-program {
-  padding: 0 !important;
-  margin: 10px;
-}
-
 .btn-program {
   background: none !important;
   color: rgb(6, 32, 78) !important;
   padding: 10px 20px !important;
   margin: 20px !important;
   border: 1px solid rgb(6, 32, 78) !important;
+}
+
+/* Card Programs */
+.card-programs {
+  border-top: 6px solid #eeeb3c;
+  border-radius: 6px;
+  box-shadow: 2px 2px 1px 1px rgb(204, 204, 204);
+  position: relative;
+  padding-bottom: 5px;
+  margin: 5px;
+  width: 100%;
+}
+
+.card-programs h1 {
+  color: #0e3e65;
+  font-weight: 700;
+  font-size: 1.4rem;
+  padding: 3px 0;
+  margin: 5px 0;
+}
+
+.btn-details-program {
+  border-radius: 20px;
+  border: 1px solid #1768a8;
+  color: #1768a8;
+  /* margin-top: 5px; */
+  padding: 5px;
+  margin: 10px 5px;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+}
+
+.btn-details-program:hover {
+  background: #1768a8;
+  color: white;
+}
+
+.card-programs-body {
+  margin: 5px;
+  font-size: 0.95rem;
+}
+
+#title-programs {
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid rgb(214, 214, 214);
+  margin: 20px;
+}
+
+#programs-intro h1 {
+  color: rgb(6, 32, 78);
+  font-weight: 600;
+  font-size: 1.6rem;
 }

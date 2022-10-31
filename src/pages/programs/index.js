@@ -10,7 +10,7 @@ import {
   Container,
   Card,
 } from "react-bootstrap";
-import { IoSearch } from "react-icons/io5";
+import { IoSearch, IoPlayBackSharp } from "react-icons/io5";
 
 import programsCard from "../../images/programs-card.jpg";
 
@@ -22,6 +22,7 @@ function Programs() {
   return (
     <>
       <NavbarTop />
+<<<<<<< HEAD
       <Row id="programs-intro" className="text-center">
           <Col xs={12}>
             <h1>Program Keahlian di SMK Islamiyah Ciputat</h1>
@@ -36,63 +37,141 @@ function Programs() {
           <p>Home &gt; Programs</p>
         </Row>
 
+=======
+      <input
+        type="text"
+        id="navbar-id"
+        value="programs"
+        style={{ display: "none" }}
+        readOnly
+      />
+      <div id="navbar-bgz" style={{ height: "13vh" }}></div>
+>>>>>>> 9f756393dece1086c737981a491c3bb89b2b6a19
       <Container>
-        <Row id="search-bar" className="justify-content-center">
-          <Col xs={12}>
-            <InputGroup className="mb-3">
-              <Form.Control
-                placeholder="Search programs"
-                aria-label="Search programs"
-                aria-describedby="basic-addon2"
-              />
-              <Button variant="outline-secondary" id="button-addon2">
-                <IoSearch />
-              </Button>
-            </InputGroup>
+        <Row id="title-programs" className="justify-content-center">
+          <Col xs={10} md={10} sm={12} className="text-center">
+            <h1>Programs</h1>
+            <h1>SMK Islamiyah Ciputat</h1>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis,
+              quisquam velit modi sed ut quibusdam alias libero delectus in
+              facilis blanditi.
+            </p>
           </Col>
+        </Row>
+        <Row id="breadcrumb">
+          <Col xs={12}>
+            <p>
+              Home &gt; Organization &gt;
+              <span style={{ color: "yellow" }}>programs</span>
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <div id="programs-intro">
+            <h1>Programs Keahlian</h1>
+            <p>
+              Tentukan program keahlian seru sesuai passionmu dari SMK Islamiyah
+              Ciputat!
+            </p>
+          </div>
         </Row>
         <Row id="list-programs" className="my-5">
           <Col xs="4">
-            <Card className="card-program">
-              <Card.Img variant="top" src={programsCard} />
-              <Card.Body className="cb-program">TKJ</Card.Body>
-            </Card>
+            <div className="card-programs">
+              <img src={programsCard} />
+              <div className="card-programs-body">
+                <h1>Accounting</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, voluptate.
+                </p>
+                <a href="#" className="btn-details-program">
+                  Details
+                </a>
+              </div>
+            </div>
           </Col>
           <Col xs="4">
-            <Card className="card-program">
-              <Card.Img variant="top" src={programsCard} />
-              <Card.Body className="cb-program">Elektro</Card.Body>
-            </Card>
+            <div className="card-programs">
+              <img src={programsCard} />
+              <div className="card-programs-body">
+                <h1>TKJ</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, voluptate.
+                </p>
+                <a href="#" className="btn-details-program">
+                  Details
+                </a>
+              </div>
+            </div>
           </Col>
           <Col xs="4">
-            <Card className="card-program">
-              <Card.Img variant="top" src={programsCard} />
-              <Card.Body className="cb-program">Pemasaran</Card.Body>
-            </Card>
+            <div className="card-programs">
+              <img src={programsCard} />
+              <div className="card-programs-body">
+                <h1>Digital Marketing</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, voluptate.
+                </p>
+                <a href="#" className="btn-details-program">
+                  Details
+                </a>
+              </div>
+            </div>
           </Col>
           <Col xs="4">
-            <Card className="card-program">
-              <Card.Img variant="top" src={programsCard} />
-              <Card.Body className="cb-program">Akuntansi</Card.Body>
-            </Card>
+            <div className="card-programs">
+              <img src={programsCard} />
+              <div className="card-programs-body">
+                <h1>Designer Graphic</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, voluptate.
+                </p>
+                <a href="#" className="btn-details-program">
+                  Details
+                </a>
+              </div>
+            </div>
           </Col>
           <Col xs="4">
-            <Card className="card-program">
-              <Card.Img variant="top" src={programsCard} />
-              <Card.Body className="cb-program">Multimedia</Card.Body>
-            </Card>
+            <div className="card-programs">
+              <img src={programsCard} />
+              <div className="card-programs-body">
+                <h1>Content Creator</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, voluptate.
+                </p>
+                <a href="#" className="btn-details-program">
+                  Details
+                </a>
+              </div>
+            </div>
           </Col>
           <Col xs="4">
-            <Card className="card-program">
-              <Card.Img variant="top" src={programsCard} />
-              <Card.Body className="cb-program">Elektro</Card.Body>
-            </Card>
+            <div className="card-programs">
+              <img src={programsCard} />
+              <div className="card-programs-body">
+                <h1>Tata Boga</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugit, voluptate.
+                </p>
+                <a href="#" className="btn-details-program">
+                  Details
+                </a>
+              </div>
+            </div>
           </Col>
         </Row>
-        <Row className="text-center">
-          <Col>
-            <Button className="btn-program mx-auto">Back to Homepage</Button>
-          </Col>
+        <Row className="my-3">
+          <a href="#" className="mt-2 mb-4">
+            <IoPlayBackSharp /> Back to Homepage
+          </a>
         </Row>
       </Container>
       <div className="footer-lock mt-5" style={{ height: "50px" }}>

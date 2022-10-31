@@ -85,10 +85,13 @@ function FooterBot() {
               <h2>ORGANIZATION</h2>
               <ul>
                 <li>
-                  <a href="#">Structure</a>
+                  <a href="/organization/orgstruct">Structure</a>
                 </li>
                 <li>
-                  <a href="#">Teachers</a>
+                  <a href="/organization/teachers">Teachers</a>
+                </li>
+                <li>
+                  <a href="/organization/staff">Staff</a>
                 </li>
               </ul>
             </div>
@@ -98,10 +101,10 @@ function FooterBot() {
               <h2>POST</h2>
               <ul>
                 <li>
-                  <a href="#">Article</a>
+                  <a href="/posts/">Article</a>
                 </li>
                 <li>
-                  <a href="#">Activity</a>
+                  <a href="/posts/">Activity</a>
                 </li>
               </ul>
             </div>

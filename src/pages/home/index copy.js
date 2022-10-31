@@ -22,91 +22,11 @@ import headerThree from "../../images/Header-4.jpg";
 import overviewYt from "../../images/overview-youtube.jpg";
 import sampleAlumni from "../../images/sample-alumni.jpg";
 import Collapse from "react-bootstrap/Collapse";
-import AliceCarousel from "react-alice-carousel";
 
 function Home() {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
 
-  const postActivities = [
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Activities</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Activities</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Activities</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Activities</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-  ];
-  const postAnnouncement = [
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Announcement</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Announcement</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Announcement</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Announcement</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-  ];
-  const responsive = {
-    0: { items: 3 },
-  };
   return (
     <>
       <NavbarTop />
@@ -119,6 +39,19 @@ function Home() {
         readOnly
       />
       <Row id="header" className="align-items-center justify-content-center">
+        {/* <img
+          src={headerImg}
+          style={{ position: "absolute", height: "100vh" }}
+        />
+        <div className="black-cover-header"></div>
+        <Col xs={8} className="header-fill text-center">
+          <h1>SMK ISLAMIYAH CIPUTAT</h1>
+          <p className="my-3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. In
+            pariatur, neque deserunt consequatur molestiae iste.
+          </p>
+          <Button className="btn-header">Know More</Button>
+        </Col> */}
         <Carousel style={{ color: "black" }}>
           <Carousel.Item style={{ height: "100vh" }}>
             <img className="d-block w-100" src={headerOne} alt="First slide" />
@@ -218,12 +151,40 @@ function Home() {
         </Row>
         <div className="divider-overview1"></div>
         <Col xs={12} className="text-center">
-          <AliceCarousel
-            mouseTracking
-            items={postActivities}
-            responsive={responsive}
-            controlsStrategy="alternate"
-          />
+          <Card style={{ width: "18rem" }} className="post-card post-top">
+            <Card.Img variant="top" src={lksSample} />
+            <Card.Body>
+              <Card.Title>Lorem, ipsum dolor.</Card.Title>
+              <Card.Text style={{ display: "flex", flexWrap: "nowrap" }}>
+                <div className="kategori">
+                  <Button className="an">Announcement</Button>
+                  <Button>Akademik</Button>
+                </div>
+                <div className="time-card">
+                  <p>
+                    <IoTimeOutline size={20} /> 14 Sept, 2022
+                  </p>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <Card style={{ width: "18rem" }} className="post-card post-top">
+            <Card.Img variant="top" src={lksSample} />
+            <Card.Body>
+              <Card.Title>Lorem, ipsum dolor.</Card.Title>
+              <Card.Text style={{ display: "flex", flexWrap: "nowrap" }}>
+                <div className="kategori">
+                  <Button className="an">Announcement</Button>
+                  <Button>Akademik</Button>
+                </div>
+                <div className="time-card">
+                  <p>
+                    <IoTimeOutline size={20} /> 14 Sept, 2022
+                  </p>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="announcement">
@@ -237,12 +198,40 @@ function Home() {
           <h1>Related Announcement</h1>
         </Row>
         <Col xs={12} className="text-center">
-          <AliceCarousel
-            mouseTracking
-            items={postAnnouncement}
-            responsive={responsive}
-            controlsStrategy="alternate"
-          />
+          <Card style={{ width: "18rem" }} className="post-card post-top">
+            <Card.Img variant="top" src={lksSample} />
+            <Card.Body>
+              <Card.Title>Lorem, ipsum dolor.</Card.Title>
+              <Card.Text style={{ display: "flex", flexWrap: "nowrap" }}>
+                <div className="kategori">
+                  <Button className="an">Announcement</Button>
+                  <Button>Akademik</Button>
+                </div>
+                <div className="time-card">
+                  <p>
+                    <IoTimeOutline size={20} /> 14 Sept, 2022
+                  </p>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <Card style={{ width: "18rem" }} className="post-card post-top">
+            <Card.Img variant="top" src={lksSample} />
+            <Card.Body>
+              <Card.Title>Lorem, ipsum dolor.</Card.Title>
+              <Card.Text style={{ display: "flex", flexWrap: "nowrap" }}>
+                <div className="kategori">
+                  <Button className="an">Announcement</Button>
+                  <Button>Akademik</Button>
+                </div>
+                <div className="time-card">
+                  <p>
+                    <IoTimeOutline size={20} /> 14 Sept, 2022
+                  </p>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
       <Row id="testimonials">
@@ -255,43 +244,8 @@ function Home() {
         <Row>
           <h1 className="prof">PROFILE ALUMNI</h1>
         </Row>
-        {/* <Row className="justify-content-center d-flex" id="tpa-card">
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-        </Row> */}
         <Row>
-          <Col xs={12} style={{ display: "flex", flexWrap: "nowrap" }}>
+          <Col xs={10} style={{ display: "flex", flexWrap: "nowrap" }}>
             <div className="card-testimonials">
               <img src={sampleAlumni} className="testi-alumni-img" />
               <div className="body-testimonials">
@@ -319,14 +273,14 @@ function Home() {
               </div>
             </div>
           </Col>
-          <Col xs={12} className="my-3 justify-content-center" style={{ display: "flex", flexWrap: "nowrap" }}>
+        </Row>
+        <Row className="my-3 justify-content-center">
+          <Col xs={3} style={{ display: "flex", flexWrap: "nowrap" }}>
             <div className="circle-slider-outline"></div>
             <div className="circle-slider-fill"></div>
             <div className="circle-slider-outline"></div>
           </Col>
         </Row>
-        {/* <Row className="my-3 justify-content-center">
-        </Row> */}
       </Row>
       <Row id="faq">
         <Row>

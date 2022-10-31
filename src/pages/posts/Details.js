@@ -53,8 +53,8 @@ function DetailPost(props) {
     );
     setImgPost(response.data);
   };
-  const [firstImg, setFirstImg] = useState(1);
-  console.log("First img: " + firstImg);
+  // const [firstImg, setFirstImg] = useState(1);
+  // console.log("First img: " + firstImg);
 
   return (
     <>
@@ -77,17 +77,17 @@ function DetailPost(props) {
                 <>
                   <Row className="pd-img">
                     {imgPost.slice(0, 1).map((imgpos) => {
+                      const imgdir = imgpos.imgpost_dir.replace("\\", "/");
+                      const urlimg = "http://localhost:5000/" + imgdir;
                       return (
                         <>
-                          <img
-                            src={require(`../../post-images/${imgpos.imgpost_dir}`)}
-                          />
+                          <img src={urlimg} />
                         </>
                       );
                     })}
                   </Row>
-                  <Row id="title-pd-cat">
-                    <h2>Passing ID props : {idpost}</h2>
+                  <Row>
+                    {/* <h2>Passing ID props : {idpost}</h2> */}
                     <h1>{pos.post_name}</h1>
                   </Row>
                   <Row id="pd-category">
@@ -102,14 +102,21 @@ function DetailPost(props) {
                     <IoTimeOutline size={20} />
                     <span className="pd-cat-time">{pos.createdAt}</span>
                   </Row>
-                  <Row id="pd-isi">{pos.post_desc}</Row>
+                  <Row>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: pos.post_desc }}
+                    ></div>
+                  </Row>
                   <Row>
                     {imgPost.map((imgpos) => {
+                      const imgdir = imgpos.imgpost_dir.replace("\\", "/");
+                      const urlimg = "http://localhost:5000/" + imgdir;
                       return (
                         <>
                           {/* <img
                             src={require(`../../post-images/${imgpos.imgpost_dir}`)}
                           /> */}
+                          <img src={urlimg} />
                         </>
                       );
                     })}
