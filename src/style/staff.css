@@ -1,4 +1,4 @@
-.card-teachers {
+.card-Staffs {
   display: inline-block;
   width: 100%;
   margin: 10px;
@@ -7,7 +7,7 @@
   box-shadow: 0px 2px 5px 0 rgb(165, 165, 165);
 }
 
-.card-teachers:hover {
+.card-Staffs:hover {
   background: rgb(202, 202, 202);
 }
 
@@ -50,13 +50,13 @@
   color: rgb(15, 15, 15);
 }
 
-#title-teachers h1 {
+#title-Staff h1 {
   font-weight: bold;
   color: #0e3e65;
   font-size: 1.3rem;
 }
 
-#btn-teacher {
+#btn-Staff {
   background: none !important;
   border: 1px solid #1768a8;
   color: #1768a8;
@@ -64,7 +64,7 @@
   border-radius: 4px;
 }
 
-#btn-teacher:hover {
+#btn-Staff:hover {
   background: #1768a8 !important;
   color: white;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../../style/teachers.css";
+import "../../../style/staff.css";
 import { Container, Row, Col, Button, Form, InputGroup } from "react-bootstrap";
 import NavbarTop from "../../components/NavbarTop";
 import FooterBot from "../../components/FooterBot";
@@ -427,7 +427,7 @@ function Staff() {
           </Col>
         </Row>
         <Row className="my-3">
-          <Button id="btn-Staff">LOAD MORE Staff</Button>
+          <Button id="btn-Staff">LOAD MORE STAFFS</Button>
           <a href="#" className="mt-2 mb-4">
             <IoPlayBackSharp /> Back to Homepage
           </a>

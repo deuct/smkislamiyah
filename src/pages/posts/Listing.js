@@ -106,7 +106,7 @@ export default function Listing() {
           <p>Home &gt; Announcement</p>
         </Row>
         <Row id="post-ctg-list">
-          <Col xs={12} style={{ display: "flex", flexWrap: "nowrap", justifyContent: "space-between", width: "27%" }}>
+          <Col xs={4} style={{ display: "flex", flexWrap: "nowrap", justifyContent: "space-between", width: "27%" }}>
             {postType.map((postType) => {
               return (
                 <>
