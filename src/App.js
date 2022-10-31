@@ -9,6 +9,10 @@ import ListingBKK from "./pages/bkk/Listing";
 // import DetailBKK from "./pages/bkk/DetailBkk";
 import HistoriesBKK from "./pages/bkk/HistoriesBKK";
 import DetailPost from "./pages/posts/Details";
+import Teachers from "./pages/organization/teachers";
+import Staff from "./pages/organization/staff";
+import OrgStruct from "./pages/organization/orgstruct/OrgStruct";
+import PageNotFound from "./pages/notfound/PageNotFound";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,6 +28,11 @@ function App() {
         <Route path="/bkk/histories" element={<HistoriesBKK />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="/organization/orgstruct" element={<OrgStruct />} />
+        <Route path="/organization/teachers" element={<Teachers />} />
+        <Route path="/organization/staff" element={<Staff />} />
+        {/* Farhan : Page Not Found */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

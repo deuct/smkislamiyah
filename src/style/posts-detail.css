@@ -13,13 +13,13 @@
     padding: 2px;  
 }
 #breadcrumb-pd p {
-    margin-left: 2vh;
+    margin-left: 10px;
     margin-bottom: 3px;
 }
 /* post-detail-body */
 #post-detail-body {
     padding-right: 17vh;
-    padding-left: 1vh;
+    padding-left: 2vh;
 }
 /* big-img */
 .pd-img img{
@@ -51,6 +51,7 @@
     text-align: justify;
     line-height: 1.6;
     padding: 10px;
+    padding-right: 20px;
     /* box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
     border-radius: 10px; */
 }
@@ -138,13 +139,11 @@
     
 }
 .npr-card .npr-btn {
-    width: fit-content;
-    height: fit-content;
-    margin-right: 5px;
-    padding: 2px;
+    margin: 3px;
+    padding: 2px 6px;
     font-weight: 600;
-    font-size: 10px;
-    border-radius: 7px;
+    font-size: 12px;
+    border-radius: 8px;
 }
 .npr-card img {
     margin-top: 10vh;

@@ -25,20 +25,21 @@
 
 .login-card img {
   width: 120px;
-  margin-left: 38%;
-  margin-right: 50%;
+  /* margin-left: 38%;
+  margin-right: 50%; */
 }
 
-.login-card h1 {
+.text-center h1 {
   font-size: 1.6rem;
   font-weight: 600;
-  margin-left: 27%;
+  margin-left: 2vh !important;
+  /* margin-left: 27%; */
   /* margin-right: 50%; */
 
 }
-.login-card p {
-  width: 80%;
-  margin-left: 8vh;
+.text-center p {
+  /* width: 80%; */
+  margin-left: 10vh !important;
   font-size: 18px;
   line-height: 1.6;
   text-align: center;

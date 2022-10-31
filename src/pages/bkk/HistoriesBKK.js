@@ -4,7 +4,7 @@ import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
 
 import { Container, Col, Row } from "react-bootstrap";
-import "../../style/bkk-listing.css";
+import "../../style/bkk-histories.css";
 
 export default function HistoriesBKK() {
   return (
@@ -16,12 +16,11 @@ export default function HistoriesBKK() {
       <input
         type="text"
         id="navbar-id"
-        value="bkk-listing"
+        value="bkk"
         style={{ display: "none" }}
         readOnly
       />
       <Container className="mt-3">
-        <Row id="breadcrumb">Home &gt; BKK &gt; Details BKK</Row>
         <Row id="title-bkk" style={{ marginTop: "5vh" }}>
           <Col xs={4}>
             <h1>BKK</h1>
@@ -32,11 +31,12 @@ export default function HistoriesBKK() {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Perspiciatis a consectetur provident dolor odit, at laborum
-              aliquam eos suscipit magni labore,              
+              aliquam eos suscipit magni labore,
             </p>
             <a href="#">More information...</a>
           </Col>
         </Row>
+        <Row id="breadcrumb"><p>Home &gt; BKK &gt; Details BKK</p></Row>
         <Row className="mt-4">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente

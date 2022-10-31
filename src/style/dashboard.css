@@ -4,6 +4,25 @@
   box-sizing: border-box;
 }
 
+/* Modal */
+.modal-backdrop {
+  z-index: 5 !important;
+}
+
+/* Ck Editor */
+.ck-editor__editable_inline {
+  min-height: 300px !important;
+}
+
+/* Btn Submit Form */
+#btn-submit-form {
+  /* margin-top: 150px; */
+}
+
+#upload-image {
+  margin-bottom: 25px;
+}
+
 .sidenav {
   background: #021427;
   position: fixed;
@@ -13,7 +32,10 @@
 }
 
 .sidenav-fill {
-  margin-top: 50%;
+  margin-top: 25%;
+  padding-bottom: 25%;
+  height: 70%;
+  overflow: scroll;
 }
 
 .sidenav hr {
@@ -119,7 +141,7 @@ h2.visitor-title {
 }
 
 .imgbox-detail {
-  max-width: 150px;
+  max-width: 200px;
   padding: 10px;
   display: inline-block;
 }
@@ -127,6 +149,7 @@ h2.visitor-title {
 .imgbox-detail:hover {
   background: rgb(153, 153, 153);
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .imgbox-detail img {

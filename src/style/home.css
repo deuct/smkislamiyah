@@ -108,10 +108,16 @@ a#basic-nav-dropdown:hover {
 /* welcome section */
 #welcome {
   margin: auto;
-  justify-content: center;
+  /* justify-content: center; */
   text-align: center;
   padding-top: 20px;
+  height: 30vh;
+  margin-top: 30px;
+  /* width: 100%; */
+  /* position: relative; */
 }
+
+
 #welcome h1 {
   color: #0e3e65;
   font-size: 28px;
@@ -819,4 +825,57 @@ a#basic-nav-dropdown:hover {
 
 .circle-slider-fill {
   background: rgb(5, 5, 129);
+}
+
+/* Card post index */
+.post-card-index {
+  /* width: 450px; */
+  height: auto;
+  display: inline-block;
+  margin: 10px;
+  /* height: 500px; */
+  position: relative;
+  border-radius: 10px;
+}
+
+.bg-post-card {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 5%,
+    rgb(54, 54, 54) 100%,
+    rgb(255, 255, 255) 100%
+  );
+  position: absolute;
+  opacity: 0.6;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  border-radius: 6px;
+}
+
+.post-card-body {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  z-index: 6;
+  padding: 10px;
+  text-align: left;
+}
+
+.post-card-body-type {
+  color: rgb(240, 201, 28);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.post-card-body-h1 {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.post-card-body-date {
+  color: rgb(177, 177, 177);
 }
