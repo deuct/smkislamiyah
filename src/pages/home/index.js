@@ -255,8 +255,43 @@ function Home() {
         <Row>
           <h1 className="prof">PROFILE ALUMNI</h1>
         </Row>
+        {/* <Row className="justify-content-center d-flex" id="tpa-card">
+          <Col xs={3} className="tpa-card-detail">
+            <img src={sampleAlumni} className="testi-alumni-img" />
+            <h3>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
+              perferendis!               
+            </h3>
+            <span className="tpa-foot-card">
+              <IoTimeOutline size={20} />
+              14 Sept, 2022
+            </span>
+          </Col>
+          <Col xs={3} className="tpa-card-detail">
+            <img src={sampleAlumni} className="testi-alumni-img" />
+            <h3>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
+              perferendis!               
+            </h3>
+            <span className="tpa-foot-card">
+              <IoTimeOutline size={20} />
+              14 Sept, 2022
+            </span>
+          </Col>
+          <Col xs={3} className="tpa-card-detail">
+            <img src={sampleAlumni} className="testi-alumni-img" />
+            <h3>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
+              perferendis!               
+            </h3>
+            <span className="tpa-foot-card">
+              <IoTimeOutline size={20} />
+              14 Sept, 2022
+            </span>
+          </Col>
+        </Row> */}
         <Row>
-          <Col xs={10} style={{ display: "flex", flexWrap: "nowrap" }}>
+          <Col xs={12} style={{ display: "flex", flexWrap: "nowrap" }}>
             <div className="card-testimonials">
               <img src={sampleAlumni} className="testi-alumni-img" />
               <div className="body-testimonials">
@@ -284,14 +319,14 @@ function Home() {
               </div>
             </div>
           </Col>
-        </Row>
-        <Row className="my-3 justify-content-center">
-          <Col xs={3} style={{ display: "flex", flexWrap: "nowrap" }}>
+          <Col xs={12} className="my-3 justify-content-center" style={{ display: "flex", flexWrap: "nowrap" }}>
             <div className="circle-slider-outline"></div>
             <div className="circle-slider-fill"></div>
             <div className="circle-slider-outline"></div>
           </Col>
         </Row>
+        {/* <Row className="my-3 justify-content-center">
+        </Row> */}
       </Row>
       <Row id="faq">
         <Row>

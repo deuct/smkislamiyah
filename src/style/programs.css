@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* 
 #header-img {
   height: 100vh;
   background: maroon;
@@ -38,6 +38,42 @@
 
 #divider-header {
   height: 10vh;
+} */
+/* header */
+#programs-intro {
+  margin-top: 10vh;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.text-center h1 {
+  /* text-align: center; */
+  font-size: 1.4rem;
+  font-weight: 750;
+  margin-top: 10px;
+  color: #0e0f65;
+}
+
+.text-center p {
+  margin-left: 18vh;
+  width: 80%;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  padding: 10px;
+}
+/* Breadcrumb */
+.breadcrumb {
+  background: #1768a8;
+  border-radius: 8px;
+  color: whitesmoke;
+  /* padding-right: 20px; */
+  /* margin: 15vh; */
+  padding: 2px;
+}
+.breadcrumb p {
+  margin-left: 8vh;
+  margin-bottom: 3px;
 }
 
 .cb-program {

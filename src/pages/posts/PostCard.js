@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { Row, Col, Button } from "react-bootstrap";
 import { IoTimeOutline } from "react-icons/io5";
+import "../../style/posts-detail.css";
+
 
 import lksSample from "../../images/lks-sample.jpg";
 

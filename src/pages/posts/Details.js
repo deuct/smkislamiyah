@@ -75,7 +75,7 @@ function DetailPost(props) {
             {post.map((pos) => {
               return (
                 <>
-                  <Row>
+                  <Row className="pd-img">
                     {imgPost.slice(0, 1).map((imgpos) => {
                       const imgdir = imgpos.imgpost_dir.replace("\\", "/");
                       const urlimg = "http://localhost:5000/" + imgdir;
@@ -86,21 +86,23 @@ function DetailPost(props) {
                       );
                     })}
                   </Row>
-                  <Row>
+                  <Row id="title-pd-cat">
                     {/* <h2>Passing ID props : {idpost}</h2> */}
                     <h1>{pos.post_name}</h1>
                   </Row>
-                  <Row>
-                    <Button>{pos.post_type}</Button>
+                  <Row id="pd-category">
+                    <Button className="cat-btn">{pos.post_type}</Button>
                     {categories.map((categori) => {
                       return (
                         <>
-                          <Button>{categori.categorypost_name}</Button>
+                          <Button className="cat-btn">
+                            {categori.categorypost_name}
+                          </Button>
                         </>
                       );
                     })}
                     <IoTimeOutline size={20} />
-                    <span>{pos.createdAt}</span>
+                    <span className="pd-cat-time">{pos.createdAt}</span>
                   </Row>
                   <Row>
                     <div

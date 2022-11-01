@@ -16,12 +16,13 @@ import programsCard from "../../images/programs-card.jpg";
 
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
-import HeaderImg from "../components/HeaderImg";
+// import HeaderImg from "../components/HeaderImg";
 
 function Programs() {
   return (
     <>
       <NavbarTop />
+<<<<<<< HEAD
       <input
         type="text"
         id="navbar-id"
@@ -30,6 +31,22 @@ function Programs() {
         readOnly
       />
       <div id="navbar-bgz" style={{ height: "13vh" }}></div>
+=======
+      <Row id="programs-intro" className="text-center">
+          <Col xs={12}>
+            <h1>Program Keahlian di SMK Islamiyah Ciputat</h1>
+            <p>
+              Cerita pengalaman, berita seru, pengumuman terbaru, artikel
+              menarik dan berita terbaru akademik. Baca semua berita dan
+              informasi tentang SMK Islamiyah disini.
+            </p>
+          </Col>
+        </Row>
+        <Row id="breadcrumb">
+          <p>Home &gt; Programs</p>
+        </Row>
+
+>>>>>>> 0e07282 (31102022)
       <Container>
         <Row id="title-programs" className="justify-content-center">
           <Col xs={10} md={10} sm={12} className="text-center">
