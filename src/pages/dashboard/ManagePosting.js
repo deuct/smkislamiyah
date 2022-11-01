@@ -8,7 +8,7 @@ import ReactPaginate from "react-paginate";
 import { Row, Col, Form, Button, InputGroup, Table } from "react-bootstrap";
 import { IoAdd, IoSearch, IoTrashBin, IoEye } from "react-icons/io5";
 
-function ManagePosting({ title }) {
+function ManagePosting() {
   // Farhan : Get Post, Paginate, Search
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
@@ -65,6 +65,7 @@ function ManagePosting({ title }) {
       setPostTypes(e.target.value);
     }
   };
+  // End Filter
   console.log("========posttype=========");
   console.log(postTypes);
   return (

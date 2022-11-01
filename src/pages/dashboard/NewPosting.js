@@ -28,12 +28,12 @@ function NewPosting(props) {
     navigate("/dashboard/manage-article");
     // }
   };
+  // End modal after post
 
+  // Generate token for every API post
   const [name, setName] = useState(props.name);
   const [token, setToken] = useState(props.token);
   const [expired, setExpired] = useState(props.expired);
-
-  console.log("token posting: " + token);
 
   const axiosJWT = axios.create();
 
@@ -61,6 +61,7 @@ function NewPosting(props) {
       return Promise.reject(error);
     }
   );
+  // End generate token for evvery API post
 
   // Get id post
   const [idPost, setIdPost] = useState("");
@@ -69,7 +70,6 @@ function NewPosting(props) {
   }, []);
 
   const getIdPost = async () => {
-    console.log("props token in idpost: " + token);
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -93,6 +93,7 @@ function NewPosting(props) {
       console.log("failed getting ID");
     }
   };
+  // End get id post
 
   // On form submit
   const [postCode, setPostCode] = useState("");
@@ -106,16 +107,7 @@ function NewPosting(props) {
   const [statusCounter, setStatusCounter] = useState(0);
   const [postShortDesc, setPostShortDesc] = useState("");
 
-  // Jalankan fungsi handleUploadPost setelah state statusCounter selesai di ubah
-  // useEffect(() => {
-  //   if (statusCounter !== 0) {
-  //     handleUploadPost();
-  //   }
-  // }, []);
-  console.log("statuscounter: " + statusCounter);
-
   const handleUploadPost = async (e) => {
-    console.log("token in handleupload: " + token);
     const statusPost = e.target.value;
     const shortDesc = postShortDesc.slice(0, 250);
 

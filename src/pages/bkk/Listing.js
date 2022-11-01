@@ -26,11 +26,11 @@ function Listing() {
   });
 
   const [jobs, setJobs] = useState([]);
-  const [load, setLoad] = useState(1);
+  const [load, setLoad] = useState(2);
   const [flag, setFlag] = useState(true);
 
   useEffect(() => {
-    client.get("?_limit=10", config).then((response) => {
+    client.get("", config).then((response) => {
       setJobs(response.data);
     });
   }, []);
@@ -114,8 +114,12 @@ function Listing() {
                     <div className="card-bkk">
                       <Col xs={2}>
                         <img
-                          src={require("../../bkk-images/" + job.company_logo)}
+                          src={`http://localhost:5000/${job.company_logo.replace(
+                            "\\",
+                            "/"
+                          )}`}
                           className="cbkk-img"
+                          alt="company-logo"
                         />
                       </Col>
                       <Col xs={10} className="d-inline-block">

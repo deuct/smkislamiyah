@@ -106,7 +106,10 @@ function Dashboard() {
               path="edit-article"
               element={<EditPosting title="Article" />}
             />
-            <Route path="new-bkk" element={<NewBkk />} />
+            <Route
+              path="new-bkk"
+              element={<NewBkk token={token} name={name} expired={expired} />}
+            />
             <Route path="manage-bkk" element={<ManageBKK />} />
             <Route path="new-teacher" element={<NewTeacher />} />
             <Route path="manage-teacher" element={<ManageTeacher />} />
