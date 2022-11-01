@@ -22,22 +22,6 @@ function Programs() {
   return (
     <>
       <NavbarTop />
-<<<<<<< HEAD
-      <Row id="programs-intro" className="text-center">
-          <Col xs={12}>
-            <h1>Program Keahlian di SMK Islamiyah Ciputat</h1>
-            <p>
-              Cerita pengalaman, berita seru, pengumuman terbaru, artikel
-              menarik dan berita terbaru akademik. Baca semua berita dan
-              informasi tentang SMK Islamiyah disini.
-            </p>
-          </Col>
-        </Row>
-        <Row id="breadcrumb">
-          <p>Home &gt; Programs</p>
-        </Row>
-
-=======
       <input
         type="text"
         id="navbar-id"
@@ -46,7 +30,6 @@ function Programs() {
         readOnly
       />
       <div id="navbar-bgz" style={{ height: "13vh" }}></div>
->>>>>>> 9f756393dece1086c737981a491c3bb89b2b6a19
       <Container>
         <Row id="title-programs" className="justify-content-center">
           <Col xs={10} md={10} sm={12} className="text-center">
@@ -63,7 +46,7 @@ function Programs() {
           <Col xs={12}>
             <p>
               Home &gt; Organization &gt;
-              <span style={{ color: "yellow" }}>programs</span>
+              <span style={{ color: "yellow" }}> Programs</span>
             </p>
           </Col>
         </Row>
@@ -77,7 +60,7 @@ function Programs() {
           </div>
         </Row>
         <Row id="list-programs" className="my-5">
-          <Col xs="4">
+          <Col xs="6" md="4">
             <div className="card-programs">
               <img src={programsCard} />
               <div className="card-programs-body">
@@ -92,7 +75,7 @@ function Programs() {
               </div>
             </div>
           </Col>
-          <Col xs="4">
+          <Col xs="6" md="4">
             <div className="card-programs">
               <img src={programsCard} />
               <div className="card-programs-body">
@@ -107,7 +90,7 @@ function Programs() {
               </div>
             </div>
           </Col>
-          <Col xs="4">
+          <Col xs="6" md="4">
             <div className="card-programs">
               <img src={programsCard} />
               <div className="card-programs-body">
@@ -122,7 +105,7 @@ function Programs() {
               </div>
             </div>
           </Col>
-          <Col xs="4">
+          <Col xs="6" md="4">
             <div className="card-programs">
               <img src={programsCard} />
               <div className="card-programs-body">
@@ -137,7 +120,7 @@ function Programs() {
               </div>
             </div>
           </Col>
-          <Col xs="4">
+          <Col xs="6" md="4">
             <div className="card-programs">
               <img src={programsCard} />
               <div className="card-programs-body">
@@ -152,7 +135,7 @@ function Programs() {
               </div>
             </div>
           </Col>
-          <Col xs="4">
+          <Col xs="6" md="4">
             <div className="card-programs">
               <img src={programsCard} />
               <div className="card-programs-body">

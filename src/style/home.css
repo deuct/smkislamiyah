@@ -108,22 +108,16 @@ a#basic-nav-dropdown:hover {
 /* welcome section */
 #welcome {
   margin: auto;
-  /* justify-content: center; */
   text-align: center;
   padding-top: 20px;
   height: 30vh;
-  margin-top: 30px;
-  /* width: 100%; */
-  /* position: relative; */
+  /* margin-top: 30px; */
 }
-
-
 #welcome h1 {
   color: #0e3e65;
   font-size: 28px;
   font-weight: 800;
 }
-
 .divider-welcome {
   height: 5px;
   background: rgb(226, 226, 29);
@@ -132,6 +126,7 @@ a#basic-nav-dropdown:hover {
   margin-top: 25px;
   margin-left: 300px;
 }
+
 @media (max-width:962px) {
   #welcome h1 {
     font-size: 20px;
@@ -150,7 +145,7 @@ a#basic-nav-dropdown:hover {
 /* headmaster greeting */
 #hdm-greeting {
   height: 70vh;
-  margin-top: -15vh;
+  margin-top: -23vh;
   margin-left: -17vh;
 }
 #hdm-greeting h1 {
@@ -170,6 +165,7 @@ a#basic-nav-dropdown:hover {
   margin-top: -15px;
 }
 .hdm-greeting-fill {
+  display: flex !important;
   margin-top: 50px !important;
   position: relative;
 }
@@ -189,7 +185,7 @@ a#basic-nav-dropdown:hover {
     height: 80vh;
     margin-top: -23vh;
     width: auto;
-    margin-left: -80px;
+    margin-left: -5vh;
   }
   #hdm-greeting h1 {
     font-size: 20px;
@@ -247,7 +243,7 @@ a#basic-nav-dropdown:hover {
 @media (max-width:962px) {
   #overview {
     justify-content: center;
-    margin-top: -13vh;
+    margin-top: -16vh;
     margin-left: -3vh;
   }
   
@@ -255,12 +251,12 @@ a#basic-nav-dropdown:hover {
     font-size: 20px;
   }
   #overview .OV {
+    margin-top: 20px;
     font-size: 15px;
   }
   #overview button {
     margin-top: 0vh;
     font-size: 12px;
-    border-radius: 15px;
   }
   
   
@@ -352,15 +348,26 @@ a#basic-nav-dropdown:hover {
 }
 
 @media (max-width:962px) {
+  #activities {
+    margin-top: -20px;
+  }
+  
   #activities h1 {
     text-align: left;
-    font-size: 25px;
-    margin-left: 0px;
-  }
-  #activities h3 {
-    margin-top: -30px;
     font-size: 20px;
-    margin-left: 0px;
+    margin-left: -10px;
+  }
+  #activities .yellow-line {
+    margin-left: 3px;
+    margin-top: 38px;
+    width: 80px;
+    height: 3px;
+  }
+  
+  #activities h3 {
+    margin-top: 30px;
+    font-size: 15px;
+    margin-left: -10px;
   }
   
 }
@@ -390,49 +397,27 @@ a#basic-nav-dropdown:hover {
   width: 150px;
   height: 3px;
 }
-
-.post-card {
-  display: inline-block !important;
-  text-align: left;
-  border-radius: 12px !important;
-  margin: 10px;
-  font-size: 0.9rem;
-}
-
-.post-top {
-  width: 400px !important;
-  height: 400px !important;
-  margin-top: 2vh;
-}
-
-.post-top img {
-  height: 250px;
-  position: relative;
-  overflow: hidden;
-}
-
-.card-title {
-  text-align: center;
-  /* font-weight: 900; */
-}
-.btn-post {
-  padding: 10px 15px;
-  background-color: transparent !important;
-  border-radius: 2px !important;
-  border: 1px solid rgb(33, 113, 189) !important;
-  color: rgb(33, 113, 189) !important;
-  margin-top: 20px;
-}
-
-.btn-post:hover {
-  background: rgb(12, 53, 165) !important;
-  color: white !important;
-}
-
-.card-img-top {
-  border-radius: 0 !important;
-  height: 200px;
-  width: 100%;
+@media (max-width:962px) {
+  #announcement {
+    margin-top: -3vh;
+  }
+  
+  #announcement h1 {
+    margin-left: -10px;
+    font-size: 22px;
+  }
+  #announcement .yellow-line {
+    margin-top: 11px;
+    width: 110px;
+    height: 3px;
+  }
+  #announcement h3 {
+    margin-top: 0px;
+    margin-left: -10px;
+    font-size: 18px;
+    color: #74a4cb;
+  }
+  
 }
 
 /* testimonial */
@@ -457,35 +442,6 @@ a#basic-nav-dropdown:hover {
   font-weight: 700;
   font-size: 28px;
 }
-/* #tpa-card {
-  margin-top: 3vh;
-}
-#tpa-card .tpa-card-detail {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
-  border-radius: 10px !important;
-  margin: 10px;
-  padding: 7px 10px;
-}
-.testi-alumni-img {
-  border-radius: 10px !important;
-  margin-left: 15vh;
-}
-
-.tpa-card-detail h3 {
-  width: 100%;
-  font-weight: 700;
-  line-height: 1.5;
-  font-size: 1rem;
-  text-align: left;
-  margin: 5px;
-}
-.tpa-foot-card {
-  margin-top: 4px;
-  font-size: 1rem;
-  align-items: flex-end;
-
-} */
-
 #testimonials .card-testimonials {
   display: flex;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
@@ -497,8 +453,6 @@ a#basic-nav-dropdown:hover {
   padding: 10px 20px;
 }
 .testi-alumni-img {
-  /* height: 120px !important;
-  width: 140px !important; */
   border-radius: 50%;
   margin-left: 13px;
   margin-top: 13px;
@@ -519,7 +473,6 @@ a#basic-nav-dropdown:hover {
   border-radius: 50%;
   margin: 5px;
   justify-content: center;
-  /* margin-left: 20px; */
 }
 
 .circle-slider-outline {
@@ -535,7 +488,35 @@ a#basic-nav-dropdown:hover {
   height: 2px;
   background: rgb(236, 236, 2);
 }
-
+@media (max-width:962px) {
+  #testimonials {
+    margin-top: -2vh;
+  }
+  #testimonials .testi {
+    margin-top: 0px;
+    margin-left: -10px;
+    font-size: 15px;
+  }
+  #testimonials .yellow-line {
+    margin-left: 4px;
+    margin-top: 8px;
+    width: 55px;
+    height: 3px;
+  }
+  #testimonials .prof {
+    margin-left: -10px;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  #testimonials .card-testimonials {
+    display: relative;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+}
 /* FAQ */
 #faq {
   margin-left: 40px;
@@ -566,6 +547,33 @@ a#basic-nav-dropdown:hover {
   text-align: center;
   margin-left: 240px;
   max-width: 60%;
+}
+@media (max-width:962px) {
+  #faq h3 {
+    margin-top: 0px;
+    font-size: 17px;
+    margin-left: -18px;
+  }
+  #faq .yellow-line {
+    margin-left: 5px;
+    margin-top: 10px;
+    width: 260px;
+    height: 3px;
+  }
+  #faq h1 {
+    margin-left: -18px;
+    font-size: 21px;
+  }
+  #faq .faq-btn {
+    max-width: 100%;
+    margin-left: -10px;
+    margin-top: 20px;
+  }
+  #faq .faq-capt {
+    text-align: center;
+    margin-left: -10px;
+    max-width: 100%;
+  }
 }
 /* contact footer */
 #contact {
@@ -609,7 +617,41 @@ a#basic-nav-dropdown:hover {
   margin: 30px;
   color: #0e3e65;
 }
-
+@media (max-width:962px) {
+  #contact {
+    margin-top: 45px;
+  }
+  #contact h3 {
+    margin-top: 0px;
+    font-size: 17px;
+    margin-left: -18px;
+  }
+  #contact h1 {
+    margin-left: -18px;
+    font-size: 21px;
+  }
+  #contact .yellow-line {
+    margin-left: 5px;
+    margin-top: 9px;
+    width: 85px;
+    height: 3px;
+  }
+  #contact .simbol {
+    height: 40px;
+    margin-left: 64px;
+    width: 30px;
+  }
+  /* #contact .ctc-menu {
+    margin-bottom: -10px;
+  } */
+  #contact .ctc-menu p {
+    text-align: center;
+    margin-left: -60px;
+    width: 100%;
+  }
+  
+}
+/* map */
 .mapouter {
   position: relative;
   text-align: right;
@@ -626,7 +668,6 @@ a#basic-nav-dropdown:hover {
 
 .contact-addr {
   text-align: center;
-  /* width: 700px; */
   margin: auto;
 }
 

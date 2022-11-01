@@ -105,7 +105,8 @@ function Home() {
     </div>,
   ];
   const responsive = {
-    0: { items: 3 },
+    0: { items: 1 },
+    962: { items: 3}
   };
   return (
     <>
@@ -169,8 +170,8 @@ function Home() {
         id="hdm-greeting"
         className="align-items-center justify-content-center"
       >
-        <Col xs={8}>
-          <div className="hdm-greeting-fill d-flex">
+        <Col md ={8} xs={10}>
+          <div className="hdm-greeting-fill">
             <div id="hdm-image">
               <img src={hdm} />
               <h2 className="d-inline-block">Dian Rostikawati, S.E, M.M</h2>
@@ -190,10 +191,10 @@ function Home() {
         </Col>
       </Row>
       <Row id="overview">
-        <Col xs={4}>
+        <Col md={4} xs={10}>
           <img src={overviewYt} />
         </Col>
-        <Col xs={6}>
+        <Col md={6} xs={10}>
           <h1 className="OV">OVERVIEW</h1>
           <h1 className="WU">WHY US</h1>
           <div className="divider-overview"></div>
@@ -217,7 +218,7 @@ function Home() {
           <h1>OUR ACTIVITIES</h1>
         </Row>
         <div className="divider-overview1"></div>
-        <Col xs={12} className="text-center">
+        <Col md={12} xs={12} className="text-center">
           <AliceCarousel
             mouseTracking
             items={postActivities}
@@ -255,41 +256,6 @@ function Home() {
         <Row>
           <h1 className="prof">PROFILE ALUMNI</h1>
         </Row>
-        {/* <Row className="justify-content-center d-flex" id="tpa-card">
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-        </Row> */}
         <Row>
           <Col xs={12} style={{ display: "flex", flexWrap: "nowrap" }}>
             <div className="card-testimonials">
@@ -388,21 +354,21 @@ function Home() {
           <h1>VISIT OUR SCHOOL</h1>
         </Row>
         <Row>
-          <Col xs={3} className="ctc-menu">
+          <Col md={3} xs={10} className="ctc-menu">
             <IoLocationOutline size={25} className="simbol" />
             <p>
               (map)Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Officia recusandae tempora aliquid reiciendis sunt nam.
             </p>
           </Col>
-          <Col xs={3} className="ctc-menu">
+          <Col md={3} xs={10} className="ctc-menu">
             <IoCallOutline size={25} className="simbol" />
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
               recusandae tempora aliquid reiciendis sunt nam.
             </p>
           </Col>
-          <Col xs={3} className="ctc-menu">
+          <Col md={3} xs={10} className="ctc-menu">
             <IoMailOutline size={25} className="simbol" />
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia

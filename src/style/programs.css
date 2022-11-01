@@ -3,42 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* 
-#header-img {
-  height: 100vh;
-  background: maroon;
-  position: relative;
-}
 
-#header-img img {
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
-.headerimg-black {
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  background-color: black;
-  opacity: 0.5;
-  z-index: 5;
-}
-
-.headerfill {
-  z-index: 6;
-  font-size: 2.6rem;
-  color: white;
-  position: absolute;
-  font-weight: 700;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#divider-header {
-  height: 10vh;
-} */
 /* header */
 #programs-intro {
   margin-top: 10vh;
@@ -75,7 +40,12 @@
   margin-left: 8vh;
   margin-bottom: 3px;
 }
-
+@media (max-width:962px) {
+  .breadcrumb p {
+    margin-left: 2vh;
+  }
+  
+}
 .cb-program {
   width: 100%;
   background: rgb(235, 235, 235);
@@ -114,7 +84,6 @@
   border-radius: 20px;
   border: 1px solid #1768a8;
   color: #1768a8;
-  /* margin-top: 5px; */
   padding: 5px;
   margin: 10px 5px;
   display: block;
@@ -131,16 +100,54 @@
   margin: 5px;
   font-size: 0.95rem;
 }
-
+@media (max-width:962px) {
+  .card-programs h1 {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .card-programs p {
+    font-size: 15px;
+  }
+  .btn-details-program:hover {
+    background: #1768a8 !important;
+    color: white;
+  }
+  
+}
 #title-programs {
   text-align: center;
   border-radius: 12px;
   border: 1px solid rgb(214, 214, 214);
   margin: 20px;
 }
-
+@media (max-width:962px) {
+  #title-programs {
+    margin: 10px;
+  }
+  #title-programs h1 {
+    font-size: 20px;
+  }
+  #title-programs p {
+    text-align: center;
+    font-size: 15px;
+    margin-left: 10px !important;
+    width: 100% !important;
+  }
+}
+#programs-intro {
+  margin-top: -5px;
+}
 #programs-intro h1 {
   color: rgb(6, 32, 78);
   font-weight: 600;
   font-size: 1.6rem;
+}
+@media (max-width:962px) {
+  #programs-intro h1 {
+    font-size: 20px;
+  }
+  #programs-intro p {
+    font-size: 16px;
+  }
+
 }
