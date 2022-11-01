@@ -16,20 +16,12 @@ import programsCard from "../../images/programs-card.jpg";
 
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
-// import HeaderImg from "../components/HeaderImg";
+import HeaderImg from "../components/HeaderImg";
 
 function Programs() {
   return (
     <>
       <NavbarTop />
-      <input
-        type="text"
-        id="navbar-id"
-        value="programs"
-        style={{ display: "none" }}
-        readOnly
-      />
-      <div id="navbar-bgz" style={{ height: "13vh" }}></div>
       <Row id="programs-intro" className="text-center">
         <Col xs={12}>
           <h1>Program Keahlian di SMK Islamiyah Ciputat</h1>
@@ -43,7 +35,15 @@ function Programs() {
       <Row id="breadcrumb">
         <p>Home &gt; Programs</p>
       </Row>
-
+      =======
+      <input
+        type="text"
+        id="navbar-id"
+        value="programs"
+        style={{ display: "none" }}
+        readOnly
+      />
+      <div id="navbar-bgz" style={{ height: "13vh" }}></div>
       <Container>
         <Row id="title-programs" className="justify-content-center">
           <Col xs={10} md={10} sm={12} className="text-center">

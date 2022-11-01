@@ -112,15 +112,6 @@ a#basic-nav-dropdown:hover {
   /* position: relative; */
 }
 
-#welcome-fill {
-  /* position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%); */
-}
-
 #welcome h1 {
   color: #0e3e65;
   font-size: 28px;
@@ -342,9 +333,13 @@ a#basic-nav-dropdown:hover {
 .kategori .an {
   margin-right: 10px;
 }
-#activities .time-card {
-  margin-top: 5vh;
-  margin-left: -23vh;
+.time-card {
+  margin-top: 5.5vh;
+  margin-left: -15vh;
+}
+.time-card p {
+  width: 100% !important;
+  font-size: 18px;
 }
 .time-card {
   margin-top: 5.5vh;

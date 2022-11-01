@@ -1,152 +1,150 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* breadcrumb */
 #breadcrumb-pd {
-    background: #1768a8;
-    border-radius: 8px;
-    color: whitesmoke;
-    margin: 10px;
-    padding: 2px;  
+  background: #1768a8;
+  border-radius: 8px;
+  color: whitesmoke;
+  margin: 10px;
+  padding: 2px;
 }
 #breadcrumb-pd p {
-    margin-left: 8vh;
-    margin-bottom: 3px;
+  margin-left: 10px;
+  margin-bottom: 3px;
 }
 /* post-detail-body */
 #post-detail-body {
-    padding-right: 17vh;
-    padding-left: 2vh;
+  padding-right: 17vh;
+  padding-left: 2vh;
 }
 /* big-img */
-.pd-img img{
-    /* width: 772px;
+.pd-img img {
+  /* width: 772px;
     height: 407px; */
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: auto;
-    margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #title-pd-cat {
-    margin-top: 15px;
-    font-weight: bolder;
-    font-size: 24px;
+  margin-top: 15px;
+  font-weight: bolder;
+  font-size: 24px;
 }
 #pd-category {
-    margin-top: 2vh;
-    margin-left: 2vh;
-    /* display: flex; */
+  margin-top: 2vh;
+  margin-left: 2vh;
+  /* display: flex; */
 }
 #pd-category .cat-btn {
-    width: fit-content;
-    margin-right: 2vh;
+  width: fit-content;
+  margin-right: 2vh;
 }
 #pd-category .pd-cat-time {
-    font-size: 15px;
+  font-size: 15px;
 }
 #pd-isi {
-    text-align: justify;
-    line-height: 1.6;
-    padding: 10px;
-    padding-right: 20px;
-    /* box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+  text-align: justify;
+  line-height: 1.6;
+  padding: 10px;
+  padding-right: 20px;
+  /* box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
     border-radius: 10px; */
 }
 #ra-card-title {
-    margin-top: 3vh;
+  margin-top: 3vh;
 }
 #ra-card-title h3 {
-    font-size: 25px;
-    color: #74a4cb;  
+  font-size: 25px;
+  color: #74a4cb;
 }
 #ra-card-title h1 {
-    font-weight: 700;
-    font-size: 30px;
-    color: #0e3e65;
+  font-weight: 700;
+  font-size: 30px;
+  color: #0e3e65;
 }
 #ra-card-title .yellow-line {
-    margin-left: 8px;
-    margin-top: 17px;
-    width: 120px;
-    height: 3px;
+  margin-left: 8px;
+  margin-top: 17px;
+  width: 120px;
+  height: 3px;
 }
 #ra-card {
-    margin-top: 3vh;
-    /* margin-left: 5px; */
+  margin-top: 3vh;
+  /* margin-left: 5px; */
 }
 #ra-card .ra-card-detail {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    margin-right: 15px;
-    width: 260px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-right: 15px;
+  width: 260px;
 }
 .ra-card-detail h3 {
-    font-weight: 700;
-    font-size: 0.8rem;
-    margin: 5px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin: 5px;
 }
 .ra-card-detail .ra-btn {
-    width: fit-content;
-    height: fit-content;
-    margin-right: 5px;
-    padding: 2px;
-    font-weight: 600;
-    font-size: 12px;
-    border-radius: 7px;
+  width: fit-content;
+  height: fit-content;
+  margin-right: 5px;
+  font-size: 12px;
+  border-radius: 7px;
 }
 .ra-card-detail .ra-foot-card {
-    display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .ra-card-detail .ra-time {
-    margin-top: 4px;
-    font-size: 10px;
+  margin-top: 4px;
+  font-size: 10px;
 }
 #circle-slider {
-    align-items: center;
-    margin: 20px;
-    margin-left: 70vh;
+  align-items: center;
+  margin: 20px;
+  margin-left: 70vh;
 }
 /* new-post-right */
+/* new-post-right */
 #npr-title h3 {
-    font-weight: 550;
-    font-size: 18px;
-    color: #0E3E65;
-    line-height: 30px;
-    text-align: center;
-    margin-left: 27px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #0e3e65;
+  line-height: 30px;
+  text-align: center;
+  margin-left: 27px;
 }
 #npr-title .yellow-line {
-    height: 3px;
-    margin-bottom: 2vh;
-    margin-left: 27px;
+  height: 3px;
+  margin-bottom: 2vh;
+  margin-left: 27px;
 }
 .npr-card {
-    width: 260px;
-    height: 275px;
-    margin: 2vh;
-    margin-left: 5vh;
-    padding: 7px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 7px;
+  width: 260px;
+  height: 275px;
+  margin: 2vh;
+  margin-left: 5vh;
+  padding: 7px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
 }
 .npr-card .npr-body-btn {
-    display: flex;
-    
+  display: flex;
 }
 .npr-card .npr-btn {
-    width: fit-content;
-    height: fit-content;
-    margin-right: 5px;
-    padding: 2px;
-    font-weight: 600;
-    font-size: 10px;
-    border-radius: 7px;
+  width: fit-content;
+  height: fit-content;
+  margin-right: 5px;
+  padding: 2px;
+  font-weight: 600;
+  font-size: 10px;
+  border-radius: 7px;
 }
 .npr-card img {
-    margin-top: 10vh;
+  margin-top: 10vh;
 }

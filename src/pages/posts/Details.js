@@ -115,6 +115,9 @@ function DetailPost(props) {
                       const urlimg = "http://localhost:5000/" + imgdir;
                       return (
                         <>
+                          {/* <img
+                            src={require(`../../post-images/${imgpos.imgpost_dir}`)}
+                          /> */}
                           <img src={urlimg} />
                         </>
                       );
