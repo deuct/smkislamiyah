@@ -5,7 +5,6 @@ md (for small laptops - screens >= 992px wide)
 lg (for laptops and desktops - screens >= 1200px wide)
 */
 
-
 * {
   margin: 0;
   padding: 0;
@@ -37,11 +36,10 @@ a.nav-link,
 a#basic-nav-dropdown:hover {
   color: #eeeb3c !important;
 }
-@media (max-width:962px) and (min-width: 740px) {
+@media (max-width: 962px) and (min-width: 740px) {
   #navbarfarhan {
-    display: flex !important; 
+    display: flex !important;
   }
-  
 }
 /* header */
 #header {
@@ -56,7 +54,6 @@ a#basic-nav-dropdown:hover {
   top: 0;
   color: rgb(255, 255, 255);
 }
-
 
 .black-cover-header {
   height: 100vh;
@@ -92,16 +89,14 @@ a#basic-nav-dropdown:hover {
   border-radius: 2px;
 }
 
-@media (max-width:962px) {
+@media (max-width: 962px) {
   #header {
     height: 40vh;
     background: white;
-
   }
   #header .slide {
     margin-bottom: 70vh;
     font-size: 1rem;
-
   }
 }
 
@@ -140,7 +135,7 @@ a#basic-nav-dropdown:hover {
   margin-top: 25px;
   margin-left: 300px;
 }
-@media (max-width:962px) {
+@media (max-width: 962px) {
   #welcome h1 {
     font-size: 20px;
   }
@@ -192,7 +187,7 @@ a#basic-nav-dropdown:hover {
 .hdm-greeting-desc h2 {
   font-size: 1.6rem;
 }
-@media (max-width:962px) {
+@media (max-width: 962px) {
   #hdm-greeting {
     height: 80vh;
     margin-top: -23vh;
@@ -215,7 +210,6 @@ a#basic-nav-dropdown:hover {
     margin-top: -5px;
     width: 100%;
   }
-  
 }
 /* yt overview */
 #overview {
@@ -252,13 +246,13 @@ a#basic-nav-dropdown:hover {
   box-shadow: 3px 2px, rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width:962px) {
+@media (max-width: 962px) {
   #overview {
     justify-content: center;
     margin-top: -13vh;
     margin-left: -3vh;
   }
-  
+
   #overview h1 {
     font-size: 20px;
   }
@@ -270,8 +264,6 @@ a#basic-nav-dropdown:hover {
     font-size: 12px;
     border-radius: 15px;
   }
-  
-  
 }
 /* /////// */
 #facility {
@@ -350,11 +342,10 @@ a#basic-nav-dropdown:hover {
 .kategori .an {
   margin-right: 10px;
 }
-<<<<<<< HEAD
 #activities .time-card {
   margin-top: 5vh;
   margin-left: -23vh;
-=======
+}
 .time-card {
   margin-top: 5.5vh;
   margin-left: -15vh;
@@ -362,10 +353,9 @@ a#basic-nav-dropdown:hover {
 .time-card p {
   width: 100% !important;
   font-size: 18px;
->>>>>>> 0e07282 (31102022)
 }
 
-@media (max-width:962px) {
+@media (max-width: 962px) {
   #activities h1 {
     text-align: left;
     font-size: 25px;
@@ -376,7 +366,6 @@ a#basic-nav-dropdown:hover {
     font-size: 20px;
     margin-left: 0px;
   }
-  
 }
 /* announcement */
 #announcement {
