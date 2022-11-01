@@ -285,7 +285,11 @@ function Home() {
               </div>
             </div>
           </Col>
-          <Col xs={12} className="my-3 justify-content-center" style={{ display: "flex", flexWrap: "nowrap" }}>
+          <Col
+            xs={12}
+            className="my-3 justify-content-center"
+            style={{ display: "flex", flexWrap: "nowrap" }}
+          >
             <div className="circle-slider-outline"></div>
             <div className="circle-slider-fill"></div>
             <div className="circle-slider-outline"></div>
