@@ -22,20 +22,6 @@ function Programs() {
   return (
     <>
       <NavbarTop />
-      <Row id="programs-intro" className="text-center">
-        <Col xs={12}>
-          <h1>Program Keahlian di SMK Islamiyah Ciputat</h1>
-          <p>
-            Cerita pengalaman, berita seru, pengumuman terbaru, artikel menarik
-            dan berita terbaru akademik. Baca semua berita dan informasi tentang
-            SMK Islamiyah disini.
-          </p>
-        </Col>
-      </Row>
-      <Row id="breadcrumb">
-        <p>Home &gt; Programs</p>
-      </Row>
-      =======
       <input
         type="text"
         id="navbar-id"

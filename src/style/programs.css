@@ -112,7 +112,6 @@
     background: #1768a8 !important;
     color: white;
   }
-  
 }
 #title-programs {
   text-align: center;
@@ -129,13 +128,14 @@
   }
   #title-programs p {
     text-align: center;
+    line-height: 1.5;
     font-size: 15px;
     margin-left: 10px !important;
     width: 100% !important;
   }
 }
 #programs-intro {
-  margin-top: -5px;
+  margin-top: -2px;
 }
 #programs-intro h1 {
   color: rgb(6, 32, 78);

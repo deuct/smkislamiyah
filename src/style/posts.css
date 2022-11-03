@@ -14,7 +14,6 @@
 }
 
 .text-center h1 {
-  /* text-align: center; */
   font-size: 1.4rem;
   font-weight: 750;
   margin-top: 10px;
@@ -29,7 +28,15 @@
   text-align: center;
   padding: 10px;
 }
-
+@media (max-width: 962px) {
+  #post-intro p {
+    margin-left: 0px !important;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+}
+/* card */
 .card-program {
   padding: 0 !important;
   margin: 10px;
@@ -56,7 +63,6 @@
   margin-left: 2vh;
   margin-bottom: 3px;
 }
-
 .post-ctg-list {
   display: flex;
   flex-wrap: nowrap;
@@ -68,12 +74,14 @@
   display: flex;
   flex-wrap: nowrap;
   margin-left: 20px;
-  /* justify-content: space-between;
-  width: 100%; */
 }
-/* .post-ctg-list .btn {
-  border-radius: 50%;
-} */
+@media (max-width: 962px) {
+  .post-ctg-list {
+    width: 100% !important;
+    margin-right: 10px !important;
+  }
+  
+}
 
 #navbar-bgz {
   height: 13vh;

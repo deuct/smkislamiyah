@@ -107,7 +107,7 @@ export default function Listing() {
         </Row>
         <Row id="post-ctg-list">
           <Col
-            xs={4}
+            md={4} xs={12}
             style={{
               display: "flex",
               flexWrap: "nowrap",

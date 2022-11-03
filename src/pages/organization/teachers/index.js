@@ -22,7 +22,7 @@ function Teachers() {
       <div id="navbar-bgz" style={{ height: "13vh" }}></div>
       <Container style={{ marginTop: "5vh" }}>
         <Row id="title-teachers" className="justify-content-center">
-          <Col xs={8} className="text-center">
+          <Col md={8} xs={12} className="text-center">
             <h1>Teacher's of</h1>
             <h1>SMK Islamiyah Ciputat</h1>
             <p>
@@ -41,7 +41,7 @@ function Teachers() {
           </Col>
         </Row>
         <Row id="search-bar">
-          <Col xs={3}>
+          <Col md={3} xs={3}>
             <Form.Select>
               <option>Filter by Status</option>
               <option>Honorer</option>
@@ -49,7 +49,7 @@ function Teachers() {
               <option>Pengganti</option>
             </Form.Select>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={3}>
             <Form.Select>
               <option>Filter by Matpel</option>
               <option>Bahasa Indonesia</option>
@@ -58,7 +58,7 @@ function Teachers() {
               <option>IPS</option>
             </Form.Select>
           </Col>
-          <Col xs={5}>
+          <Col md={5} xs={4}>
             <InputGroup>
               <Form.Control
                 placeholder="Search Teachers"
@@ -66,14 +66,14 @@ function Teachers() {
               />
             </InputGroup>
           </Col>
-          <Col xs={1}>
+          <Col md={1} xs={2}>
             <Button>
               <IoSearch />
             </Button>
           </Col>
         </Row>
         <Row id="teacher-list" class="text-center">
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -88,7 +88,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -103,7 +103,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -118,7 +118,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -133,7 +133,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -148,7 +148,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -163,7 +163,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -178,7 +178,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -193,7 +193,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -208,7 +208,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -223,7 +223,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -238,7 +238,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -253,7 +253,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -268,7 +268,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -283,7 +283,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -298,7 +298,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -313,7 +313,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -328,7 +328,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -343,7 +343,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -358,7 +358,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -373,7 +373,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -388,7 +388,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -403,7 +403,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">
@@ -418,7 +418,7 @@ function Teachers() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-teachers">
               <div className="body-ct">
                 <div className="img-ct">

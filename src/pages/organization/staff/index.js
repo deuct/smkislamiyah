@@ -22,8 +22,8 @@ function Staff() {
       <div id="navbar-bgz" style={{ height: "13vh" }}></div>
       <Container style={{ marginTop: "5vh" }}>
         <Row id="title-Staffs" className="justify-content-center">
-          <Col xs={8} className="text-center">
-            <h1>Staff of</h1>
+          <Col md={8} xs={12} className="text-center">
+            <h1 className="h11">Staff of</h1>
             <h1>SMK Islamiyah Ciputat</h1>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis,
@@ -36,7 +36,7 @@ function Staff() {
           <Col xs={12}>
             <p>
               Home &gt; Organization &gt;
-              <span style={{ color: "yellow" }}>Staff</span>
+              <span style={{ color: "yellow" }}> Staff</span>
             </p>
           </Col>
         </Row>
@@ -50,7 +50,7 @@ function Staff() {
               <option>Kebersihan</option>
             </Form.Select>
           </Col>
-          <Col xs={5}>
+          <Col md={5} xs={4}>
             <InputGroup>
               <Form.Control
                 placeholder="Search Staffs"
@@ -65,7 +65,7 @@ function Staff() {
           </Col>
         </Row>
         <Row id="Staff-list" class="text-center">
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -80,7 +80,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -95,7 +95,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -110,7 +110,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -125,7 +125,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -140,7 +140,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -155,7 +155,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -170,7 +170,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -185,7 +185,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -200,7 +200,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -215,7 +215,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -230,7 +230,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -245,7 +245,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -260,7 +260,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -275,7 +275,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -290,7 +290,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -305,7 +305,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -320,7 +320,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -335,7 +335,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -350,7 +350,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -365,7 +365,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -380,7 +380,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -395,7 +395,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">
@@ -410,7 +410,7 @@ function Staff() {
               </div>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={6}>
             <div className="card-Staffs">
               <div className="body-ct">
                 <div className="img-ct">

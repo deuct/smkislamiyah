@@ -6,7 +6,10 @@
   border: 1px solid rgb(207, 207, 207);
   box-shadow: 0px 2px 5px 0 rgb(165, 165, 165);
 }
-
+#search-bar form select {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
 .card-teachers:hover {
   background: rgb(202, 202, 202);
 }
@@ -49,11 +52,32 @@
 .desc-ct p {
   color: rgb(15, 15, 15);
 }
+@media (max-width: 962px) {
+  .card-teachers {
+    margin: 5px;
+    margin-left: -2px;
+  }
+  .img-ct img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .desc-ct h3 {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+}
 
 #title-teachers h1 {
   font-weight: bold;
   color: #0e3e65;
   font-size: 1.3rem;
+}
+@media (max-width: 962px) {
+  #title-teachers {
+    margin-top: -5vh;
+  }
 }
 
 #btn-teacher {
@@ -67,4 +91,11 @@
 #btn-teacher:hover {
   background: #1768a8 !important;
   color: white;
+}
+@media (max-width: 962px) {
+  #btn-teacher {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

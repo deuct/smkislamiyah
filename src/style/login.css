@@ -25,20 +25,15 @@
 
 .login-card img {
   width: 120px;
-  /* margin-left: 38%;
-  margin-right: 50%; */
 }
 
 .text-center h1 {
   font-size: 1.6rem;
   font-weight: 600;
   margin-left: 2vh !important;
-  /* margin-left: 27%; */
-  /* margin-right: 50%; */
-
 }
+
 .text-center p {
-  /* width: 80%; */
   margin-left: 10vh !important;
   font-size: 18px;
   line-height: 1.6;
@@ -51,4 +46,22 @@
   background: #1481ba !important;
 }
 
+@media (max-width: 962px) {
+  .login-card {
+    width: 400px;
+  }
+  .login-card img {
+    width: 90px;
+  }
+  .text-center h1 {
+    font-size: 1.2rem !important;
+  }
+  .text-center p {
+    margin-left: 5vh !important;
+    width: 100%;
+    font-size: 15px !important;
+    line-height: 1rem !important;
+  }
+  
+}
 

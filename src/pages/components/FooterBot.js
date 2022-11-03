@@ -11,9 +11,9 @@ import {
 function FooterBot() {
   return (
     <>
-      <Row>
+      <Row id="footer">
         <Row id="footer-top">
-          <Col xs={3}>
+          <Col md={3} xs={12}>
             <div className="box-footer">
               <div className="box-footer-title">
                 <img src={logoSmk} width="80px" />
@@ -58,7 +58,7 @@ function FooterBot() {
               </p>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={12}>
             <div className="menu-footer">
               <h2>ABOUT</h2>
               <ul>
@@ -80,7 +80,7 @@ function FooterBot() {
               </ul>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={12}>
             <div className="menu-footer">
               <h2>ORGANIZATION</h2>
               <ul>
@@ -96,7 +96,7 @@ function FooterBot() {
               </ul>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col md={3} xs={12}>
             <div className="menu-footer">
               <h2>POST</h2>
               <ul>
@@ -110,7 +110,7 @@ function FooterBot() {
             </div>
           </Col>
         </Row>
-        <Row id="footer">
+        <Row id="last-footer">
           <Col xs={12}>
             <p>&copy; 2022 SMK Islamiyah Ciputat</p>
           </Col>
