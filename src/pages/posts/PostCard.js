@@ -1,13 +1,11 @@
+// React Need
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+// Styling
 import { Row, Col, Button } from "react-bootstrap";
 import { IoTimeOutline } from "react-icons/io5";
 import "../../style/posts-detail.css";
-
-
-import lksSample from "../../images/lks-sample.jpg";
 
 function PostCard(props) {
   const client = axios.create({
@@ -27,16 +25,6 @@ function PostCard(props) {
 
   const [imgPostListing, setImgPostListing] = useState([]);
   useEffect(() => {
-    // const response = axios.get(
-    //   `http://localhost:5000/posts/imgpost/${props.idpost}`
-    // );
-    // if (response) {
-    //   setImgPostListing(response.data);
-    //   console.log("resssponsss");
-    //   console.log(response);
-    // } else {
-    //   console.log("errrrrooooorrrr");
-    // }
     getImgpostListing();
   }, []);
 
@@ -53,24 +41,13 @@ function PostCard(props) {
       console.log("success response image");
       if (response) {
         setImgPostListing(response.data);
-        console.log("resssponsss");
-        console.log(response);
       } else {
-        console.log("errrrrooooorrrr");
+        console.log("error");
       }
     } catch (error) {
       console.log(error);
     }
-    // if (response) {
-    //   setImgPostListing(response.data);
-    // } else {
-    //   console.log("error");
-    // }
   };
-
-  console.log("===========response============");
-  console.log(props.idpost);
-  console.log(imgPostListing);
 
   if (!categories) return console.log("failed get category");
 
@@ -118,7 +95,6 @@ function PostCard(props) {
                     "\\",
                     "/"
                   )}`}
-                  // src={lksSample}
                   alt="post-image"
                 />
               </>

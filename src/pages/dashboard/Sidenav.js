@@ -76,7 +76,7 @@ function Sidenav() {
               <div id="article-collapse">
                 <ul className="px-2 pt-3 mb-4">
                   <li>
-                    <Link to={"new-article"}>
+                    <Link to={"new-article/?role=add"}>
                       <IoAddOutline />
                       New
                     </Link>
@@ -104,7 +104,7 @@ function Sidenav() {
               <div id="article-collapse">
                 <ul className="px-2 pt-3 mb-4">
                   <li>
-                    <Link to={"new-bkk"}>
+                    <Link to={"new-bkk/?role=add"}>
                       <IoAddOutline />
                       New
                     </Link>
@@ -132,7 +132,7 @@ function Sidenav() {
               <div id="article-collapse">
                 <ul className="px-2 pt-3 mb-4">
                   <li>
-                    <Link to={"new-teacher"}>
+                    <Link to={"new-teacher/?role=add"}>
                       <IoAddOutline />
                       New
                     </Link>
@@ -160,7 +160,7 @@ function Sidenav() {
               <div id="article-collapse">
                 <ul className="px-2 pt-3 mb-4">
                   <li>
-                    <Link to={"new-staff"}>
+                    <Link to={"new-staff/?role=add"}>
                       <IoAddOutline />
                       New
                     </Link>

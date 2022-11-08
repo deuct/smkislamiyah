@@ -1,22 +1,66 @@
 // React Needed
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 // Styling
 import { Row, Col, Form, Button, FloatingLabel, Modal } from "react-bootstrap";
-import { IoTrashOutline, IoSunnySharp } from "react-icons/io5";
+import {
+  IoTrashOutline,
+  IoSunnySharp,
+  IoArrowUndoOutline,
+} from "react-icons/io5";
 
 function NewPosting(props) {
+  // Const token for every API post
+  const [token, setToken] = useState(props.token);
+  const [expired, setExpired] = useState(props.expired);
+
+  // Const get idjob
+  const [idJob, setIdJob] = useState("");
+
+  // Const modal after post
+  const [paramModals, setParamModals] = useState("");
+  const [isModalClose, setIsModalClose] = useState(false);
+  const [show, setShow] = useState(false);
+
+  // Const default value
+  var initialFormData = {
+    jobCode: "", // ambil last job id dari database
+    companyName: "",
+    jobTitle: "",
+    jobStatus: "",
+    companyCity: "",
+    companyAddress: "",
+    jobRequirement: "",
+    description: "",
+    companyLogo: "",
+  };
+  const [formData, setFormData] = useState(initialFormData);
+
+  // Const image upload set
+  const [image, setImage] = useState({ preview: "", data: "" });
+  const [arrImgUpload, setArrImgUpload] = useState([]); //array for image upload
+  const [showImgUpload, setShowImgUpload] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const [status, setStatus] = useState("");
+
+  // Const Get params from url
+  const [searchParams] = useSearchParams();
+  const [paramsId, setParamsId] = useState(searchParams.get("company_id"));
+  const [roleAction, setRoleAction] = useState(searchParams.get("role"));
+
+  console.log(paramsId);
+  console.log("===========id job==========");
+  console.log(idJob);
+
+  // Const get single job
+  const [singleJob, setSingleJob] = useState([]);
+
   // Navigation
   const navigate = useNavigate();
 
   // Generate token for every API post
-  const [token, setToken] = useState(props.token);
-  const [expired, setExpired] = useState(props.expired);
-
   const axiosJWT = axios.create();
 
   axiosJWT.interceptors.request.use(
@@ -42,10 +86,9 @@ function NewPosting(props) {
       return Promise.reject(error);
     }
   );
-  // End generate token for evvery API post
+  // End generate token for every API post
 
   // Get id job
-  const [idJob, setIdJob] = useState("");
   useEffect(() => {
     getIdJob();
   }, []);
@@ -71,15 +114,13 @@ function NewPosting(props) {
       idSplit += 1;
       setIdJob(idSplit);
     } else {
+      setIdJob(1);
       console.log("failed getting job id");
     }
   };
   // End get id job
 
   // Modal after post
-  const [paramModals, setParamModals] = useState("");
-  const [isModalClose, setIsModalClose] = useState(false);
-  const [show, setShow] = useState(false);
   const handleCloseModal = () => setShow(false);
   const handleShowModal = (paramModal) => {
     setParamModals(paramModal);
@@ -88,33 +129,70 @@ function NewPosting(props) {
   const navigateAfterPost = () => {
     navigate("/dashboard/manage-bkk");
   };
+  // End modal after post
 
-  // Handle insert data
-
-  var initialFormData = {
-    jobCode: "", // ambil last job id dari database
-    companyName: "",
-    jobTitle: "",
-    jobStatus: "",
-    companyCity: "",
-    companyAddress: "",
-    jobRequirement: "",
-    description: "",
-    companyLogo: "",
-  };
-
-  const [formData, setFormData] = useState(initialFormData);
-  const [formSuccess, setFormSuccess] = useState("");
-  const [formErrors, setFormErrors] = useState([]);
-
-  // Set last job database
+  // Get single job
   useEffect(() => {
-    setFormData({
-      ...formData,
-      jobCode: "JOB" + idJob,
-    });
+    initializeJob();
   }, [idJob]);
 
+  const initializeJob = async () => {
+    if (roleAction === "edit") {
+      const response = await axios.get(
+        `http://localhost:5000/jobs/${paramsId}`
+      );
+      console.log("-------------response-----------");
+      console.log(response.data.result);
+      if (response) {
+        setSingleJob(response.data.result);
+      }
+    } else if (roleAction === "add") {
+      console.log("add post");
+      setFormData({
+        ...formData,
+        jobCode: "JOB" + idJob,
+        jobStatus: "Open",
+        companyCity: "Tangerang Selatan",
+      });
+    }
+  };
+
+  useEffect(() => {
+    setValueJob();
+  }, [singleJob]);
+
+  const setValueJob = async () => {
+    console.log("===========test 123xx========");
+    console.log(singleJob);
+    singleJob.map((job) => {
+      console.log("job 123======");
+      console.log(job);
+    });
+    console.log("===========test 123========");
+    if (singleJob.length !== 0) {
+      singleJob.map((job) => {
+        setFormData({
+          jobCode: job.company_id, // ambil last job id dari database
+          companyName: job.company_name,
+          jobTitle: job.job_title,
+          jobStatus: job.job_status,
+          companyCity: job.company_city,
+          companyAddress: job.company_address,
+          jobRequirement: job.job_requirement,
+          description: job.job_desc,
+          companyLogo: job.company_logo,
+        });
+        if (job.company_logo !== "") {
+          setShowImgUpload((showImgUpload) => [
+            `http://localhost:5000/${job.company_logo.replace("\\", "/")}`,
+          ]);
+        }
+      });
+    }
+  };
+  // End single job
+
+  // Handle insert data
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -131,55 +209,79 @@ function NewPosting(props) {
       setIsModalClose(true);
     } else {
       try {
-        const shortDesc = formData.description.slice(0, 250);
-        let formDataUpload = new FormData();
-        formDataUpload.append("companyName", formData.companyName);
-        formDataUpload.append("companyLogo", image.data);
-        formDataUpload.append("jobCode", formData.jobCode);
-        formDataUpload.append("jobTitle", formData.jobTitle);
-        formDataUpload.append("jobStatus", formData.jobStatus);
-        formDataUpload.append("companyCity", formData.companyCity);
-        formDataUpload.append("companyAddress", formData.companyAddress);
-        formDataUpload.append("jobRequirement", formData.jobRequirement);
-        formDataUpload.append("description", formData.description);
-        formDataUpload.append("shortDesc", shortDesc);
-        console.log(formDataUpload);
-        const response = await axiosJWT.post(
-          "http://localhost:5000/bkk/newbkk",
-          formDataUpload,
-          {
-            headers: {
-              "Content-Type": "multipart/formdata",
-              Authorization: `Bearer ${token}`,
-            },
-            withCredentials: true,
+        if (roleAction === "add") {
+          let formDataUpload = new FormData();
+          const shortDesc = formData.description.slice(0, 250);
+          formDataUpload.append("companyName", formData.companyName);
+          formDataUpload.append("companyLogo", image.data);
+          formDataUpload.append("jobCode", formData.jobCode);
+          formDataUpload.append("jobTitle", formData.jobTitle);
+          formDataUpload.append("jobStatus", formData.jobStatus);
+          formDataUpload.append("companyCity", formData.companyCity);
+          formDataUpload.append("companyAddress", formData.companyAddress);
+          formDataUpload.append("jobRequirement", formData.jobRequirement);
+          formDataUpload.append("description", formData.description);
+          formDataUpload.append("shortDesc", shortDesc);
+          const response = await axiosJWT.post(
+            "http://localhost:5000/bkk/newbkk",
+            formDataUpload,
+            {
+              headers: {
+                "Content-Type": "multipart/formdata",
+                Authorization: `Bearer ${token}`,
+              },
+              withCredentials: true,
+            }
+          );
+          if (response) {
+            setFormData(initialFormData);
+            handleShowModal("successpost");
+            setIsModalClose(true);
+          } else {
+            console.log("failed upload data");
           }
-        );
-        if (response) {
-          setFormSuccess("Data Sent Correctly");
-          setFormData(initialFormData);
-          handleShowModal("successpost");
-          setIsModalClose(true);
-        } else {
-          console.log("failed upload data");
+        } else if (roleAction === "edit") {
+          let formDataUpload = new FormData();
+          const shortDesc = formData.description.slice(0, 250);
+          if (image.data === "") {
+            formDataUpload.append("companyLogo", "");
+            formDataUpload.append("isNewImage", "false");
+          } else {
+            formDataUpload.append("companyLogo", image.data);
+            formDataUpload.append("isNewImage", "true");
+          }
+          formDataUpload.append("companyId", formData.jobCode);
+          formDataUpload.append("companyName", formData.companyName);
+          formDataUpload.append("companyAddress", formData.companyAddress);
+          formDataUpload.append("companyCity", formData.companyCity);
+          formDataUpload.append("jobTitle", formData.jobTitle);
+          formDataUpload.append("jobStatus", formData.jobStatus);
+          formDataUpload.append("shortDesc", shortDesc);
+          formDataUpload.append("description", formData.description);
+          formDataUpload.append("jobRequirement", formData.jobRequirement);
+          console.log(formDataUpload);
+          const response = await axiosJWT.post(
+            "http://localhost:5000/jobs/updatejob",
+            formDataUpload,
+            {
+              headers: {
+                "Content-Type": "multipart/formdata",
+                Authorization: `Bearer ${token}`,
+              },
+              withCredentials: true,
+            }
+          );
+          if (response) {
+            setFormData(initialFormData);
+            handleShowModal("successpost");
+            setIsModalClose(true);
+          } else {
+            console.log("failed upload data");
+          }
         }
       } catch (err) {
-        handleErrors(err);
+        console.log(err);
       }
-    }
-  };
-
-  const handleErrors = (err) => {
-    if (err.response.data && err.response.data.errors) {
-      const { errors } = err.response.data;
-      let errorMsg = [];
-      for (let error of errors) {
-        const { msg } = error;
-        errorMsg.push(msg);
-      }
-      setFormErrors(errorMsg);
-    } else {
-      setFormErrors(["error show..."]);
     }
   };
 
@@ -188,17 +290,8 @@ function NewPosting(props) {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setFormErrors([]);
-    setFormSuccess("");
   };
   // End handle insert data
-
-  // Upload Image to state
-  const [image, setImage] = useState({ preview: "", data: "" });
-  const [arrImgUpload, setArrImgUpload] = useState([]); //array for image upload
-  const [showImgUpload, setShowImgUpload] = useState([]);
-  const [checked, setChecked] = useState([]);
-  const [status, setStatus] = useState("");
 
   // Useeffect set checked image
   useEffect(() => {
@@ -207,9 +300,10 @@ function NewPosting(props) {
     }
   }, [showImgUpload]);
 
+  // Handle Img on Submit (state)
   const handleSubmitImg = async (e) => {
     e.preventDefault();
-    if (arrImgUpload.length >= 1) {
+    if (arrImgUpload.length >= 1 || showImgUpload.length >= 1) {
       handleShowModal("imguploadfailed");
       setIsModalClose(true);
     } else {
@@ -217,32 +311,32 @@ function NewPosting(props) {
       formData.append("imgpost_dir", image.data);
       setArrImgUpload((arrImgUpload) => [...arrImgUpload, formData]);
       setShowImgUpload((showImgUpload) => [...showImgUpload, image.preview]);
-      setFormErrors([]);
-      setFormSuccess("");
     }
-  };
-
-  useEffect(() => {
-    if (arrImgUpload.length !== 0) {
-      insertArrimgToFormdata();
-    }
-  }, [arrImgUpload]);
-
-  const insertArrimgToFormdata = async () => {
-    setFormData({
-      ...formData,
-      companyLogo: arrImgUpload[0],
-    });
   };
 
   const handleFileChangeImg = (e) => {
-    const img = {
-      preview: URL.createObjectURL(e.target.files[0]),
-      data: e.target.files[0],
-    };
-    setImage(img);
+    if (roleAction === "edit") {
+      if (showImgUpload.length >= 1) {
+        handleShowModal("imguploadfailed");
+        setIsModalClose(true);
+      } else if (arrImgUpload.length === 0) {
+        const img = {
+          name: e.target.files[0].name,
+          preview: URL.createObjectURL(e.target.files[0]),
+          data: e.target.files[0],
+        };
+        setImage(img);
+      }
+    } else if (roleAction === "add") {
+      const img = {
+        name: e.target.files[0].name,
+        preview: URL.createObjectURL(e.target.files[0]),
+        data: e.target.files[0],
+      };
+      setImage(img);
+    }
   };
-  // End upload image
+  // End state image
 
   // Manipulate image state
   const handleOnChangeImg = (position) => {
@@ -253,24 +347,76 @@ function NewPosting(props) {
   };
   // End Image State
 
-  // Delete Img from state
-  const deleteImg = () => {
-    const imgCheckDel = checked.map((chk, index) => {
-      if (chk === true) {
-        const imgtoDelete = arrImgUpload[index];
-        const imgshowToDelete = showImgUpload[index];
-        setArrImgUpload((prev) =>
-          prev.filter((arrImgUpload) => {
-            return arrImgUpload !== imgtoDelete;
-          })
+  // Delete Img from state and also database if role = edit
+  const deleteImg = async () => {
+    if (roleAction === "edit") {
+      try {
+        const resDelImg = await axiosJWT.post(
+          `http://localhost:5000/job/delete/img?company_logo=${formData.companyLogo}&company_id=${formData.jobCode}`
         );
-        setShowImgUpload((prev) =>
-          prev.filter((showImgUpload) => {
-            return showImgUpload !== imgshowToDelete;
-          })
-        );
+        if (resDelImg) {
+          checked.map((chk, index) => {
+            if (chk === true) {
+              if (arrImgUpload.length > 0) {
+                var imgtoDeleteori = arrImgUpload[index];
+                var imgtoDelete = imgtoDeleteori.get("imgpost_dir");
+                imgtoDelete = imgtoDelete.name;
+              }
+              const imgshowToDelete = showImgUpload[index];
+              const imageToDelete = image;
+
+              Object.entries(imageToDelete).map(([key, delimg]) => {
+                console.log(key, " : ", delimg.toString());
+                if (delimg.toString() === imgtoDelete) {
+                  image.data = "";
+                }
+              });
+              setArrImgUpload((prev) =>
+                prev.filter((arrImgUpload) => {
+                  return arrImgUpload !== imgtoDeleteori;
+                })
+              );
+              setShowImgUpload((prev) =>
+                prev.filter((showImgUpload) => {
+                  return showImgUpload !== imgshowToDelete;
+                })
+              );
+            }
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
-    });
+    } else if (roleAction === "add") {
+      checked.map((chk, index) => {
+        if (chk === true) {
+          if (arrImgUpload.length > 0) {
+            var imgtoDeleteori = arrImgUpload[index];
+            var imgtoDelete = imgtoDeleteori.get("imgpost_dir");
+            imgtoDelete = imgtoDelete.name;
+          }
+          const imgshowToDelete = showImgUpload[index];
+          const imageToDelete = image;
+
+          Object.entries(imageToDelete).map(([key, delimg]) => {
+            console.log(key, " : ", delimg.toString());
+            if (delimg.toString() === imgtoDelete) {
+              image.data = "";
+            }
+          });
+          setArrImgUpload((prev) =>
+            prev.filter((arrImgUpload) => {
+              return arrImgUpload !== imgtoDeleteori;
+            })
+          );
+          setShowImgUpload((prev) =>
+            prev.filter((showImgUpload) => {
+              return showImgUpload !== imgshowToDelete;
+            })
+          );
+        }
+      });
+    }
   };
   // End Delete Img
 
@@ -333,8 +479,26 @@ function NewPosting(props) {
         </Modal.Body>
       </Modal>
       <div>
-        <h1 className="my-3 fs-2 text-center">New Job</h1>
-        <hr />
+        <div id="title-new-item" className="d-flex justify-content-between">
+          <Link to={"/dashboard/manage-bkk"}>
+            <Button variant="secondary">
+              <IoArrowUndoOutline xs={25} /> Back
+            </Button>
+          </Link>
+          {roleAction === "add" ? (
+            <div className="text-center mx-auto w-auto">
+              <h1 className="fs-2" style={{ fontWeight: "600" }}>
+                New Job
+              </h1>
+              <p className="mx-auto" style={{ width: "100%", margin: 0 }}>
+                Create a newjob to make public can see it.
+              </p>
+            </div>
+          ) : (
+            <h1 className="my-3 fs-2 text-center mx-auto">Edit Job</h1>
+          )}
+        </div>
+        <hr style={{ border: "1px solid gray" }} />
         <Row className="mt-5">
           <Col xs={8}>
             <Form
@@ -348,13 +512,23 @@ function NewPosting(props) {
                   </Form.Label>
                 </Col>
                 <Col xs={10}>
-                  <Form.Control
-                    type="text"
-                    className="w-75"
-                    name="jobCode"
-                    value={"JOB" + idJob}
-                    onInput={handleChange}
-                  />
+                  {roleAction === "add" ? (
+                    <Form.Control
+                      type="text"
+                      className="w-75"
+                      name="jobCode"
+                      value={"JOB" + idJob}
+                      onInput={handleChange}
+                    />
+                  ) : (
+                    <Form.Control
+                      type="text"
+                      className="w-75"
+                      name="jobCode"
+                      value={formData.jobCode}
+                      onInput={handleChange}
+                    />
+                  )}
                 </Col>
               </Form.Group>
 
@@ -569,8 +743,25 @@ function NewPosting(props) {
                   </div>
                 </Col>
               </Row>
-              <Col className="text-end">
-                <Button variant="success" type="submit" className="mt-3 mx-2">
+              <hr style={{ border: "1px solid gray" }} />
+              <Col className="d-flex flex-row justify-content-end">
+                <p className="align-self-center fw-bold me-3">
+                  Finish filled the form ? then select the action
+                </p>
+                <Link to="/dashboard/manage-bkk">
+                  <Button
+                    variant="danger"
+                    type="button"
+                    className="mt-3 mx-2 btn-post-item"
+                  >
+                    Cancel
+                  </Button>
+                </Link>
+                <Button
+                  variant="success"
+                  type="submit"
+                  className="mt-3 mx-2 btn-post-item"
+                >
                   Post
                 </Button>
               </Col>

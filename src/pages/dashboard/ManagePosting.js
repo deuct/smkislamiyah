@@ -2,13 +2,61 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 // Component
 import ReactPaginate from "react-paginate";
 // Styling
-import { Row, Col, Form, Button, InputGroup, Table } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Form,
+  Button,
+  InputGroup,
+  Table,
+  Modal,
+} from "react-bootstrap";
 import { IoAdd, IoSearch, IoTrashBin, IoEye } from "react-icons/io5";
 
-function ManagePosting() {
+function ManagePosting(props) {
+  // Modal after delete item
+  const [isModalClose, setIsModalClose] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleCloseModal = () => setShow(false);
+  const handleShowModal = (selectedId, e) => {
+    setShow(true);
+    setSelectedId(selectedId);
+    console.log("running handle show modal");
+  };
+  // End modal after delete item
+
+  // Generate token for every API post
+  const [token, setToken] = useState(props.token);
+  const [expired, setExpired] = useState(props.expired);
+
+  const axiosJWT = axios.create();
+
+  axiosJWT.interceptors.request.use(
+    async (config) => {
+      const currentDate = new Date();
+      const expr = expired * 1000;
+      const curDate = currentDate.getTime();
+      const exprRes = currentDate.getTime() - expr;
+      const response = await axios.get("http://localhost:5000/token", {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+      config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+      setToken(response.data.accessToken);
+      const decoded = jwt_decode(response.data.accessToken);
+      setExpired(decoded.exp);
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+  // End generate token for every API post
+
   // Farhan : Get Post, Paginate, Search
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
@@ -66,16 +114,65 @@ function ManagePosting() {
     }
   };
   // End Filter
-  console.log("========posttype=========");
-  console.log(postTypes);
+
+  // Select id post from table listing
+  const [selectedId, setSelectedId] = useState("");
+  const [selectedImg, setSelectedImg] = useState("");
+  const deletePost = async (key) => {
+    console.log("===========post wil be deleted===========");
+    console.log(key);
+    const response = await axiosJWT.post(
+      `http://localhost:5000/post/postdelete/${key}`
+    );
+    const responseDelImg = await axiosJWT.post(
+      `http://localhost:5000/post/imgdelete/${key}`
+    );
+    if (response && responseDelImg) {
+      console.log("success deleted data");
+      handleCloseModal();
+      window.location.reload();
+    } else {
+      console.log("failed deleted data");
+    }
+  };
+
+  console.log("==========selected id=========");
+  console.log(selectedId);
   return (
     <>
+      {/* Modal After Delete Item */}
+      <Modal
+        backdrop="static"
+        keyboard={false}
+        show={show}
+        onHide={handleCloseModal}
+      >
+        <Modal.Body className="text-center">
+          <h3 style={{ fontSize: "1.2rem", padding: "15px" }}>
+            Are you sure want to delete this item ?
+          </h3>
+          <Button
+            variant="secondary"
+            className="mr-2"
+            onClick={handleCloseModal}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="danger"
+            value={selectedId}
+            onClick={(handleCloseModal, (e) => deletePost(e.target.value))}
+          >
+            Yes
+          </Button>
+        </Modal.Body>
+      </Modal>
       <h1 className="fs-2">Manage Post</h1>
       <Row className="my-5 mt-3 mx-2">
         <Col>
           <Button variant="success">
             <Link
-              to={"/dashboard/new-article"}
+              to={"/dashboard/new-article/?role=add"}
               style={{ textDecoration: "none", color: "white" }}
             >
               <IoAdd />
@@ -90,7 +187,7 @@ function ManagePosting() {
             onChange={handleChange}
             onClick={handleFilter}
           >
-            <option disabled={true} value="" selected>
+            <option disabled={true} defaultValue>
               Filter by Category
             </option>
             <option value="">All</option>
@@ -131,10 +228,10 @@ function ManagePosting() {
               </tr>
             </thead>
             <tbody>
-              {posts.map((post) => {
+              {posts.map((post, idx) => {
                 return (
                   <>
-                    <tr class={{ fontSize: "1.1rem" }}>
+                    <tr style={{ fontSize: "1.1rem" }} key={idx}>
                       <td>{post.post_id}</td>
                       <td>{post.post_name}</td>
                       <td>{post.post_shortdesc}</td>
@@ -151,40 +248,27 @@ function ManagePosting() {
                       <td>{post.createdAt}</td>
                       <td>
                         <div className="d-flex">
-                          <Button variant="danger" className="me-2">
+                          <Button
+                            variant="danger"
+                            className="me-2"
+                            value={post.post_id}
+                            onClick={(e) => handleShowModal(post.post_id, e)}
+                          >
                             <IoTrashBin />
                           </Button>
-                          <Button variant="success">
-                            <IoEye />
-                          </Button>
+                          <Link
+                            to={`/dashboard/edit-article/?post_id=${post.post_id}&role=edit`}
+                          >
+                            <Button variant="success">
+                              <IoEye />
+                            </Button>
+                          </Link>
                         </div>
                       </td>
                     </tr>
                   </>
                 );
               })}
-              {/* <tr>
-                <td>ann000001</td>
-                <td>Title Posting Satu</td>
-                <td>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Repudiandae laboriosam expedita, sapiente perspiciatis ea
-                  ducimus?
-                </td>
-                <td style={{ color: "#B99E00" }}>Draft</td>
-                <td>Announcement</td>
-                <td>26 oktober 2022</td>
-                <td>
-                  <div className="d-flex">
-                    <Button variant="danger" className="me-2">
-                      <IoTrashBin />
-                    </Button>
-                    <Button variant="success">
-                      <IoEye />
-                    </Button>
-                  </div>
-                </td>
-              </tr> */}
             </tbody>
           </Table>
           <p>

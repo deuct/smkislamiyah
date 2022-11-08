@@ -255,41 +255,6 @@ function Home() {
         <Row>
           <h1 className="prof">PROFILE ALUMNI</h1>
         </Row>
-        {/* <Row className="justify-content-center d-flex" id="tpa-card">
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-          <Col xs={3} className="tpa-card-detail">
-            <img src={sampleAlumni} className="testi-alumni-img" />
-            <h3>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-              perferendis!               
-            </h3>
-            <span className="tpa-foot-card">
-              <IoTimeOutline size={20} />
-              14 Sept, 2022
-            </span>
-          </Col>
-        </Row> */}
         <Row>
           <Col xs={12} style={{ display: "flex", flexWrap: "nowrap" }}>
             <div className="card-testimonials">
@@ -332,7 +297,7 @@ function Home() {
         {/* <Row className="my-3 justify-content-center">
         </Row> */}
       </Row>
-      <Row id="faq">
+      {/* <Row id="faq">
         <Row>
           <Col style={{ display: "flex", flexWrap: "nowrap" }}>
             <h3>F.A.Q</h3>
@@ -380,7 +345,7 @@ function Home() {
             </div>
           </Collapse>
         </Row>
-      </Row>
+      </Row> */}
       <Row id="contact">
         <Row>
           <Col style={{ display: "flex", flexWrap: "nowrap" }}>

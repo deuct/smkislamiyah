@@ -91,30 +91,76 @@ function Dashboard() {
               path="new-article"
               element={
                 <NewPosting
-                  title="Article"
                   token={token}
                   name={name}
                   expired={expired}
+                  role="new"
                 />
               }
             />
             <Route
               path="manage-article"
-              element={<ManagePosting title="Article" />}
+              element={
+                <ManagePosting token={token} name={name} expired={expired} />
+              }
             />
             <Route
               path="edit-article"
-              element={<EditPosting title="Article" />}
+              element={
+                <NewPosting
+                  token={token}
+                  name={name}
+                  expired={expired}
+                  role="edit"
+                />
+              }
             />
             <Route
               path="new-bkk"
               element={<NewBkk token={token} name={name} expired={expired} />}
             />
-            <Route path="manage-bkk" element={<ManageBKK />} />
-            <Route path="new-teacher" element={<NewTeacher />} />
-            <Route path="manage-teacher" element={<ManageTeacher />} />
-            <Route path="new-staff" element={<NewStaff />} />
-            <Route path="manage-staff" element={<ManageStaff />} />
+            <Route
+              path="edit-bkk"
+              element={<NewBkk token={token} name={name} expired={expired} />}
+            />
+            <Route
+              path="manage-bkk"
+              element={
+                <ManageBKK token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="new-teacher"
+              element={
+                <NewTeacher token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="edit-teacher"
+              element={
+                <NewTeacher token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="manage-teacher"
+              element={
+                <ManageTeacher token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="new-staff/"
+              element={<NewStaff token={token} name={name} expired={expired} />}
+            />
+            <Route
+              path="edit-staff/"
+              element={<NewStaff token={token} name={name} expired={expired} />}
+            />
+            <Route
+              path="manage-staff"
+              element={
+                <ManageStaff token={token} name={name} expired={expired} />
+              }
+            />
           </Routes>
         </Col>
       </Row>

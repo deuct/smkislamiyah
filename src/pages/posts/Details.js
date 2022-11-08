@@ -16,7 +16,8 @@ function DetailPost(props) {
   const location = useLocation();
   console.log(props, " props");
   console.log(location, " useLocation hook");
-  const idpost = location.state?.idpost;
+  // const idpost = location.state?.idpost;
+  const idpost = location.state.idpost;
   console.log("============IDPOST : ", idpost, "============");
 
   // Farhan : Validasi jika akses detail post tanpa post id
