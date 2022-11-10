@@ -103,7 +103,11 @@ export default function Listing() {
           </Col>
         </Row>
         <Row id="breadcrumb">
-          <p>Home &gt; Announcement</p>
+          <p>
+              Home &gt; 
+              <span style={{ color: "yellow" }}> Announcement</span>
+            </p>
+
         </Row>
         <Row id="post-ctg-list">
           <Col

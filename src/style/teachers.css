@@ -1,3 +1,16 @@
+#title-teachers {
+  margin-top: -5vh;
+}
+#title-teachers p {
+  margin-left: 12vh !important;
+}
+@media (max-width: 962px) {
+  #title-teachers p {
+    margin-left: 5vh !important;
+  }
+  
+}
+
 .card-teachers {
   display: inline-block;
   width: 100%;

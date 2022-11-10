@@ -69,9 +69,15 @@ function DetailPost(props) {
           style={{ display: "none" }}
           readOnly
         />
-        <Row id="breadcrumb-pd">Home &gt; Announcement &gt; Detail</Row>
+        <Row id="breadcrumb-pd">
+        <p>
+          Home &gt; Announcement &gt;
+          <span style={{ color: "yellow" }}> Details</span>
+        </p>
+
+        </Row>
         <Row id="post-detail-body">
-          <Col xs={10}>
+          <Col md={10} xs={12}>
             {post.map((pos) => {
               return (
                 <>
@@ -118,7 +124,7 @@ function DetailPost(props) {
                           {/* <img
                             src={require(`../../post-images/${imgpos.imgpost_dir}`)}
                           /> */}
-                          <img src={urlimg} />
+                          {/* <img src={urlimg} /> */}
                         </>
                       );
                     })}

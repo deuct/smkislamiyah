@@ -70,13 +70,13 @@
   justify-content: space-between;
   width: 100%;
 }
-.post-ctg-list {
+.post-ctg-list button {
   display: flex;
   flex-wrap: nowrap;
   margin-left: 20px;
 }
 @media (max-width: 962px) {
-  .post-ctg-list {
+  .post-ctg-list button {
     width: 100% !important;
     margin-right: 10px !important;
   }
@@ -93,10 +93,6 @@
 
 .posts-list-card {
   margin: 5vh;
-}
-.posts-list-card:hover {
-  border: 2px solid #d9d9d9;
-  border-radius: 12px;
 }
 .plc-title h1 {
   font-weight: 600;

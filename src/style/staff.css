@@ -55,17 +55,23 @@
 .desc-ct p {
   color: rgb(15, 15, 15);
 }
-
+#title-Staffs {
+  margin-top: -5vh;
+}
 #title-Staff h1 {
   font-weight: bold;
   color: #0e3e65;
   font-size: 1.3rem;
 }
+#title-Staffs p {
+  margin-left: 10vh !important;
+}
 @media (max-width: 962px) {
-  #title-Staffs .h11 {
-    margin-top: -4vh ;
+  #title-Staffs p {
+    margin-left: 5vh !important;
   }
 }
+
 #btn-Staff {
   background: none !important;
   border: 1px solid #1768a8;

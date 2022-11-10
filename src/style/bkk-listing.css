@@ -92,12 +92,15 @@
   font-size: 1rem;
   margin-top: 5px;
   margin-bottom: 5px;
-  /* margin-left: -5vh; */
+}
+@media (max-width: 962px) {
+  .status {
+    width: 80%;
+  }  
 }
 
 .st-open {
   background: rgb(34, 177, 34);
-  /* margin-left: 20px; */
   width: fit-content;
 }
 .st-open-desc {
@@ -146,6 +149,9 @@
   top: 0;
 }
 /* BKK Detail */
+.bkkdetail-title {
+  width: 98%;
+}
 .bkkdetail-title img {
   position: relative;
 }

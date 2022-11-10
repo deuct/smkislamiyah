@@ -18,8 +18,8 @@ function OrgStruct() {
       />
       <div id="navbar-bgz"></div>
       <Container>
-        <Row className="text-center">
-          <Col xs={12}>
+        <Row id="title-Struct" className="justify-content-center">
+          <Col md={8} xs={12} className="text-center">
             <h1>Organization Structure</h1>
             <h1>SMK Islamiyah Ciputat</h1>
             <p>
@@ -30,7 +30,9 @@ function OrgStruct() {
           </Col>
         </Row>
         <Row id="breadcrumb">
-          <p>Home &gt; Organization &gt; Organization Structure</p>
+          <p>Home &gt; Organization &gt; 
+          <span style={{ color: "yellow" }}> Organization Structure</span>
+          </p>
         </Row>
         <div class="tree">
           <ul>

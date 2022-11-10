@@ -147,7 +147,7 @@ function Listing() {
               </Col>
             </Row>
           </Col>
-          <Col xs={8}>{isShown && <DetailBkk bkkId={bkkId} />}</Col>
+          <Col md={8} xs={7}>{isShown && <DetailBkk bkkId={bkkId} />}</Col>
         </Row>
       </Container>
       <div className="footer-lock mt-5" style={{ height: "50px" }}>
