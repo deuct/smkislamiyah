@@ -84,12 +84,16 @@
 }
 
 .posts-list-card {
-  margin: 5vh;
+  margin: 15px;
+  border: 1px solid white;
 }
+
 .posts-list-card:hover {
-  border: 2px solid #d9d9d9;
+  border: 1px solid #d9d9d9;
   border-radius: 12px;
+  background: rgb(235, 235, 235);
 }
+
 .plc-title h1 {
   font-weight: 600;
   font-size: 20px;
@@ -154,4 +158,8 @@
 .cs-fill {
   background: #1768a8;
   border: none;
+}
+
+.pagination {
+  margin: 20px !important;
 }

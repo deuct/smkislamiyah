@@ -56,7 +56,8 @@ function PostCard(props) {
       <Row className="posts-list-card">
         <Col xs={9}>
           <Row className="plc-title">
-            <Link to="/posts/detail" state={{ idpost }}>
+            {/* <Link to={`/posts/detail/${props.postSlug}`} state={{ idpost }}> */}
+            <Link to={`/posts/detail/${props.postSlug}`}>
               <h1 className="fw-bold">{props.title}</h1>
             </Link>
           </Row>

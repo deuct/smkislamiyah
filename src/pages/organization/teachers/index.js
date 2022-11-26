@@ -1,24 +1,45 @@
-import React from "react";
-
-import "../../../style/teachers.css";
-import { Container, Row, Col, Button, Form, InputGroup } from "react-bootstrap";
+// React Need
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+// Component
 import NavbarTop from "../../components/NavbarTop";
 import FooterBot from "../../components/FooterBot";
+// Style
+import "../../../style/teachers.css";
+import { Container, Row, Col, Button, Form, InputGroup } from "react-bootstrap";
 import { IoSearch, IoPlayBackSharp } from "react-icons/io5";
 import person from "../../../images/sample-alumni.jpg";
 
 function Teachers() {
+  const [teachers, setTeachers] = useState([]);
+  const [load, setLoad] = useState(4);
+
+  useEffect(() => {
+    getTeachers();
+  }, []);
+
+  const getTeachers = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/teachers/`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response) {
+        setTeachers(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadData = () => {
+    setLoad((prev) => prev + 4);
+  };
+
   return (
     <>
-      <NavbarTop />
-      {/* Navbar styling ketika di halaman tertentu */}
-      <input
-        type="text"
-        id="navbar-id"
-        value="bkk-listing"
-        style={{ display: "none" }}
-        readOnly
-      />
+      <NavbarTop isIndex={false} />
       <div id="navbar-bgz" style={{ height: "13vh" }}></div>
       <Container style={{ marginTop: "5vh" }}>
         <Row id="title-teachers" className="justify-content-center">
@@ -41,15 +62,22 @@ function Teachers() {
           </Col>
         </Row>
         <Row id="search-bar">
-          <Col xs={3}>
+          <Col xs={2}>
             <Form.Select>
               <option>Filter by Status</option>
-              <option>Honorer</option>
               <option>Active</option>
-              <option>Pengganti</option>
+              <option>Pension</option>
             </Form.Select>
           </Col>
-          <Col xs={3}>
+          <Col xs={2}>
+            <Form.Select>
+              <option>Filter by Jurusan</option>
+              <option>Akuntansi</option>
+              <option>TKJ</option>
+              <option>Tata Boga</option>
+            </Form.Select>
+          </Col>
+          <Col xs={2}>
             <Form.Select>
               <option>Filter by Matpel</option>
               <option>Bahasa Indonesia</option>
@@ -58,7 +86,7 @@ function Teachers() {
               <option>IPS</option>
             </Form.Select>
           </Col>
-          <Col xs={5}>
+          <Col xs={4}>
             <InputGroup>
               <Form.Control
                 placeholder="Search Teachers"
@@ -73,369 +101,38 @@ function Teachers() {
           </Col>
         </Row>
         <Row id="teacher-list" class="text-center">
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-teachers">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Teacher Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Mata Pelajaran</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
+          {teachers.map((teacher) => {
+            return (
+              <>
+                <Col xs={3}>
+                  <div className="card-teachers">
+                    <div className="body-ct">
+                      <div className="img-ct">
+                        <img
+                          src={`http://localhost:5000/${teacher.teacher_photo_dir.replace(
+                            "\\",
+                            "/"
+                          )}`}
+                          alt="teacher-photo"
+                        />
+                      </div>
+                      <div className="desc-ct">
+                        <h3>{teacher.teacher_name}</h3>
+                        <div className="divider-ct"></div>
+                        <p>{teacher.teacher_matpel}</p>
+                        <p>{teacher.teacher_status}</p>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </>
+            );
+          })}
         </Row>
         <Row className="my-3">
-          <Button id="btn-teacher">LOAD MORE TEACHERS</Button>
+          <Button id="btn-teacher" onClick="loadData">
+            LOAD MORE TEACHERS
+          </Button>
           <a href="#" className="mt-2 mb-4">
             <IoPlayBackSharp /> Back to Homepage
           </a>

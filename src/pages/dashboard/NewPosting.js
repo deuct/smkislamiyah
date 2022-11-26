@@ -268,6 +268,9 @@ function NewPosting(props) {
       // Insert post to database
       if (roleAction === "add") {
         const shortDesc = postShortDesc.slice(0, 250);
+        const postSlug =
+          postTitle.replace(/\s/g, "-") + "-" + postCode.replace("PST", "");
+
         var response = await axiosJWT.post(
           "http://localhost:5000/posts/newpost",
           {
@@ -283,12 +286,16 @@ function NewPosting(props) {
               postType: postType,
               postShortDesc: shortDesc,
               postDesc: postDesc,
+              postSlug: postSlug,
               createdAt: postDate,
             },
           }
         );
       } else if (roleAction === "edit") {
         const shortDesc = postShortDesc.slice(0, 250);
+        const postSlug =
+          postTitle.replace(/\s/g, "-") + "-" + postCode.replace("PST", "");
+
         var response = await axiosJWT.post(
           "http://localhost:5000/posts/updatepost",
           {
@@ -303,6 +310,7 @@ function NewPosting(props) {
               postStatus: statusPost,
               postType: postType,
               postShortDesc: shortDesc,
+              postSlug: postSlug,
               postDesc: postDesc,
               updatedAt: postDate,
             },
@@ -320,6 +328,9 @@ function NewPosting(props) {
                 headers: {
                   Authorization: `Bearer ${token}`,
                   "Content-Type": "application/json",
+                },
+                data: {
+                  postCode: postCode,
                 },
                 withCredentials: true,
               });
@@ -668,7 +679,7 @@ function NewPosting(props) {
                       aria-label="Select Post Type"
                       className="w-75"
                       onClick={(e) => setPostType(e.target.value)}
-                      value="Announcement"
+                      defaultValue="Announcement"
                     >
                       <option value="Announcement">Announcement</option>
                       <option value="Activities">Activities</option>

@@ -7,7 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 function OrgStruct() {
   return (
     <>
-      <NavbarTop />
+      <NavbarTop isIndex={false} />
       {/* Navbar styling ketika di halaman tertentu */}
       <input
         type="text"

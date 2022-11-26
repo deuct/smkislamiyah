@@ -1,8 +1,9 @@
+// React Need
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+// Style
 import { Col, Row, Button } from "react-bootstrap";
 import { IoTimeOutline } from "react-icons/io5";
-import imgPpdb from "../../images/ppdb.jpg";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
@@ -17,7 +18,6 @@ function RelatedPost(props) {
 
   useEffect(() => {
     getRelatedArticle();
-    // mapItem();
   }, []);
 
   const getRelatedArticle = async () => {
@@ -32,36 +32,8 @@ function RelatedPost(props) {
     0: { items: 3 },
   };
 
-  const asd = [
-    <div className="item" data-value="1">
-      1
-    </div>,
-    <div className="item" data-value="2">
-      2
-    </div>,
-    <div className="item" data-value="3">
-      3
-    </div>,
-    <div className="item" data-value="4">
-      4
-    </div>,
-    <div className="item" data-value="5">
-      5
-    </div>,
-  ];
-
-  // const mapItem = async () => {
-  //   relPost.map((relPos) => {
-  //     resItem.push(relPos);
-  //     // setResItem((resItem) => [...resItem, relPos]);
-  //     // setResItem(relPos);
-  //   });
-  // };
-
   const handleDragStart = (e) => e.preventDefault();
   const itemz = relPost.map((relPos, index) => [
-    // const relPosz = relPosz.imgpost_dir.replace("\\", "/");
-    // const urlimg = "http:localhost:5000/" + imgdir;
     <>
       <Col
         className="d-inline-block ra-card-detail item"
@@ -74,27 +46,18 @@ function RelatedPost(props) {
               "\\",
               "/"
             )}`}
-            style={{ width: "280px", height: "200px" }}
+            style={{ width: "auto", height: "180px" }}
           />
           <h3>{relPos.post_shortdesc}</h3>
           <span>
             <Button className="ra-btn">{relPos.post_type}</Button>
             <IoTimeOutline size={20} />
-            14 Sept, 2022
+            <p className="ra-date">14 Sept, 2022</p>
           </span>
         </div>
       </Col>
     </>,
   ]);
-
-  console.log("===========itemz==========");
-  console.log(itemz);
-  console.log("===========asd==========");
-  console.log(asd);
-  console.log("===========relpost==========");
-  console.log(relPost);
-  // console.log("===========relitems==========");
-  // // console.log(relPost);
 
   return (
     <>
@@ -104,21 +67,6 @@ function RelatedPost(props) {
         responsive={responsive}
         controlsStrategy="alternate"
       />
-      {/* {relPost.map((relPos) => {
-        return (
-          <>
-            <Col xs={4} className="ra-card-detail">
-              <img src={require("../../post-images/" + relPos.imgpost_dir)} />
-              <h3>{relPos.post_shortdesc}</h3>
-              <span>
-                <Button className="ra-btn">{relPos.post_type}</Button>
-                <IoTimeOutline size={20} />
-                14 Sept, 2022
-              </span>
-            </Col>
-          </>
-        );
-      })} */}
     </>
   );
 }

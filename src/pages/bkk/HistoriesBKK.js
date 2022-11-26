@@ -9,7 +9,7 @@ import "../../style/bkk-histories.css";
 export default function HistoriesBKK() {
   return (
     <>
-      <NavbarTop />
+      <NavbarTop isIndex={false} />
       <div id="navbar-bgz"></div>
 
       {/* Navbar styling ketika di halaman tertentu */}
@@ -36,7 +36,9 @@ export default function HistoriesBKK() {
             <a href="#">More information...</a>
           </Col>
         </Row>
-        <Row id="breadcrumb"><p>Home &gt; BKK &gt; Details BKK</p></Row>
+        <Row id="breadcrumb">
+          <p>Home &gt; BKK &gt; Details BKK</p>
+        </Row>
         <Row className="mt-4">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente

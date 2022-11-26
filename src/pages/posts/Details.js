@@ -1,28 +1,51 @@
+// React Need
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+// Component
 import FooterBot from "../components/FooterBot";
 import NavbarTop from "../components/NavbarTop";
 import NewerPostCard from "./NewerPostCard";
-
+import RelatedPost from "./RelatedPost";
+// Style
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import ModalImage from "react-modal-image";
 import "../../style/posts-detail.css";
-
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { IoTimeOutline, IoEye } from "react-icons/io5";
-import axios from "axios";
-import RelatedPost from "./RelatedPost";
 
 function DetailPost(props) {
   // Farhan : Get post id from listing
-  const location = useLocation();
-  console.log(props, " props");
-  console.log(location, " useLocation hook");
-  // const idpost = location.state?.idpost;
-  const idpost = location.state.idpost;
-  console.log("============IDPOST : ", idpost, "============");
+  // const location = useLocation();
+  // const idpost = location.state.idpost;
+
+  // Farhan : get url-slug
+  const slug = useParams();
+  const [idPost, setIdPost] = useState([]);
+
+  // Farhan : get id post by slug
+  useEffect(() => {
+    getIdPostBySlug();
+  }, [slug]);
+
+  const getIdPostBySlug = async () => {
+    try {
+      const resIdPost = await axios.post(
+        `http://localhost:5000/posts/getpostbyslug`,
+        { postSlug: slug.postslug }
+      );
+
+      if (resIdPost) {
+        setIdPost(resIdPost.data[0].post_id);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // Farhan : Validasi jika akses detail post tanpa post id
   const navigate = useNavigate();
-  if (idpost === undefined) {
+  if (idPost === null) {
     navigate("/404");
   }
 
@@ -35,31 +58,53 @@ function DetailPost(props) {
     getPost();
     getCategory();
     getImgpost();
-  }, []);
+  }, [idPost]);
 
   const getPost = async () => {
-    const response = await axios.get(`http://localhost:5000/posts/${idpost}`);
-    setPost(response.data);
+    if (idPost.length > 0) {
+      const response = await axios.get(`http://localhost:5000/posts/${idPost}`);
+      if (response) {
+        setPost(response.data);
+      }
+    }
   };
-  console.log(idpost);
   const getCategory = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/posts/category/${idpost}`
-    );
-    setCategories(response.data);
+    if (idPost.length > 0) {
+      const response = await axios.get(
+        `http://localhost:5000/posts/category/${idPost}`
+      );
+      setCategories(response.data);
+    }
   };
+
   const getImgpost = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/posts/imgpost/${idpost}`
-    );
-    setImgPost(response.data);
+    if (idPost.length > 0) {
+      const response = await axios.get(
+        `http://localhost:5000/posts/imgpost/${idPost}`
+      );
+      setImgPost(response.data);
+    }
   };
-  // const [firstImg, setFirstImg] = useState(1);
-  // console.log("First img: " + firstImg);
+
+  // Loop image url for mansory
+  const [arrMasonry, setArrMasonry] = useState([]);
+  useEffect(() => {
+    getArrMasonry();
+  }, [imgPost]);
+
+  const getArrMasonry = () => {
+    imgPost.map((img) => {
+      setArrMasonry((prev) => [
+        ...prev,
+        "http://localhost:5000/" + img.imgpost_dir.replace("\\", "/"),
+      ]);
+    });
+  };
+  const columnsCountBreakPoints = { 350: 1, 750: 2, 900: 3 };
 
   return (
     <>
-      <NavbarTop />
+      <NavbarTop isIndex={false} />
       <Container>
         <div id="navbar-bgz"></div>
         {/* Navbar styling ketika di halaman tertentu */}
@@ -70,7 +115,7 @@ function DetailPost(props) {
           style={{ display: "none" }}
           readOnly
         />
-        <Row id="breadcrumb-pd">Home &gt; Announcement &gt; Detail</Row>
+        <Row id="breadcrumb-pd">Home &gt; Post &gt; Detail</Row>
         <Row id="post-detail-body">
           <Col xs={10}>
             {post.map((pos) => {
@@ -88,7 +133,6 @@ function DetailPost(props) {
                     })}
                   </Row>
                   <Row id="title-pd-cat">
-                    {/* <h2>Passing ID props : {idpost}</h2> */}
                     <h1>{pos.post_name}</h1>
                   </Row>
                   <Row id="pd-category">
@@ -102,29 +146,37 @@ function DetailPost(props) {
                         </>
                       );
                     })}
-                    <IoTimeOutline size={20} />
-                    <span className="pd-cat-time">{pos.createdAt}</span>
+                    <div className="pd-time">
+                      <IoTimeOutline size={20} className="mr-2" />
+                      <span className="pd-cat-time">{pos.createdAt}</span>
+                    </div>
                   </Row>
                   <Row>
                     <div
                       dangerouslySetInnerHTML={{ __html: pos.post_desc }}
                     ></div>
                   </Row>
-                  <Row>
-                    {imgPost.map((imgpos) => {
-                      const imgdir = imgpos.imgpost_dir.replace("\\", "/");
-                      const urlimg = "http://localhost:5000/" + imgdir;
-                      return (
-                        <>
-                          {/* <img
-                            src={require(`../../post-images/${imgpos.imgpost_dir}`)}
-                          /> */}
-                          <img src={urlimg} />
-                        </>
-                      );
-                    })}
+                  <Row className="my-5">
+                    <div className="gallery-post-title">
+                      <span className="gpt-line"></span>
+                      <p>Post Gallery</p>
+                      <span className="gpt-line"></span>
+                    </div>
+                    <ResponsiveMasonry
+                      columnsCountBreakPoints={columnsCountBreakPoints}
+                    >
+                      <Masonry columnsCount={3} gutter={4}>
+                        {arrMasonry.map((image) => (
+                          <ModalImage
+                            small={image}
+                            large={image}
+                            alt="post image"
+                          />
+                        ))}
+                      </Masonry>
+                    </ResponsiveMasonry>
                   </Row>
-                  <Row id="ra-card-title">
+                  <Row id="ra-card-title" className="mt-3">
                     <Row>
                       <Col style={{ display: "flex", "flex-wrap": "nowrap" }}>
                         <h3>Article</h3>
@@ -138,13 +190,6 @@ function DetailPost(props) {
                   <Row id="ra-card">
                     <RelatedPost postType={pos.post_type} />
                   </Row>
-                  {/* <Row id="circle-slider">
-                    <Col xs={4} className="d-flex align-items-center">
-                      <div className="cs-outline"></div>
-                      <div className="cs-fill"></div>
-                      <div className="cs-outline"></div>
-                    </Col>
-                  </Row> */}
                 </>
               );
             })}

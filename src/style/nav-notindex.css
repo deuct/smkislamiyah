@@ -1,0 +1,11 @@
+.navbar {
+  background-color: white !important;
+}
+
+.navbar a {
+  color: #222;
+}
+
+.navbar #nb-ttl {
+  color: #222;
+}

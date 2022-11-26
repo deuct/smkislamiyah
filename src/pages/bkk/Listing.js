@@ -1,24 +1,22 @@
+// React Need
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+// Component
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
 import HeaderImg from "../components/HeaderImg";
-
-import { Container, InputGroup, Row, Col, Button, Form } from "react-bootstrap";
-
-import { IoSearch } from "react-icons/io5";
-import PepsiLogo from "../../images/pepsi-logo.png";
-
-import "../../style/bkk-listing.css";
 import DetailBkk from "./DetailBkk";
+// Style
+import { Container, InputGroup, Row, Col, Button, Form } from "react-bootstrap";
+import { IoSearch } from "react-icons/io5";
+import "../../style/bkk-listing.css";
 
 function Listing() {
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
-    withCredentials: true,
+    // withCredentials: true,
   };
 
   const client = axios.create({
@@ -40,22 +38,17 @@ function Listing() {
   };
 
   const [bkkId, setBkkId] = useState("");
-  const triggerBKKDetail = (e) => {
-    setBkkId(e.currentTarget.value);
-  };
 
   const [isShown, setIsShown] = useState(false);
 
-  const clickBkk = (event) => {
+  const clickBkk = async (event) => {
     setBkkId(event.currentTarget.value);
     setIsShown((current) => !current);
-    console.log("clickBkk running");
-    console.log(bkkId);
   };
 
   return (
     <>
-      <NavbarTop />
+      <NavbarTop isIndex={false} />
       {/* Navbar styling ketika di halaman tertentu */}
       <input
         type="text"

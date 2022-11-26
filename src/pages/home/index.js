@@ -10,6 +10,10 @@ import {
   IoLocationOutline,
   IoCallOutline,
   IoMailOutline,
+  IoBasketballOutline,
+  IoSchoolSharp,
+  IoApps,
+  IoPersonAddOutline,
 } from "react-icons/io5";
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
@@ -23,134 +27,227 @@ import overviewYt from "../../images/overview-youtube.jpg";
 import sampleAlumni from "../../images/sample-alumni.jpg";
 import Collapse from "react-bootstrap/Collapse";
 import AliceCarousel from "react-alice-carousel";
+import axios from "axios";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
+  // Navbar Styling
+  const [colorChange, setColorChange] = useState(false);
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 80) {
+      setColorChange(true);
+    } else {
+      setColorChange(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeNavbarColor);
+  // End Navbar Styling
+
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
 
-  const postActivities = [
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Activities</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Activities</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Activities</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Activities</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-  ];
-  const postAnnouncement = [
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Announcement</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Announcement</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Announcement</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-    <div className="post-card-index">
-      <div className="bg-post-card"></div>
-      <img src={lksSample} />
-      <div className="post-card-body">
-        <div className="post-card-body-type">Announcement</div>
-        <div className="post-card-body-h1">Lorem Ipsum Doler sit Amet</div>
-        <div className="post-card-body-date">October 9, 2022</div>
-      </div>
-    </div>,
-  ];
+  // Get posts
+  const [postsActivity, setPostsActivity] = useState([]);
+  const [postsAnnouncement, setPostsAnnouncement] = useState([]);
+
+  useEffect(() => {
+    getPostsActivity();
+    getPostsAnnouncement();
+  }, []);
+
+  const getPostsActivity = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/posts?limit=5&post_type=activities`
+      );
+      if (response) {
+        setPostsActivity(response.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getPostsAnnouncement = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/posts?limit=5&post_type=announcement`
+      );
+      if (response) {
+        setPostsAnnouncement(response.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Alice Carousel Posting
+  const [postActivities, setPostActivities] = useState([]);
+  const [postAnnouncement, setPostAnnouncement] = useState([]);
+
+  useEffect(() => {
+    postCarouselAct();
+    postCarouselAnn();
+  }, [postsActivity, postsAnnouncement]);
+
+  const postCarouselAct = () => {
+    console.log("act : " + postActivities.length);
+    if (postActivities.length < 5) {
+      postsActivity.map((post) => {
+        setPostActivities((prev) => [
+          ...prev,
+          <div className="post-card-index">
+            <div className="bg-post-card"></div>
+            <img
+              className="post-card-img"
+              src={`http://localhost:5000/${post.imgpost_dir.replace(
+                "\\",
+                "/"
+              )}`}
+            />
+            <div className="post-card-body">
+              <div className="post-card-body-type">{post.post_type}</div>
+              <div className="post-card-body-h1">{post.post_name}</div>
+              <div className="post-card-body-date">October 9, 2022</div>
+            </div>
+          </div>,
+        ]);
+      });
+    }
+  };
+  const postCarouselAnn = () => {
+    if (postAnnouncement.length < 5) {
+      postsAnnouncement.map((post) => {
+        setPostAnnouncement((prev) => [
+          ...prev,
+          <div className="post-card-index">
+            <div className="bg-post-card"></div>
+            <img
+              className="post-card-img"
+              src={`http://localhost:5000/${post.imgpost_dir.replace(
+                "\\",
+                "/"
+              )}`}
+            />
+            <div className="post-card-body">
+              <div className="post-card-body-type">{post.post_type}</div>
+              <div className="post-card-body-h1">{post.post_name}</div>
+              <div className="post-card-body-date">October 9, 2022</div>
+            </div>
+          </div>,
+        ]);
+      });
+    }
+  };
+
   const responsive = {
     0: { items: 3 },
   };
+
+  // Alice Carousel Alumni Testimonials
+  const [testiAlumni, setTestiAlumni] = useState([]);
+  const [alumni, setAlumni] = useState([]);
+
+  useEffect(() => {
+    getAlumni();
+  }, []);
+
+  const getAlumni = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/alumnis/alumniindex/show`
+      );
+
+      if (response) {
+        setTestiAlumni(response.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    alumniCarousel();
+  }, [testiAlumni]);
+
+  const alumniCarousel = async () => {
+    testiAlumni.map((alumni) => {
+      setAlumni((prev) => [
+        ...prev,
+        <div className="card-testimonials">
+          <img
+            src={`http://localhost:5000/${alumni.alumni_photo_dir.replace(
+              "\\",
+              "/"
+            )}`}
+            className="testi-alumni-img"
+          />
+          <div className="body-testimonials">
+            <h3>{alumni.alumni_nama}</h3>
+            <h4>{alumni.alumni_profesi}</h4>
+            <p>{alumni.alumni_testi}</p>
+          </div>
+        </div>,
+      ]);
+    });
+  };
+  const responsiveTesti = {
+    0: { items: 2 },
+  };
+  // End Alice Carousel
+
+  // Get Header
+  const [header, setHeader] = useState([]);
+
+  useEffect(() => {
+    getHeader();
+  }, []);
+
+  const getHeader = async () => {
+    try {
+      const responseHeader = await axios.get(`http://localhost:5000/header/`);
+
+      if (responseHeader) {
+        setHeader(responseHeader.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // End Get Header
+
+  // console.log("=======DEBUGGING=====");
+
   return (
     <>
-      <NavbarTop />
-      {/* Navbar styling ketika di halaman tertentu */}
-      <input
-        type="text"
-        id="navbar-id"
-        value="home"
-        style={{ display: "none" }}
-        readOnly
-      />
+      <NavbarTop colorChange={colorChange} isIndex={true} />
       <Row id="header" className="align-items-center justify-content-center">
-        <Carousel style={{ color: "black" }}>
-          <Carousel.Item style={{ height: "100vh" }}>
-            <img className="d-block w-100" src={headerOne} alt="First slide" />
-            <Carousel.Caption className="slide">
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item style={{ height: "100vh" }}>
-            <img className="d-block w-100" src={headerTwo} alt="Second slide" />
-            <Carousel.Caption className="slide">
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item style={{ height: "100vh" }}>
-            <img
-              className="d-block w-100"
-              src={headerThree}
-              alt="Third slide"
-            />
-            <Carousel.Caption className="slide">
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
+        <Carousel>
+          {header.map((heads, idx) => (
+            <Carousel.Item key={idx}>
+              <div className="black-carousel"></div>
+              <img
+                className="d-block w-100"
+                src={`http://localhost:5000/${heads.header_img_dir.replace(
+                  "\\",
+                  "/"
+                )}`}
+                alt={heads.header_title}
+              />
+              <Carousel.Caption className="slide">
+                <h2>{heads.header_title}</h2>
+                <p>{heads.header_desc}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
         </Carousel>
       </Row>
       <Row className="justify-content-center align-items-center">
         <Col xs={8}>
           <div id="welcome">
-            <div id="welcome-fill">
+            <div id="welcome-fill" className="align-middle">
               <h1 className="text-center my-3">
                 SELAMAT DATANG DI SMK ISLAMIYAH CIPUTAT
               </h1>
@@ -165,45 +262,48 @@ function Home() {
           </div>
         </Col>
       </Row>
-      <Row
-        id="hdm-greeting"
-        className="align-items-center justify-content-center"
-      >
-        <Col xs={8}>
-          <div className="hdm-greeting-fill d-flex">
-            <div id="hdm-image">
-              <img src={hdm} />
-              <h2 className="d-inline-block">Dian Rostikawati, S.E, M.M</h2>
-            </div>
-            <div className="hdm-greeting-desc mt-5">
-              <h1 className="text-start mb-5">Headmaster Greetings</h1>
-              <p className="d-inline-block">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae eveniet voluptate dicta doloribus voluptates natus
-                voluptatibus eaque libero impedit voluptatum blanditiis debitis,
-                dolorum rem, expedita minima numquam repudiandae consectetur
-                vel. Ut veritatis sed, consequatur dolorem consectetur sequi
-                autem voluptas est iure?
-              </p>
+      <Row className="align-items-center justify-content-center">
+        <Col xs={10}>
+          <div id="hdm-greeting">
+            <div className="hdm-greeting-fill d-flex">
+              <div id="hdm-image">
+                <img src={hdm} />
+                <h2 className="d-inline-block">Dian Rostikawati, S.E, M.M</h2>
+              </div>
+              <div className="hdm-greeting-desc mt-5">
+                <h1 className="text-start mb-5">Headmaster Greetings</h1>
+                <p className="d-inline-block">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Recusandae eveniet voluptate dicta doloribus voluptates natus
+                  voluptatibus eaque libero impedit voluptatum blanditiis
+                  debitis, dolorum rem, expedita minima numquam repudiandae
+                  consectetur vel. Ut veritatis sed, consequatur dolorem
+                  consectetur sequi autem voluptas est iure?
+                </p>
+              </div>
             </div>
           </div>
         </Col>
       </Row>
       <Row id="overview">
-        <Col xs={4}>
-          <img src={overviewYt} />
-        </Col>
-        <Col xs={6}>
-          <h1 className="OV">OVERVIEW</h1>
-          <h1 className="WU">WHY US</h1>
-          <div className="divider-overview"></div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-            laboriosam exercitationem officia vel, molestias sint iusto adipisci
-            odio laborum quisquam pariatur fugiat earum dolorem facere quaerat
-            ipsum dolorum tempore mollitia.
-          </p>
-          <Button>KNOW MORE</Button>
+        <Col xs={10}>
+          <div id="overview-fill">
+            <div id="overview-video" className="mx-auto">
+              <img src={overviewYt} />
+            </div>
+            <div id="overview-detail" className="mx-auto">
+              <h1 className="OV">OVERVIEW</h1>
+              <h1 className="WU">WHY US</h1>
+              <div className="divider-overview"></div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptates laboriosam exercitationem officia vel, molestias sint
+                iusto adipisci odio laborum quisquam pariatur fugiat earum
+                dolorem facere quaerat ipsum dolorum tempore mollitia.
+              </p>
+              <Button>KNOW MORE</Button>
+            </div>
+          </div>
         </Col>
       </Row>
       <Row className="justify-content-center d-flex" id="activities">
@@ -256,46 +356,79 @@ function Home() {
           <h1 className="prof">PROFILE ALUMNI</h1>
         </Row>
         <Row>
-          <Col xs={12} style={{ display: "flex", flexWrap: "nowrap" }}>
-            <div className="card-testimonials">
-              <img src={sampleAlumni} className="testi-alumni-img" />
-              <div className="body-testimonials">
-                <h3>Name</h3>
-                <h4>Profesi</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aspernatur dolorum ex consequatur atque nulla laborum quae
-                  iure! Sint expedita voluptatibus odio incidunt minima
-                  doloremque? Quod repellat vel facilis id iure!
-                </p>
-              </div>
-            </div>
-            <div className="card-testimonials">
-              <img src={sampleAlumni} className="testi-alumni-img" />
-              <div className="body-testimonials">
-                <h3>Name</h3>
-                <h4>Profesi</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aspernatur dolorum ex consequatur atque nulla laborum quae
-                  iure! Sint expedita voluptatibus odio incidunt minima
-                  doloremque? Quod repellat vel facilis id iure!
-                </p>
-              </div>
-            </div>
-          </Col>
-          <Col
-            xs={12}
-            className="my-3 justify-content-center"
-            style={{ display: "flex", flexWrap: "nowrap" }}
-          >
-            <div className="circle-slider-outline"></div>
-            <div className="circle-slider-fill"></div>
-            <div className="circle-slider-outline"></div>
+          <Col xs={12}>
+            <AliceCarousel
+              mouseTracking
+              items={alumni}
+              responsive={responsiveTesti}
+              controlsStrategy="alternate"
+            />
           </Col>
         </Row>
-        {/* <Row className="my-3 justify-content-center">
-        </Row> */}
+      </Row>
+      <Row id="card-index-section">
+        <Row>
+          <Col style={{ display: "flex", flexWrap: "nowrap" }}>
+            <h3 className="card-index-title">INFORMATION</h3>
+            <div className="yellow-line"></div>
+          </Col>
+        </Row>
+        <Row>
+          <h1 className="card-index-text">OUR INFORMATION</h1>
+        </Row>
+        <Row>
+          <Col xs={3}>
+            <Link to={`/`}>
+              <div className="card-index">
+                <div className="card-index-icon">
+                  <IoBasketballOutline size={30} />
+                </div>
+                <div className="card-index-body">
+                  <p>Fasilitas</p>
+                </div>
+              </div>
+            </Link>
+          </Col>
+          <Col xs={3}>
+            <Link to={`/`}>
+              <div className="card-index">
+                <div className="card-index-icon">
+                  <IoPersonAddOutline size={30} />
+                </div>
+                <div className="card-index-body">
+                  <p>PPDB</p>
+                </div>
+              </div>
+            </Link>
+          </Col>
+          <Col xs={3}>
+            <Link to={`/programs`}>
+              <div className="card-index">
+                <div className="card-index-icon">
+                  <IoApps size={30} />
+                </div>
+                <div className="card-index-body">
+                  <p>Jurusan</p>
+                </div>
+              </div>
+            </Link>
+          </Col>
+          <Col xs={3}>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf5hc3EdyosvkgQIHCYqMs1HjWJ1eqdItKXVj9tHY9vqii9MQ/viewform"
+              target="_blank"
+            >
+              <div className="card-index">
+                <div className="card-index-icon">
+                  <IoSchoolSharp size={30} />
+                </div>
+                <div className="card-index-body">
+                  <p>Penelusuran Alumni</p>
+                </div>
+              </div>
+            </a>
+          </Col>
+        </Row>
       </Row>
       {/* <Row id="faq">
         <Row>
@@ -348,13 +481,17 @@ function Home() {
       </Row> */}
       <Row id="contact">
         <Row>
-          <Col style={{ display: "flex", flexWrap: "nowrap" }}>
-            <h3>CONTACT US</h3>
-            <div className="yellow-line"></div>
+          <Col xs={6}>
+            <Row>
+              <Col style={{ display: "flex", flexWrap: "nowrap" }}>
+                <h3>CONTACT US</h3>
+                <div className="yellow-line"></div>
+              </Col>
+            </Row>
+            <Row>
+              <h1>VISIT OUR SCHOOL</h1>
+            </Row>
           </Col>
-        </Row>
-        <Row>
-          <h1>VISIT OUR SCHOOL</h1>
         </Row>
         <Row>
           <Col xs={3} className="ctc-menu">
@@ -380,10 +517,6 @@ function Home() {
           </Col>
         </Row>
       </Row>
-      {/* <div className="map-bg">
-        <IoMapOutline size={40} />
-      </div>
-      <div className="divider-maps"></div> */}
       <Row id="lokasi" className="justify-content-center">
         <Col xs={12} className="text-center">
           <div className="mapouter mx-auto">
@@ -402,9 +535,7 @@ function Home() {
           </div>
         </Col>
       </Row>
-      {/* <div className="footer-lock"> */}
       <FooterBot />
-      {/* </div> */}
     </>
   );
 }

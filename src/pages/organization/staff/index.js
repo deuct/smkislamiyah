@@ -1,24 +1,45 @@
-import React from "react";
-
-import "../../../style/staff.css";
-import { Container, Row, Col, Button, Form, InputGroup } from "react-bootstrap";
+// React Need
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+// Component
 import NavbarTop from "../../components/NavbarTop";
 import FooterBot from "../../components/FooterBot";
+// Style
+import { Container, Row, Col, Button, Form, InputGroup } from "react-bootstrap";
 import { IoSearch, IoPlayBackSharp } from "react-icons/io5";
+import "../../../style/staff.css";
 import person from "../../../images/sample-alumni.jpg";
 
 function Staff() {
+  const [staffs, setStaffs] = useState([]);
+  const [load, setLoad] = useState(4);
+
+  useEffect(() => {
+    getStaffs();
+  }, []);
+
+  const getStaffs = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/staffs/`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response) {
+        setStaffs(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadData = () => {
+    setLoad((prev) => prev + 4);
+  };
+
   return (
     <>
-      <NavbarTop />
-      {/* Navbar styling ketika di halaman tertentu */}
-      <input
-        type="text"
-        id="navbar-id"
-        value="staff"
-        style={{ display: "none" }}
-        readOnly
-      />
+      <NavbarTop isIndex={false} />
       <div id="navbar-bgz" style={{ height: "13vh" }}></div>
       <Container style={{ marginTop: "5vh" }}>
         <Row id="title-Staffs" className="justify-content-center">
@@ -65,369 +86,38 @@ function Staff() {
           </Col>
         </Row>
         <Row id="Staff-list" class="text-center">
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col xs={3}>
-            <div className="card-Staffs">
-              <div className="body-ct">
-                <div className="img-ct">
-                  <img src={person} alt="" />
-                </div>
-                <div className="desc-ct">
-                  <h3>Staff Name</h3>
-                  <div className="divider-ct"></div>
-                  <p>Department</p>
-                  <p>Status</p>
-                </div>
-              </div>
-            </div>
-          </Col>
+          {staffs.slice(0, load).map((staff) => {
+            return (
+              <>
+                <Col xs={3}>
+                  <div className="card-Staffs">
+                    <div className="body-ct">
+                      <div className="img-ct">
+                        <img
+                          src={`http://localhost:5000/${staff.staff_photo_dir.replace(
+                            "\\",
+                            "/"
+                          )}`}
+                          alt="staff-photo"
+                        />
+                      </div>
+                      <div className="desc-ct">
+                        <h3>{staff.staff_name}</h3>
+                        <div className="divider-ct"></div>
+                        <p>{staff.staff_department}</p>
+                        <p>{staff.staff_status}</p>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </>
+            );
+          })}
         </Row>
         <Row className="my-3">
-          <Button id="btn-Staff">LOAD MORE STAFFS</Button>
+          <Button id="btn-Staff" onClick={loadData}>
+            LOAD MORE STAFFS
+          </Button>
           <a href="#" className="mt-2 mb-4">
             <IoPlayBackSharp /> Back to Homepage
           </a>

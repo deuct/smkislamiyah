@@ -81,7 +81,7 @@ export default function Listing() {
   };
   return (
     <>
-      <NavbarTop />
+      <NavbarTop isIndex={false} />
       <Container>
         <div id="navbar-bgz"></div>
         {/* Navbar styling ketika di halaman tertentu */}
@@ -157,13 +157,15 @@ export default function Listing() {
                 typepost={post.post_type}
                 idpost={post.post_id}
                 shortdesc={post.post_shortdesc}
+                postSlug={post.post_slug}
                 createdpost={post.createdAt}
               />
             );
           })}
         </Row>
         <p>
-          Total Rows : {rows} Page : {rows ? page + 1 : 0} of {pages}
+          Jumlah Posting : {rows} Halaman-ke : {rows ? page + 1 : 0} dari{" "}
+          {pages}
         </p>
         <p>{msg}</p>
         <nav

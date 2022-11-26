@@ -1,6 +1,9 @@
-import React from "react";
+// React Need
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+// Styling
 import "../../style/programs.css";
-
 import {
   Row,
   Col,
@@ -19,10 +22,33 @@ import FooterBot from "../components/FooterBot";
 import HeaderImg from "../components/HeaderImg";
 
 function Programs() {
+  const [programs, setPrograms] = useState([]);
+  const baseURL = "http://localhost:5000";
+
+  useEffect(() => {
+    getAllProgram();
+  }, []);
+
+  const getAllProgram = async () => {
+    try {
+      const resProgram = await axios.get(`${baseURL}/jurusan`);
+
+      if (resProgram) {
+        setPrograms(resProgram.data.result);
+      } else {
+        console.log("failed getting programs");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(programs);
+
   return (
     <>
       <NavbarTop />
-      <Row id="programs-intro" className="text-center">
+      {/* <Row id="programs-intro" className="text-center">
         <Col xs={12}>
           <h1>Program Keahlian di SMK Islamiyah Ciputat</h1>
           <p>
@@ -34,15 +60,7 @@ function Programs() {
       </Row>
       <Row id="breadcrumb">
         <p>Home &gt; Programs</p>
-      </Row>
-      =======
-      <input
-        type="text"
-        id="navbar-id"
-        value="programs"
-        style={{ display: "none" }}
-        readOnly
-      />
+      </Row> */}
       <div id="navbar-bgz" style={{ height: "13vh" }}></div>
       <Container>
         <Row id="title-programs" className="justify-content-center">
@@ -59,8 +77,8 @@ function Programs() {
         <Row id="breadcrumb">
           <Col xs={12}>
             <p>
-              Home &gt; Organization &gt;
-              <span style={{ color: "yellow" }}>programs</span>
+              Home &gt; programs &gt;
+              <span style={{ color: "yellow" }}>all</span>
             </p>
           </Col>
         </Row>
@@ -74,96 +92,34 @@ function Programs() {
           </div>
         </Row>
         <Row id="list-programs" className="my-5">
-          <Col xs="4">
-            <div className="card-programs">
-              <img src={programsCard} />
-              <div className="card-programs-body">
-                <h1>Accounting</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, voluptate.
-                </p>
-                <a href="#" className="btn-details-program">
-                  Details
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col xs="4">
-            <div className="card-programs">
-              <img src={programsCard} />
-              <div className="card-programs-body">
-                <h1>TKJ</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, voluptate.
-                </p>
-                <a href="#" className="btn-details-program">
-                  Details
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col xs="4">
-            <div className="card-programs">
-              <img src={programsCard} />
-              <div className="card-programs-body">
-                <h1>Digital Marketing</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, voluptate.
-                </p>
-                <a href="#" className="btn-details-program">
-                  Details
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col xs="4">
-            <div className="card-programs">
-              <img src={programsCard} />
-              <div className="card-programs-body">
-                <h1>Designer Graphic</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, voluptate.
-                </p>
-                <a href="#" className="btn-details-program">
-                  Details
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col xs="4">
-            <div className="card-programs">
-              <img src={programsCard} />
-              <div className="card-programs-body">
-                <h1>Content Creator</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, voluptate.
-                </p>
-                <a href="#" className="btn-details-program">
-                  Details
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col xs="4">
-            <div className="card-programs">
-              <img src={programsCard} />
-              <div className="card-programs-body">
-                <h1>Tata Boga</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Fugit, voluptate.
-                </p>
-                <a href="#" className="btn-details-program">
-                  Details
-                </a>
-              </div>
-            </div>
-          </Col>
+          {programs.map((program) => {
+            return (
+              <Col xs="4">
+                <div className="card-programs" key={program.jurusan_id}>
+                  <img
+                    src={`${baseURL}/${program.jg_img_dir.replace(/\\/g, "/")}`}
+                  />
+                  <div className="card-programs-body">
+                    <h1>{program.jurusan_name}</h1>
+                    <p>
+                      {program.jurusan_about
+                        .slice(0, 250)
+                        .replace(
+                          /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g,
+                          ""
+                        )}
+                    </p>
+                    <Link
+                      to={`/programs/detail/${program.jurusan_slug}`}
+                      className="btn-details-program"
+                    >
+                      Details
+                    </Link>
+                  </div>
+                </div>
+              </Col>
+            );
+          })}
         </Row>
         <Row className="my-3">
           <a href="#" className="mt-2 mb-4">

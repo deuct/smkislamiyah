@@ -1,0 +1,350 @@
+.pd-img-kaprog {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 4px solid #1768a8;
+}
+
+.pd-title-kaprog {
+  margin: 15px;
+}
+
+.pd-title-kaprog h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.pd-title-kaprog h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.pd-vismis-content {
+  display: inline-block;
+  padding: 15px;
+}
+
+.pd-vismis-content h2 {
+  text-align: center;
+}
+
+.card-teachers {
+  display: inline-block;
+  width: 100%;
+  margin: 10px;
+  border-radius: 6px;
+  border: 1px solid rgb(207, 207, 207);
+  box-shadow: 0px 2px 5px 0 rgb(165, 165, 165);
+}
+
+.card-teachers:hover {
+  background: rgb(202, 202, 202);
+}
+
+.body-ct {
+  display: flex;
+  text-align: left;
+}
+
+.img-ct {
+  padding: 10px;
+  background-color: #1768a8;
+  border-top: 5px solid #eeeb3c;
+}
+
+.img-ct img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.desc-ct {
+  padding: 10px;
+}
+
+.desc-ct h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: rgb(15, 15, 15);
+}
+
+.divider-ct {
+  background: #1768a8;
+  width: 100%;
+  height: 2px;
+  border-radius: 6px;
+  margin: 3px 0;
+}
+
+.desc-ct p {
+  color: rgb(15, 15, 15);
+}
+
+/* Orgstruct */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.tree {
+  width: 100%;
+  height: 90vh;
+  margin-bottom: 10px;
+  text-align: center;
+  overflow: scroll;
+  white-space: nowrap;
+}
+.tree ul {
+  padding-top: 20px;
+  position: relative;
+  transition: 0.5s;
+}
+.tree li {
+  display: inline-table;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 10px;
+  transition: 0.5s;
+}
+.tree li::before,
+.tree li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 51%;
+  height: 10px;
+}
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+.tree li:only-child {
+  padding-top: 0;
+}
+.tree li:first-child::before,
+.tree li:last-child::after {
+  border: 0 none;
+}
+.tree li:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  -moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+  -webkit-border-radius: 5px 0 0 0;
+  -moz-border-radius: 5px 0 0 0;
+}
+.tree ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+}
+.tree li a {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: inline-grid;
+  border-radius: 5px;
+  text-decoration-line: none;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+.tree li a img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px !important;
+  border-radius: 100px;
+  margin: auto;
+}
+.tree li a span {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #666;
+  padding: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+/*Hover-Section*/
+.tree li a:hover,
+.tree li a:hover i,
+.tree li a:hover span,
+.tree li a:hover + ul li a {
+  background: #c8e4f8;
+  color: #000;
+  border: 1px solid #94a0b4;
+}
+.tree li a:hover + ul li::after,
+.tree li a:hover + ul li::before,
+.tree li a:hover + ul::before,
+.tree li a:hover + ul ul::before {
+  border-color: #94a0b4;
+}
+
+.pd-divider {
+  height: 2px;
+  background: rgb(226, 226, 29);
+  width: 200px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+/* pd-tentang */
+
+.pd-tentang h2 {
+  margin: 5px;
+  font-size: 1.3rem;
+  color: #1768a8;
+  font-weight: 600;
+}
+
+/* visi misi */
+.pd-vismis-content {
+  border: 1px solid rgb(186, 186, 186);
+  border-radius: 6px;
+  margin: 10px;
+  display: inline-block;
+  width: 45%;
+  text-align: left;
+  /* padding: 5px 10px; */
+  /* position: relative; */
+}
+
+.pd-vismis-content ol li {
+  position: relative;
+  margin-left: 5px;
+}
+
+.pd-vismis-content h2 {
+  font-size: 1.3rem;
+  color: #1768a8;
+  font-weight: 600;
+}
+
+/* Pd document */
+.pd-document h2 {
+  font-size: 1.3rem;
+  color: #1768a8;
+  font-weight: 600;
+  margin: 5px;
+}
+
+.pd-document-box {
+  border: 1px solid rgb(186, 186, 186);
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.pd-document-box-btn {
+  background: none !important;
+  padding: 5px 15px;
+  margin: 5px;
+  /* font-size: 1rem !important; */
+}
+
+.btn-xls {
+  border: 1px solid rgb(3, 145, 3) !important;
+  color: rgb(3, 145, 3) !important;
+}
+
+.btn-xls:hover {
+  background: rgb(3, 145, 3) !important;
+  color: white !important;
+}
+
+.btn-word {
+  border: 1px solid rgb(45, 45, 223) !important;
+  color: rgb(45, 45, 223) !important;
+}
+
+.btn-word:hover {
+  background: rgb(45, 45, 223) !important;
+  color: white !important;
+}
+
+.btn-pdf {
+  border: 1px solid rgb(204, 14, 14) !important;
+  color: rgb(204, 14, 14) !important;
+}
+
+.btn-pdf:hover {
+  background: rgb(204, 14, 14) !important;
+  color: white !important;
+}
+
+.btn-ppt {
+  border: 1px solid orangered !important;
+  color: orangered !important;
+}
+
+.btn-ppt:hover {
+  background: orangered !important;
+  color: white !important;
+}
+
+/* Pd prestasi */
+.pd-prestasi-title {
+  font-size: 1.3rem;
+  color: #1768a8;
+  font-weight: 600;
+  margin: 5px;
+}
+
+.pd-prestasi-content {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(198, 198, 198);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.pd-prestasi-content img {
+  width: 200px;
+}
+
+.pd-prestasi-content-text {
+  display: block;
+  margin: 0 10px;
+}
+
+.pd-prestasi-content-text h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.pd-prestasi-content-text h3 {
+  font-weight: 600;
+}
+
+/* Pd gallery */
+.pd-gallery h2 {
+  font-size: 1.3rem;
+  color: #1768a8;
+  font-weight: 600;
+  margin: 5px;
+}
+
+/* pd jajaran guru */
+.pd-ct-title h2 {
+  font-size: 1.3rem;
+  color: #1768a8;
+  font-weight: 600;
+  margin: 5px;
+}
+
+/* Pd organisasi */
+.pd-title h2 {
+  font-size: 1.3rem;
+  color: #1768a8;
+  font-weight: 600;
+  margin: 5px;
+}

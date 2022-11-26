@@ -167,3 +167,48 @@ h2.visitor-title {
   bottom: 0;
   right: 0;
 }
+
+/* graybox */
+.dashboard-gray-box {
+  background: rgb(232, 232, 232);
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 4px;
+  padding: 25px;
+  position: relative;
+}
+
+/* programs prestasi */
+.dgbitem-prestasi-program {
+  border: 1px solid rgb(113, 113, 113);
+  border-radius: 4px;
+  margin: 5px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+}
+
+.dgbitem-prestasi-program:hover {
+  cursor: pointer;
+  background: rgb(127, 127, 127);
+}
+
+.dgbitem-pp-img {
+  width: 120px;
+}
+
+.dgbitem-pp-desc {
+  margin-left: 10px;
+}
+
+.dgbitem-prestasi-program h3 {
+  display: block;
+}
+
+.dgbitem-pp-btn {
+  font-size: 0.9rem !important;
+}
+
+.btn-add-program {
+  font-size: 0.9rem !important;
+  padding: 5px 10px !important;
+}

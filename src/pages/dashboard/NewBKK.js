@@ -11,7 +11,7 @@ import {
   IoArrowUndoOutline,
 } from "react-icons/io5";
 
-function NewPosting(props) {
+function NewBKK(props) {
   // Const token for every API post
   const [token, setToken] = useState(props.token);
   const [expired, setExpired] = useState(props.expired);
@@ -49,10 +49,6 @@ function NewPosting(props) {
   const [searchParams] = useSearchParams();
   const [paramsId, setParamsId] = useState(searchParams.get("company_id"));
   const [roleAction, setRoleAction] = useState(searchParams.get("role"));
-
-  console.log(paramsId);
-  console.log("===========id job==========");
-  console.log(idJob);
 
   // Const get single job
   const [singleJob, setSingleJob] = useState([]);
@@ -162,13 +158,6 @@ function NewPosting(props) {
   }, [singleJob]);
 
   const setValueJob = async () => {
-    console.log("===========test 123xx========");
-    console.log(singleJob);
-    singleJob.map((job) => {
-      console.log("job 123======");
-      console.log(job);
-    });
-    console.log("===========test 123========");
     if (singleJob.length !== 0) {
       singleJob.map((job) => {
         setFormData({
@@ -773,4 +762,4 @@ function NewPosting(props) {
   );
 }
 
-export default NewPosting;
+export default NewBKK;

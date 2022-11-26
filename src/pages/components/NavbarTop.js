@@ -9,11 +9,21 @@ import {
 } from "react-bootstrap";
 import logo from "../../images/logo.png";
 import { IoGlobeOutline, IoChevronDownOutline } from "react-icons/io5";
+import { useEffect } from "react";
 
-function NavbarTop() {
+function NavbarTop(props) {
+  console.log(props.isIndex);
+  if (!props.isIndex) {
+    require("../../style/nav-notindex.css");
+  }
   return (
     <>
-      <Navbar expand="lg" id="navbarfarhan">
+      <Navbar
+        expand="lg"
+        id="navbarfarhan"
+        className={props.colorChange ? "colorChange" : ""}
+        style={{ backgroundColor: props.isIndex ? "transparent" : "white" }}
+      >
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -22,7 +32,6 @@ function NavbarTop() {
               height="30"
               className="d-inline-block align-top"
             />
-            {""}
             <Row className="align-items-center ms-1">
               <div id="nb-ttl">SMK ISLAMIYAH CIPUTAT</div>
             </Row>

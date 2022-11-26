@@ -18,6 +18,12 @@ import NewTeacher from "./NewTeacher";
 import ManageTeacher from "./ManageTeacher";
 import NewStaff from "./NewStaff";
 import ManageStaff from "./ManageStaff";
+import ManageHeader from "./ManageHeader";
+import NewHeader from "./NewHeader";
+import ManageAlumni from "./ManageAlumni";
+import NewAlumni from "./NewAlumni";
+import NewProgram from "./NewProgram";
+import ManageProgram from "./ManageProgram";
 
 function Dashboard() {
   const [name, setName] = useState("");
@@ -159,6 +165,54 @@ function Dashboard() {
               path="manage-staff"
               element={
                 <ManageStaff token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="new-alumni"
+              element={
+                <NewAlumni token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="edit-alumni"
+              element={
+                <NewAlumni token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="manage-alumni"
+              element={
+                <ManageAlumni token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="new-program"
+              element={
+                <NewProgram token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="edit-program"
+              element={
+                <NewProgram token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="manage-program"
+              element={
+                <ManageProgram token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="edit-header"
+              element={
+                <NewHeader token={token} name={name} expired={expired} />
+              }
+            />
+            <Route
+              path="manage-header"
+              element={
+                <ManageHeader token={token} name={name} expired={expired} />
               }
             />
           </Routes>
