@@ -32,6 +32,11 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Home() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
   // Navbar Styling
   const [colorChange, setColorChange] = useState(false);
   const changeNavbarColor = () => {
@@ -59,7 +64,7 @@ function Home() {
 
   const getPostsActivity = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `http://localhost:5000/posts?limit=5&post_type=activities`
       );
       if (response) {
@@ -72,7 +77,7 @@ function Home() {
 
   const getPostsAnnouncement = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `http://localhost:5000/posts?limit=5&post_type=announcement`
       );
       if (response) {
@@ -156,7 +161,7 @@ function Home() {
 
   const getAlumni = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `http://localhost:5000/alumnis/alumniindex/show`
       );
 
@@ -207,7 +212,9 @@ function Home() {
 
   const getHeader = async () => {
     try {
-      const responseHeader = await axios.get(`http://localhost:5000/header/`);
+      const responseHeader = await axiosInstance.get(
+        `http://localhost:5000/header/`
+      );
 
       if (responseHeader) {
         setHeader(responseHeader.data.result);
