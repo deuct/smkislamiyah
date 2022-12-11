@@ -8,6 +8,13 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 function RelatedPost(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Farhan : Get post type of post
   const postType = props.postType;
 
@@ -21,8 +28,8 @@ function RelatedPost(props) {
   }, []);
 
   const getRelatedArticle = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/posts/?post_type=${postType}&limit=${limit}`
+    const response = await axiosInstance.get(
+      `/posts/?post_type=${postType}&limit=${limit}`
     );
     setRelPost(response.data.result);
   };
@@ -42,10 +49,7 @@ function RelatedPost(props) {
       >
         <div className="ra-bd mx-2 p-3" style={{ width: "100%" }}>
           <img
-            src={`http://localhost:5000/${relPos.imgpost_dir.replace(
-              "\\",
-              "/"
-            )}`}
+            src={`${baseURLAPI}/${relPos.imgpost_dir.replace("\\", "/")}`}
             style={{ width: "auto", height: "180px" }}
           />
           <h3>{relPos.post_shortdesc}</h3>

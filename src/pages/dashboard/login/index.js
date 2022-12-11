@@ -6,6 +6,13 @@ import { Button, Form } from "react-bootstrap";
 import "../../../style/login.css";
 
 function Login() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  // const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,8 +28,8 @@ function Login() {
       withCredentials: true,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:5000/login",
+      const response = await axiosInstance.post(
+        "/login",
         {
           email: email,
           password: password,

@@ -8,15 +8,22 @@ import { IoTimeOutline } from "react-icons/io5";
 import "../../style/posts-detail.css";
 
 function PostCard(props) {
-  const client = axios.create({
-    baseURL: "http://localhost:5000/posts/category",
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
   });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
+  // const client = axios.create({
+  //   baseURL: "http://localhost:5000/posts/category",
+  // });
 
   const [categories, setCategories] = useState([]);
   const [idpost, setIdPost] = useState("");
 
   useEffect(() => {
-    client.get(`${props.idpost}`).then((response) => {
+    axiosInstance.get(`${props.idpost}`).then((response) => {
       setCategories(response.data);
       console.log("respon data: " + response.data);
     });
@@ -30,8 +37,8 @@ function PostCard(props) {
 
   const getImgpostListing = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/posts/imgpost/${props.idpost}`,
+      const response = await axiosInstance.get(
+        `/posts/imgpost/${props.idpost}`,
         {
           params: {
             _limit: 1,
@@ -92,10 +99,7 @@ function PostCard(props) {
             return (
               <>
                 <img
-                  src={`http://localhost:5000/${img.imgpost_dir.replace(
-                    "\\",
-                    "/"
-                  )}`}
+                  src={`${baseURLAPI}/${img.imgpost_dir.replace("\\", "/")}`}
                   alt="post-image"
                 />
               </>

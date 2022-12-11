@@ -6,6 +6,13 @@ import { Row, Col, Button } from "react-bootstrap";
 import { IoTimeOutline } from "react-icons/io5";
 
 function NewerPostCard() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   const [post, setPost] = useState([]);
 
   useEffect(() => {
@@ -13,7 +20,7 @@ function NewerPostCard() {
   }, []);
   const getPost = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/posts?limit=5`);
+      const response = await axiosInstance.get(`/posts?limit=5`);
       setPost(response.data.result);
     } catch (error) {
       console.log(error);
@@ -30,10 +37,7 @@ function NewerPostCard() {
             <Row className="justify-content-start">
               <Col xs={12} className="text-center">
                 <img
-                  src={`http://localhost:5000/${pos.imgpost_dir.replace(
-                    "\\",
-                    "/"
-                  )}`}
+                  src={`${baseURLAPI}/${pos.imgpost_dir.replace("\\", "/")}`}
                 />
               </Col>
             </Row>

@@ -11,6 +11,13 @@ import { IoSearch, IoPlayBackSharp } from "react-icons/io5";
 import person from "../../../images/sample-alumni.jpg";
 
 function Teachers() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   const [teachers, setTeachers] = useState([]);
   const [load, setLoad] = useState(4);
 
@@ -20,7 +27,7 @@ function Teachers() {
 
   const getTeachers = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/teachers/`, {
+      const response = await axiosInstance.get(`/teachers/`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -109,7 +116,7 @@ function Teachers() {
                     <div className="body-ct">
                       <div className="img-ct">
                         <img
-                          src={`http://localhost:5000/${teacher.teacher_photo_dir.replace(
+                          src={`${baseURLAPI}/${teacher.teacher_photo_dir.replace(
                             "\\",
                             "/"
                           )}`}

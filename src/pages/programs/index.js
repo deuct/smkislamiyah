@@ -22,8 +22,15 @@ import FooterBot from "../components/FooterBot";
 import HeaderImg from "../components/HeaderImg";
 
 function Programs() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   const [programs, setPrograms] = useState([]);
-  const baseURL = "http://localhost:5000";
+  // const baseURL = "http://localhost:5000";
 
   useEffect(() => {
     getAllProgram();
@@ -31,7 +38,7 @@ function Programs() {
 
   const getAllProgram = async () => {
     try {
-      const resProgram = await axios.get(`${baseURL}/jurusan`);
+      const resProgram = await axiosInstance.get(`/jurusan`);
 
       if (resProgram) {
         setPrograms(resProgram.data.result);
@@ -97,7 +104,10 @@ function Programs() {
               <Col xs="4">
                 <div className="card-programs" key={program.jurusan_id}>
                   <img
-                    src={`${baseURL}/${program.jg_img_dir.replace(/\\/g, "/")}`}
+                    src={`${baseURLAPI}/${program.jg_img_dir.replace(
+                      /\\/g,
+                      "/"
+                    )}`}
                   />
                   <div className="card-programs-body">
                     <h1>{program.jurusan_name}</h1>

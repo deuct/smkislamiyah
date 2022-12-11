@@ -4,7 +4,6 @@ import axios from "axios";
 // Component
 import NavbarTop from "../components/NavbarTop";
 import FooterBot from "../components/FooterBot";
-import HeaderImg from "../components/HeaderImg";
 import DetailBkk from "./DetailBkk";
 // Style
 import { Container, InputGroup, Row, Col, Button, Form } from "react-bootstrap";
@@ -12,6 +11,13 @@ import { IoSearch } from "react-icons/io5";
 import "../../style/bkk-listing.css";
 
 function Listing() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -19,19 +25,18 @@ function Listing() {
     // withCredentials: true,
   };
 
-  const client = axios.create({
-    baseURL: "http://localhost:5000/jobs",
-  });
+  // const client = axios.create({
+  //   baseURL: "http://localhost:5000/jobs",
+  // });
 
   const [jobs, setJobs] = useState([]);
   const [load, setLoad] = useState(2);
-  const [flag, setFlag] = useState(true);
 
   useEffect(() => {
-    client.get("", config).then((response) => {
+    axiosInstance.get("", config).then((response) => {
       setJobs(response.data);
     });
-  }, []);
+  });
 
   const loadData = () => {
     setLoad((prev) => prev + 1);
@@ -72,7 +77,7 @@ function Listing() {
               Perspiciatis a consectetur provident dolor odit, at laborum
               aliquam eos suscipit magni labore,
             </p>
-            <a href="#">More information...</a>
+            <a href="/">More information...</a>
           </Col>
         </Row>
         <Row id="breadcrumb">
@@ -107,7 +112,7 @@ function Listing() {
                     <div className="card-bkk">
                       <Col xs={2}>
                         <img
-                          src={`http://localhost:5000/${job.company_logo.replace(
+                          src={`${baseURLAPI}/${job.company_logo.replace(
                             "\\",
                             "/"
                           )}`}

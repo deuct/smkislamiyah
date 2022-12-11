@@ -16,7 +16,7 @@ function FooterBot() {
           <Col xs={3}>
             <div className="box-footer">
               <div className="box-footer-title">
-                <img src={logoSmk} width="80px" />
+                <img src={logoSmk} width="80px" alt="footerlogo" />
                 <h2>SMK ISLAMIYAH</h2>
               </div>
               <p>
@@ -43,16 +43,16 @@ function FooterBot() {
                 </tbody>
               </table>
               <p className="sm-icon">
-                <a href="#">
+                <a href="/">
                   <IoLogoInstagram size={35} />
                 </a>
-                <a href="#">
+                <a href="/">
                   <IoLogoFacebook size={35} />
                 </a>
-                <a href="#">
+                <a href="/">
                   <IoLogoLinkedin size={35} />
                 </a>
-                <a href="#">
+                <a href="/">
                   <IoLogoYoutube size={35} />
                 </a>
               </p>
@@ -63,19 +63,19 @@ function FooterBot() {
               <h2>ABOUT</h2>
               <ul>
                 <li>
-                  <a href="#">Visi & Misi</a>
+                  <a href="/">Visi & Misi</a>
                 </li>
                 <li>
-                  <a href="#">Headmaster Greetings</a>
+                  <a href="/">Headmaster Greetings</a>
                 </li>
                 <li>
-                  <a href="#">History</a>
+                  <a href="/">History</a>
                 </li>
                 <li>
-                  <a href="#">Programs</a>
+                  <a href="/">Programs</a>
                 </li>
                 <li>
-                  <a href="#">Curriculum</a>
+                  <a href="/">Curriculum</a>
                 </li>
               </ul>
             </div>

@@ -37,6 +37,8 @@ function Home() {
     baseURL: process.env.REACT_APP_API_URL,
   });
 
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Navbar Styling
   const [colorChange, setColorChange] = useState(false);
   const changeNavbarColor = () => {
@@ -65,7 +67,7 @@ function Home() {
   const getPostsActivity = async () => {
     try {
       const response = await axiosInstance.get(
-        `http://localhost:5000/posts?limit=5&post_type=activities`
+        `/posts?limit=5&post_type=activities`
       );
       if (response) {
         setPostsActivity(response.data.result);
@@ -78,7 +80,7 @@ function Home() {
   const getPostsAnnouncement = async () => {
     try {
       const response = await axiosInstance.get(
-        `http://localhost:5000/posts?limit=5&post_type=announcement`
+        `/posts?limit=5&post_type=announcement`
       );
       if (response) {
         setPostsAnnouncement(response.data.result);
@@ -107,10 +109,7 @@ function Home() {
             <div className="bg-post-card"></div>
             <img
               className="post-card-img"
-              src={`http://localhost:5000/${post.imgpost_dir.replace(
-                "\\",
-                "/"
-              )}`}
+              src={`${baseURLAPI}/${post.imgpost_dir.replace("\\", "/")}`}
             />
             <div className="post-card-body">
               <div className="post-card-body-type">{post.post_type}</div>
@@ -131,10 +130,7 @@ function Home() {
             <div className="bg-post-card"></div>
             <img
               className="post-card-img"
-              src={`http://localhost:5000/${post.imgpost_dir.replace(
-                "\\",
-                "/"
-              )}`}
+              src={`${baseURLAPI}/${post.imgpost_dir.replace("\\", "/")}`}
             />
             <div className="post-card-body">
               <div className="post-card-body-type">{post.post_type}</div>
@@ -161,9 +157,7 @@ function Home() {
 
   const getAlumni = async () => {
     try {
-      const response = await axiosInstance.get(
-        `http://localhost:5000/alumnis/alumniindex/show`
-      );
+      const response = await axiosInstance.get(`/alumnis/alumniindex/show`);
 
       if (response) {
         setTestiAlumni(response.data.result);
@@ -183,10 +177,7 @@ function Home() {
         ...prev,
         <div className="card-testimonials">
           <img
-            src={`http://localhost:5000/${alumni.alumni_photo_dir.replace(
-              "\\",
-              "/"
-            )}`}
+            src={`${baseURLAPI}/${alumni.alumni_photo_dir.replace("\\", "/")}`}
             className="testi-alumni-img"
           />
           <div className="body-testimonials">
@@ -212,9 +203,7 @@ function Home() {
 
   const getHeader = async () => {
     try {
-      const responseHeader = await axiosInstance.get(
-        `http://localhost:5000/header/`
-      );
+      const responseHeader = await axiosInstance.get(`/header/`);
 
       if (responseHeader) {
         setHeader(responseHeader.data.result);
@@ -237,10 +226,7 @@ function Home() {
               <div className="black-carousel"></div>
               <img
                 className="d-block w-100"
-                src={`http://localhost:5000/${heads.header_img_dir.replace(
-                  "\\",
-                  "/"
-                )}`}
+                src={`${baseURLAPI}/${heads.header_img_dir.replace("\\", "/")}`}
                 alt={heads.header_title}
               />
               <Carousel.Caption className="slide">

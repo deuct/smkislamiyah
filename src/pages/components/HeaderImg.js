@@ -10,7 +10,7 @@ function HeaderImg({ title }) {
       <Row id="header-img">
         <Col xs={12}>
           <div className="headerimg-black"></div>
-          <img src={programsImg} />
+          <img src={programsImg} alt="header-img" />
           <div className="headerfill">
             <h1>SMK Islamiyah {title}</h1>
           </div>

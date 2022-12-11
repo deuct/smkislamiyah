@@ -11,6 +11,13 @@ import "../../../style/staff.css";
 import person from "../../../images/sample-alumni.jpg";
 
 function Staff() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   const [staffs, setStaffs] = useState([]);
   const [load, setLoad] = useState(4);
 
@@ -20,7 +27,7 @@ function Staff() {
 
   const getStaffs = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/staffs/`, {
+      const response = await axiosInstance.get(`/staffs/`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -94,7 +101,7 @@ function Staff() {
                     <div className="body-ct">
                       <div className="img-ct">
                         <img
-                          src={`http://localhost:5000/${staff.staff_photo_dir.replace(
+                          src={`${baseURLAPI}/${staff.staff_photo_dir.replace(
                             "\\",
                             "/"
                           )}`}

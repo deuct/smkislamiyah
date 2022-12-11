@@ -3,11 +3,11 @@ import { Row, Col, Form } from "react-bootstrap";
 import BarChart from "./components/BarChart";
 import { IoBook, IoPaperPlaneOutline, IoBriefcaseSharp } from "react-icons/io5";
 import { UserData } from "./Data";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function DashHome(props) {
   // Chart JS
-  const [userData, setUserData] = useState({
+  const userData = useState({
     labels: UserData.map((data) => data.month),
     datasets: [
       {

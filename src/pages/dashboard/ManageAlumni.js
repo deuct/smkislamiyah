@@ -1,7 +1,7 @@
 // React Need
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 // Styling
@@ -18,7 +18,6 @@ import { IoAdd, IoSearch, IoTrashBin, IoEye } from "react-icons/io5";
 
 function ManageAlumni(props) {
   // Modal after delete item
-  const [isModalClose, setIsModalClose] = useState(false);
   const [show, setShow] = useState(false);
   const handleCloseModal = () => setShow(false);
   const handleShowModal = (selectedId, selectedImg, e) => {
@@ -30,25 +29,25 @@ function ManageAlumni(props) {
   // End modal after delete item
 
   // Generate token for every API post
-  const [token, setToken] = useState(props.token);
-  const [expired, setExpired] = useState(props.expired);
+  // const [token, setToken] = useState(props.token);
+  // const [expired, setExpired] = useState(props.expired);
 
   const axiosJWT = axios.create();
 
   axiosJWT.interceptors.request.use(
     async (config) => {
-      const currentDate = new Date();
-      const expr = expired * 1000;
-      const curDate = currentDate.getTime();
-      const exprRes = currentDate.getTime() - expr;
+      // const currentDate = new Date();
+      // const expr = expired * 1000;
+      // const curDate = currentDate.getTime();
+      // const exprRes = currentDate.getTime() - expr;
       const response = await axios.get("http://localhost:5000/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
       config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-      setToken(response.data.accessToken);
-      const decoded = jwt_decode(response.data.accessToken);
-      setExpired(decoded.exp);
+      // setToken(response.data.accessToken);
+      // const decoded = jwt_decode(response.data.accessToken);
+      // setExpired(decoded.exp);
       return config;
     },
     (error) => {
@@ -60,7 +59,7 @@ function ManageAlumni(props) {
   // Farhan : Get Alumni, Paginate, Search
   const [alumni, setAlumni] = useState([]);
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(10);
+  const limit = useState(10);
   const [pages, setPages] = useState(0);
   const [rows, setRows] = useState(0);
   const [keyword, setKeyword] = useState("");
@@ -68,6 +67,7 @@ function ManageAlumni(props) {
   const [msg, setMsg] = useState("");
   useEffect(() => {
     getAlumni();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, keyword]);
 
   const getAlumni = async () => {
@@ -208,7 +208,7 @@ function ManageAlumni(props) {
                               "\\",
                               "/"
                             )}`}
-                            alt="alumni-image"
+                            alt={almn.alumni_nama}
                             width="100px"
                           />
                         ) : (

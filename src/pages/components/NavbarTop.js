@@ -1,15 +1,6 @@
 import React from "react";
-import {
-  Navbar,
-  Container,
-  Nav,
-  Row,
-  NavItem,
-  NavDropdown,
-} from "react-bootstrap";
+import { Navbar, Container, Nav, Row, NavDropdown } from "react-bootstrap";
 import logo from "../../images/logo.png";
-import { IoGlobeOutline, IoChevronDownOutline } from "react-icons/io5";
-import { useEffect } from "react";
 
 function NavbarTop(props) {
   console.log(props.isIndex);
@@ -31,6 +22,7 @@ function NavbarTop(props) {
               width="55"
               height="30"
               className="d-inline-block align-top"
+              alt="navbartop-img"
             />
             <Row className="align-items-center ms-1">
               <div id="nb-ttl">SMK ISLAMIYAH CIPUTAT</div>

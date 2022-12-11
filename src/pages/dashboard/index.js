@@ -26,6 +26,13 @@ import NewProgram from "./NewProgram";
 import ManageProgram from "./ManageProgram";
 
 function Dashboard() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   const [name, setName] = useState("");
   const [token, setToken] = useState("");
   const [expired, setExpired] = useState("");
@@ -44,7 +51,7 @@ function Dashboard() {
       withCredentials: true,
     };
     try {
-      const response = await axios.get("http://localhost:5000/token", config);
+      const response = await axiosInstance.get("/token", config);
       setToken(response.data.accessToken);
       const decoded = jwt_decode(response.data.accessToken);
       setName(decoded.name);
@@ -63,7 +70,7 @@ function Dashboard() {
     async (config) => {
       const currentDate = new Date();
       if (expired * 1000 < currentDate.getTime()) {
-        const response = await axios.get("http://localhost:5000/token", {
+        const response = await axiosInstance.get("/token", {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         });

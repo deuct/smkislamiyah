@@ -2,44 +2,37 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 // Component
-import NavbarTop from "../components/NavbarTop";
-import FooterBot from "../components/FooterBot";
-import HeaderImg from "../components/HeaderImg";
+// import NavbarTop from "../components/NavbarTop";
+// import FooterBot from "../components/FooterBot";
+// import HeaderImg from "../components/HeaderImg";
 // Style
-import {
-  Container,
-  InputGroup,
-  Row,
-  Col,
-  Button,
-  Form,
-  Navbar,
-} from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import "../../style/bkk-detail.css";
-import PepsiLogo from "../../images/pepsi-logo.png";
 
 function DetailBkk(props) {
-  const client = axios.create({
-    baseURL: "http://localhost:5000/jobs",
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
   });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
+  // const client = axios.create({
+  //   baseURL: "http://localhost:5000/jobs",
+  // });
 
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     getJobDetail();
-  }, []);
+  });
 
   const getJobDetail = async () => {
-    await client.get(props.bkkId).then((response) => {
+    await axiosInstance.get(props.bkkId).then((response) => {
       setJobs(response.data.result);
     });
   };
 
-  console.log("=====bkk=======");
-  console.log(jobs);
-  jobs.map((job) => {
-    console.log(job.company_name);
-  });
   return (
     <>
       {jobs.map((job) => {
@@ -47,10 +40,7 @@ function DetailBkk(props) {
           <>
             <Row className="bkkdetail-title">
               <img
-                src={`http://localhost:5000/${job.company_logo.replace(
-                  "\\",
-                  "/"
-                )}`}
+                src={`${baseURLAPI}/${job.company_logo.replace("\\", "/")}`}
                 className="dbkk-img"
                 alt="company-logo"
               />

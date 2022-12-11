@@ -33,7 +33,6 @@ export default function HistoriesBKK() {
               Perspiciatis a consectetur provident dolor odit, at laborum
               aliquam eos suscipit magni labore,
             </p>
-            <a href="#">More information...</a>
           </Col>
         </Row>
         <Row id="breadcrumb">

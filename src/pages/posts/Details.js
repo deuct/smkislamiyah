@@ -15,6 +15,13 @@ import { Col, Container, Row, Button } from "react-bootstrap";
 import { IoTimeOutline, IoEye } from "react-icons/io5";
 
 function DetailPost(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Farhan : Get post id from listing
   // const location = useLocation();
   // const idpost = location.state.idpost;
@@ -30,10 +37,9 @@ function DetailPost(props) {
 
   const getIdPostBySlug = async () => {
     try {
-      const resIdPost = await axios.post(
-        `http://localhost:5000/posts/getpostbyslug`,
-        { postSlug: slug.postslug }
-      );
+      const resIdPost = await axiosInstance.post(`/posts/getpostbyslug`, {
+        postSlug: slug.postslug,
+      });
 
       if (resIdPost) {
         setIdPost(resIdPost.data[0].post_id);
@@ -62,7 +68,7 @@ function DetailPost(props) {
 
   const getPost = async () => {
     if (idPost.length > 0) {
-      const response = await axios.get(`http://localhost:5000/posts/${idPost}`);
+      const response = await axiosInstance.get(`/posts/${idPost}`);
       if (response) {
         setPost(response.data);
       }
@@ -70,18 +76,14 @@ function DetailPost(props) {
   };
   const getCategory = async () => {
     if (idPost.length > 0) {
-      const response = await axios.get(
-        `http://localhost:5000/posts/category/${idPost}`
-      );
+      const response = await axiosInstance.get(`/posts/category/${idPost}`);
       setCategories(response.data);
     }
   };
 
   const getImgpost = async () => {
     if (idPost.length > 0) {
-      const response = await axios.get(
-        `http://localhost:5000/posts/imgpost/${idPost}`
-      );
+      const response = await axiosInstance.get(`/posts/imgpost/${idPost}`);
       setImgPost(response.data);
     }
   };
@@ -96,7 +98,7 @@ function DetailPost(props) {
     imgPost.map((img) => {
       setArrMasonry((prev) => [
         ...prev,
-        "http://localhost:5000/" + img.imgpost_dir.replace("\\", "/"),
+        `${baseURLAPI}` + img.imgpost_dir.replace("\\", "/"),
       ]);
     });
   };
@@ -124,7 +126,7 @@ function DetailPost(props) {
                   <Row className="pd-img">
                     {imgPost.slice(0, 1).map((imgpos) => {
                       const imgdir = imgpos.imgpost_dir.replace("\\", "/");
-                      const urlimg = "http://localhost:5000/" + imgdir;
+                      const urlimg = `${baseURLAPI}` + imgdir;
                       return (
                         <>
                           <img src={urlimg} />

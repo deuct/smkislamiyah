@@ -22,7 +22,14 @@ import { IoArrowBackCircle, IoArrowForwardCircleSharp } from "react-icons/io5";
 import { Helmet } from "react-helmet";
 
 function ProgramDetail() {
-  const baseURL = "http://localhost:5000";
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
+  // const baseURL = "http://localhost:5000";
   const slug = useParams();
 
   // Get jurusan id by slug
@@ -34,8 +41,8 @@ function ProgramDetail() {
 
   const getIdJurusan = async () => {
     try {
-      const resIdJurusan = await axios.post(
-        `${baseURL}/jurusan/getjurusanbyslug`,
+      const resIdJurusan = await axiosInstance.post(
+        `/jurusan/getjurusanbyslug`,
         { programSlug: slug.programslug }
       );
 
@@ -58,8 +65,6 @@ function ProgramDetail() {
   const [visi, setVisi] = useState([]);
   const [misi, setMisi] = useState([]);
 
-  console.log(program);
-
   useEffect(() => {
     getSingleProgram();
   }, [idJurusan]);
@@ -67,7 +72,7 @@ function ProgramDetail() {
   const getSingleProgram = async () => {
     try {
       if (idJurusan.length > 0) {
-        const resProgram = await axios.get(`${baseURL}/jurusan/${idJurusan}`);
+        const resProgram = await axiosInstance.get(`/jurusan/${idJurusan}`);
         if (resProgram) {
           setProgram(resProgram.data[0]);
           setVisi(resProgram.data[0].jurusan_visi.split(","));
@@ -90,22 +95,22 @@ function ProgramDetail() {
 
   const getDokPresGal = async () => {
     try {
-      const resDokumen = await axios.get(
-        `${baseURL}/jurusan/dokumen/${idJurusan}`
+      const resDokumen = await axiosInstance.get(
+        `/jurusan/dokumen/${idJurusan}`
       );
       if (resDokumen) {
         setDokumen(resDokumen.data);
       }
 
-      const resPrestasi = await axios.get(
-        `${baseURL}/jurusan/prestasi/${idJurusan}`
+      const resPrestasi = await axiosInstance.get(
+        `/jurusan/prestasi/${idJurusan}`
       );
       if (resPrestasi) {
         setPrestasi(resPrestasi.data);
       }
 
-      const resGallery = await axios.get(
-        `${baseURL}/jurusan/gallery/${idJurusan}`
+      const resGallery = await axiosInstance.get(
+        `/jurusan/gallery/${idJurusan}`
       );
       if (resGallery) {
         setGallery(resGallery.data);
@@ -130,7 +135,7 @@ function ProgramDetail() {
         ...prev,
         <div className="pd-prestasi-content">
           <img
-            src={`${baseURL}/${prestasi.jp_img_dir.replace(/\\/g, "/")}`}
+            src={`${baseURLAPI}/${prestasi.jp_img_dir.replace(/\\/g, "/")}`}
             alt="img-prestasi"
             style={{ minWidth: "200px", minHeight: "200px" }}
           />
@@ -159,7 +164,7 @@ function ProgramDetail() {
     gallery.map((img) => {
       setMasonryImage((prev) => [
         ...prev,
-        `${baseURL}/${img.jg_img_dir.replace(/\\/g, "/")}`,
+        `${baseURLAPI}/${img.jg_img_dir.replace(/\\/g, "/")}`,
       ]);
     });
   };
@@ -202,7 +207,7 @@ function ProgramDetail() {
               ) : (
                 <>
                   <img
-                    src={`${baseURL}/${program.teacher_photo_dir.replace(
+                    src={`${baseURLAPI}/${program.teacher_photo_dir.replace(
                       /\\/g,
                       "/"
                     )}`}

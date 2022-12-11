@@ -26,6 +26,13 @@ import PostCard from "./PostCard";
 import ReactPaginate from "react-paginate";
 
 export default function Listing() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Farhan : Get Post, Paginate, Search
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
@@ -42,8 +49,8 @@ export default function Listing() {
   }, [page, keyword, postTypes]);
 
   const getPosts = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/posts?search_query=${keyword}&page=${page}&limit=${limit}&post_type=${postTypes}`
+    const response = await axiosInstance.get(
+      `/posts?search_query=${keyword}&page=${page}&limit=${limit}&post_type=${postTypes}`
     );
     setPosts(response.data.result);
     setPage(response.data.page);
