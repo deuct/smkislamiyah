@@ -16,6 +16,13 @@ import {
 } from "react-icons/io5";
 
 function NewPosting(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Const Get params from url
   const [searchParams] = useSearchParams();
   const [paramsId, setParamsId] = useState(searchParams.get("post_id"));
@@ -75,7 +82,7 @@ function NewPosting(props) {
   // End modal after post
 
   // Generate token for every API post
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -85,7 +92,7 @@ function NewPosting(props) {
       const exprRes = currentDate.getTime() - expr;
       // if (expired * 1000 > currentDate.getTime()) {
       // if (config.status === 401) {
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -116,10 +123,7 @@ function NewPosting(props) {
       },
       withCredentials: true,
     };
-    const response = await axiosJWT.get(
-      "http://localhost:5000/posts/getid/getidpost",
-      config
-    );
+    const response = await axiosJWT.get("/posts/getid/getidpost", config);
 
     if (response) {
       const resId = response.data.post_id;
@@ -144,11 +148,9 @@ function NewPosting(props) {
 
   const initializePost = async () => {
     if (roleAction === "edit") {
-      const response = await axios.get(
-        `http://localhost:5000/posts/${paramsId}`
-      );
-      const resCategory = await axios.get(
-        `http://localhost:5000/posts/category/${paramsId}`
+      const response = await axiosInstance.get(`/posts/${paramsId}`);
+      const resCategory = await axiosInstance.get(
+        `/posts/category/${paramsId}`
       );
       if (response && resCategory) {
         setSinglePost(response.data);
@@ -168,10 +170,6 @@ function NewPosting(props) {
       // });
     }
   };
-
-  console.log("========test postcode========");
-  console.log(idPost);
-  console.log(postCode);
 
   useEffect(() => {
     setValuePost();
@@ -197,13 +195,11 @@ function NewPosting(props) {
   }, [postCode]); //di set auto load setiap kali arrshowimg di modifikasi
 
   const setCurrentImg = async () => {
-    const responseImg = await axios.get(
-      `http://localhost:5000/posts/imgpost/${postCode}`
-    );
+    const responseImg = await axiosInstance.get(`/posts/imgpost/${postCode}`);
     const responseImgAssign = responseImg.data.map((img) => {
       setShowImgUpload((showImgUpload) => [
         ...showImgUpload,
-        `http://localhost:5000/${img.imgpost_dir.replace("\\", "/")}`,
+        `${baseURLAPI}/${img.imgpost_dir.replace("\\", "/")}`,
       ]);
     });
   };
@@ -271,51 +267,45 @@ function NewPosting(props) {
         const postSlug =
           postTitle.replace(/\s/g, "-") + "-" + postCode.replace("PST", "");
 
-        var response = await axiosJWT.post(
-          "http://localhost:5000/posts/newpost",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            withCredentials: true,
-            data: {
-              postCode: postCode,
-              postTitle: postTitle,
-              postStatus: statusPost,
-              postType: postType,
-              postShortDesc: shortDesc,
-              postDesc: postDesc,
-              postSlug: postSlug,
-              createdAt: postDate,
-            },
-          }
-        );
+        var response = await axiosJWT.post("/posts/newpost", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+          data: {
+            postCode: postCode,
+            postTitle: postTitle,
+            postStatus: statusPost,
+            postType: postType,
+            postShortDesc: shortDesc,
+            postDesc: postDesc,
+            postSlug: postSlug,
+            createdAt: postDate,
+          },
+        });
       } else if (roleAction === "edit") {
         const shortDesc = postShortDesc.slice(0, 250);
         const postSlug =
           postTitle.replace(/\s/g, "-") + "-" + postCode.replace("PST", "");
 
-        var response = await axiosJWT.post(
-          "http://localhost:5000/posts/updatepost",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            withCredentials: true,
-            data: {
-              postCode: postCode,
-              postTitle: postTitle,
-              postStatus: statusPost,
-              postType: postType,
-              postShortDesc: shortDesc,
-              postSlug: postSlug,
-              postDesc: postDesc,
-              updatedAt: postDate,
-            },
-          }
-        );
+        var response = await axiosJWT.post("/posts/updatepost", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+          data: {
+            postCode: postCode,
+            postTitle: postTitle,
+            postStatus: statusPost,
+            postType: postType,
+            postShortDesc: shortDesc,
+            postSlug: postSlug,
+            postDesc: postDesc,
+            updatedAt: postDate,
+          },
+        });
       }
       if (response) {
         // Start upload image to database based on postcode
@@ -324,7 +314,7 @@ function NewPosting(props) {
         } else {
           var uploadImgProcess = await axios.all([
             arrImgUpload.map((item) => {
-              axiosJWT.post("http://localhost:5000/imgpost", item, {
+              axiosJWT.post("/imgpost", item, {
                 headers: {
                   Authorization: `Bearer ${token}`,
                   "Content-Type": "application/json",
@@ -340,12 +330,10 @@ function NewPosting(props) {
         if (uploadImgProcess || newImg === "false") {
           // Upload category based on post code
           const postCateg = postCategory.split(",");
-          console.log("=======post categ=======");
-          console.log(postCateg);
           if (roleAction === "add") {
             var categoryPost = await axios.all([
               postCateg.map((item) => {
-                axiosJWT.post("http://localhost:5000/posts/categorypost", {
+                axiosJWT.post("/posts/categorypost", {
                   headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
@@ -356,20 +344,17 @@ function NewPosting(props) {
               }),
             ]);
           } else if (roleAction === "edit") {
-            await axiosJWT.post(
-              "http://localhost:5000/posts/updatecategory/delete",
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  "Content-Type": "application/json",
-                },
-                withCredentials: true,
-                data: { postCode: postCode },
-              }
-            );
+            await axiosJWT.post("/posts/updatecategory/delete", {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              withCredentials: true,
+              data: { postCode: postCode },
+            });
             var categoryPost = await axios.all([
               postCateg.map((item) => {
-                axiosJWT.post("http://localhost:5000/posts/updatecategory", {
+                axiosJWT.post("/posts/updatecategory", {
                   headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
@@ -428,21 +413,6 @@ function NewPosting(props) {
     setChecked(updateCheckedState);
   };
 
-  console.log("============DEBUGGING============");
-  console.log(postCategoryEdited);
-  console.log(postCategoryEdited.toString());
-  console.log(postCode);
-  console.log(postStatus);
-  console.log(postTitle);
-  console.log(postDate);
-  // const postCateg = postCategory.split(",");
-  // console.log(postCateg);
-  console.log(postType);
-  console.log(postDesc);
-  // console.log("=====================test show=============");
-  console.log(arrImgUpload);
-  console.log(showImgUpload);
-
   // End Image State
 
   // Delete Img from state
@@ -469,10 +439,7 @@ function NewPosting(props) {
         if (chk === true) {
           const imgtoDelete = arrImgUpload[index];
           const imgshowToDelete = showImgUpload[index];
-          console.log("==========imgshow to delete========");
-          console.log(imgshowToDelete);
-          console.log("==========imgarray to delete========");
-          console.log(imgtoDelete);
+
           setArrImgUpload((prev) =>
             prev.filter((arrImgUpload) => {
               return arrImgUpload !== imgtoDelete;
@@ -487,7 +454,7 @@ function NewPosting(props) {
           var imgDirSlice = showImgUpload[index].slice(22);
           imgDirSlice = imgDirSlice.replace("/", "\\");
           const resDelImg = await axiosJWT.post(
-            `http://localhost:5000/post/img/delete?imgpost_for=${postCode}&image_dir=${imgDirSlice}`
+            `/post/img/delete?imgpost_for=${postCode}&image_dir=${imgDirSlice}`
           );
         }
       });

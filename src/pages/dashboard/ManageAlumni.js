@@ -17,6 +17,13 @@ import {
 import { IoAdd, IoSearch, IoTrashBin, IoEye } from "react-icons/io5";
 
 function ManageAlumni(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Modal after delete item
   const [show, setShow] = useState(false);
   const handleCloseModal = () => setShow(false);
@@ -32,7 +39,7 @@ function ManageAlumni(props) {
   // const [token, setToken] = useState(props.token);
   // const [expired, setExpired] = useState(props.expired);
 
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -40,7 +47,7 @@ function ManageAlumni(props) {
       // const expr = expired * 1000;
       // const curDate = currentDate.getTime();
       // const exprRes = currentDate.getTime() - expr;
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -71,8 +78,8 @@ function ManageAlumni(props) {
   }, [page, keyword]);
 
   const getAlumni = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/dash-listingalumni?search_query=${keyword}&page=${page}&limit=${limit}`
+    const response = await axiosInstance.get(
+      `/dash-listingalumni?search_query=${keyword}&page=${page}&limit=${limit}`
     );
     setAlumni(response.data.result);
     setPage(response.data.page);
@@ -101,11 +108,8 @@ function ManageAlumni(props) {
   const [selectedId, setSelectedId] = useState("");
   const [selectedImg, setSelectedImg] = useState("");
   const deleteAlumni = async (key, photo) => {
-    console.log("===========alumni wil be deleted===========");
-    console.log(key);
-    console.log(photo);
     const response = await axiosJWT.post(
-      `http://localhost:5000/alumnis/delete?alumni_id=${key}&alumni_img=${photo}`
+      `/alumnis/delete?alumni_id=${key}&alumni_img=${photo}`
     );
     if (response) {
       console.log("success deleted data");
@@ -115,9 +119,6 @@ function ManageAlumni(props) {
       console.log("failed deleted data");
     }
   };
-
-  console.log("==========selected id=========");
-  console.log(selectedId);
 
   return (
     <>
@@ -204,7 +205,7 @@ function ManageAlumni(props) {
                       <td>
                         {almn.alumni_photo_dir ? (
                           <img
-                            src={`http://localhost:5000/${almn.alumni_photo_dir.replace(
+                            src={`${baseURLAPI}/${almn.alumni_photo_dir.replace(
                               "\\",
                               "/"
                             )}`}

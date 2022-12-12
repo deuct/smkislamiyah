@@ -8,6 +8,13 @@ import { Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { IoSunnySharp, IoTrashOutline } from "react-icons/io5";
 
 function NewStaff(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Const imgupload set
   const [image, setImage] = useState({ preview: "", data: "" });
   const [arrImgUpload, setArrImgUpload] = useState([]); //array for image upload
@@ -47,7 +54,7 @@ function NewStaff(props) {
   const navigate = useNavigate();
 
   // Generate token for every API post
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -55,7 +62,7 @@ function NewStaff(props) {
       const expr = expired * 1000;
       const curDate = currentDate.getTime();
       const exprRes = currentDate.getTime() - expr;
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -86,10 +93,7 @@ function NewStaff(props) {
       },
       withCredentials: true,
     };
-    const response = await axiosJWT.get(
-      "http://localhost:5000/alumnis/getid/getidalumni",
-      config
-    );
+    const response = await axiosJWT.get("/alumnis/getid/getidalumni", config);
 
     if (response) {
       const resId = response.data.alumni_id;
@@ -128,9 +132,7 @@ function NewStaff(props) {
   const initializeStaff = async () => {
     if (roleAction === "edit") {
       console.log("edit");
-      const response = await axios.get(
-        `http://localhost:5000/alumnis/${paramsId}`
-      );
+      const response = await axiosInstance.get(`/alumnis/${paramsId}`);
       //   console.log("=======test========");
       //   console.log(response.data.result);
       if (response) {
@@ -164,10 +166,7 @@ function NewStaff(props) {
         });
         if (alumni.alumni_photo_dir !== "") {
           setShowImgUpload((showImgUpload) => [
-            `http://localhost:5000/${alumni.alumni_photo_dir.replace(
-              "\\",
-              "/"
-            )}`,
+            `${baseURLAPI}/${alumni.alumni_photo_dir.replace("\\", "/")}`,
           ]);
         }
       });
@@ -175,8 +174,6 @@ function NewStaff(props) {
   };
   // End single staff
 
-  console.log("=========test==========");
-  console.log(formData);
   // Handle insert data
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -200,7 +197,7 @@ function NewStaff(props) {
           formDataUpload.append("alumniTesti", formData.alumniTesti);
           formDataUpload.append("isIndex", formData.isIndex);
           const response = await axiosJWT.post(
-            "http://localhost:5000/alumnis/newalumni",
+            "/alumnis/newalumni",
             formDataUpload,
             {
               headers: {
@@ -238,7 +235,7 @@ function NewStaff(props) {
           console.log(formDataUpload);
 
           const response = await axiosJWT.post(
-            "http://localhost:5000/alumnis/updatealumni",
+            "/alumnis/updatealumni",
             formDataUpload,
             {
               headers: {
@@ -329,7 +326,7 @@ function NewStaff(props) {
     if (roleAction === "edit") {
       try {
         const resDelImg = await axiosJWT.post(
-          `http://localhost:5000/alumnis/delete/img?alumni_img=${formData.alumniPhoto}&alumni_id=${formData.alumniId}`
+          `/alumnis/delete/img?alumni_img=${formData.alumniPhoto}&alumni_id=${formData.alumniId}`
         );
         if (resDelImg) {
           checked.map((chk, index) => {

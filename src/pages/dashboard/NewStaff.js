@@ -8,6 +8,13 @@ import { Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { IoSunnySharp, IoTrashOutline } from "react-icons/io5";
 
 function NewStaff(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Const imgupload set
   const [image, setImage] = useState({ preview: "", data: "" });
   const [arrImgUpload, setArrImgUpload] = useState([]); //array for image upload
@@ -46,7 +53,7 @@ function NewStaff(props) {
   const navigate = useNavigate();
 
   // Generate token for every API post
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -54,7 +61,7 @@ function NewStaff(props) {
       const expr = expired * 1000;
       const curDate = currentDate.getTime();
       const exprRes = currentDate.getTime() - expr;
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -84,10 +91,7 @@ function NewStaff(props) {
       },
       withCredentials: true,
     };
-    const response = await axiosJWT.get(
-      "http://localhost:5000/staffs/getid/getidstaff",
-      config
-    );
+    const response = await axiosJWT.get("/staffs/getid/getidstaff", config);
 
     if (response) {
       const resId = response.data.staff_id;
@@ -124,9 +128,7 @@ function NewStaff(props) {
 
   const initializeStaff = async () => {
     if (roleAction === "edit") {
-      const response = await axios.get(
-        `http://localhost:5000/staffs/${paramsId}`
-      );
+      const response = await axiosInstance.get(`/staffs/${paramsId}`);
       if (response) {
         setSingleStaff(response.data.result);
       }
@@ -156,7 +158,7 @@ function NewStaff(props) {
         });
         if (staff.staff_photo_dir !== "") {
           setShowImgUpload((showImgUpload) => [
-            `http://localhost:5000/${staff.staff_photo_dir.replace("\\", "/")}`,
+            `${baseURLAPI}/${staff.staff_photo_dir.replace("\\", "/")}`,
           ]);
         }
       });
@@ -185,7 +187,7 @@ function NewStaff(props) {
           formDataUpload.append("staffDepartment", formData.staffDepartment);
           formDataUpload.append("staffStatus", formData.staffStatus);
           const response = await axiosJWT.post(
-            "http://localhost:5000/staffs/newstaff",
+            "/staffs/newstaff",
             formDataUpload,
             {
               headers: {
@@ -217,7 +219,7 @@ function NewStaff(props) {
           formDataUpload.append("staffStatus", formData.staffStatus);
           console.log(formDataUpload);
           const response = await axiosJWT.post(
-            "http://localhost:5000/staffs/updatestaff",
+            "/staffs/updatestaff",
             formDataUpload,
             {
               headers: {
@@ -308,7 +310,7 @@ function NewStaff(props) {
     if (roleAction === "edit") {
       try {
         const resDelImg = await axiosJWT.post(
-          `http://localhost:5000/staff/delete/img?staff_img=${formData.staffPhoto}&staff_id=${formData.staffId}`
+          `/staff/delete/img?staff_img=${formData.staffPhoto}&staff_id=${formData.staffId}`
         );
         if (resDelImg) {
           checked.map((chk, index) => {
@@ -419,8 +421,7 @@ function NewStaff(props) {
     }
   };
   // End set modal body conditional
-  console.log("===========form data==============");
-  console.log(formData);
+
   return (
     <>
       {/* Modal After Insert Posting */}

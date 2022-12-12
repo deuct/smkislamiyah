@@ -23,6 +23,13 @@ import {
 } from "react-icons/io5";
 
 function Sidenav() {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -40,7 +47,7 @@ function Sidenav() {
       withCredentials: true,
     };
     try {
-      await axios.delete("http://localhost:5000/logout", config);
+      await axiosInstance.delete("/logout", config);
       navigate("/login");
     } catch (error) {
       console.log(error);

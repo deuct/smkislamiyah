@@ -12,6 +12,13 @@ import {
 } from "react-icons/io5";
 
 function NewBKK(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Const token for every API post
   const [token, setToken] = useState(props.token);
   const [expired, setExpired] = useState(props.expired);
@@ -57,7 +64,7 @@ function NewBKK(props) {
   const navigate = useNavigate();
 
   // Generate token for every API post
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -67,7 +74,7 @@ function NewBKK(props) {
       const exprRes = currentDate.getTime() - expr;
       // if (expired * 1000 > currentDate.getTime()) {
       // if (config.status === 401) {
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -97,10 +104,7 @@ function NewBKK(props) {
       },
       withCredentials: true,
     };
-    const response = await axiosJWT.get(
-      "http://localhost:5000/bkk/getid/getidbkk",
-      config
-    );
+    const response = await axiosJWT.get("/bkk/getid/getidbkk", config);
 
     if (response) {
       const resId = response.data.company_id;
@@ -134,11 +138,7 @@ function NewBKK(props) {
 
   const initializeJob = async () => {
     if (roleAction === "edit") {
-      const response = await axios.get(
-        `http://localhost:5000/jobs/${paramsId}`
-      );
-      console.log("-------------response-----------");
-      console.log(response.data.result);
+      const response = await axiosInstance.get(`/jobs/${paramsId}`);
       if (response) {
         setSingleJob(response.data.result);
       }
@@ -173,7 +173,7 @@ function NewBKK(props) {
         });
         if (job.company_logo !== "") {
           setShowImgUpload((showImgUpload) => [
-            `http://localhost:5000/${job.company_logo.replace("\\", "/")}`,
+            `${baseURLAPI}/${job.company_logo.replace("\\", "/")}`,
           ]);
         }
       });
@@ -211,17 +211,13 @@ function NewBKK(props) {
           formDataUpload.append("jobRequirement", formData.jobRequirement);
           formDataUpload.append("description", formData.description);
           formDataUpload.append("shortDesc", shortDesc);
-          const response = await axiosJWT.post(
-            "http://localhost:5000/bkk/newbkk",
-            formDataUpload,
-            {
-              headers: {
-                "Content-Type": "multipart/formdata",
-                Authorization: `Bearer ${token}`,
-              },
-              withCredentials: true,
-            }
-          );
+          const response = await axiosJWT.post("/bkk/newbkk", formDataUpload, {
+            headers: {
+              "Content-Type": "multipart/formdata",
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          });
           if (response) {
             setFormData(initialFormData);
             handleShowModal("successpost");
@@ -250,7 +246,7 @@ function NewBKK(props) {
           formDataUpload.append("jobRequirement", formData.jobRequirement);
           console.log(formDataUpload);
           const response = await axiosJWT.post(
-            "http://localhost:5000/jobs/updatejob",
+            "/jobs/updatejob",
             formDataUpload,
             {
               headers: {
@@ -341,7 +337,7 @@ function NewBKK(props) {
     if (roleAction === "edit") {
       try {
         const resDelImg = await axiosJWT.post(
-          `http://localhost:5000/job/delete/img?company_logo=${formData.companyLogo}&company_id=${formData.jobCode}`
+          `/job/delete/img?company_logo=${formData.companyLogo}&company_id=${formData.jobCode}`
         );
         if (resDelImg) {
           checked.map((chk, index) => {

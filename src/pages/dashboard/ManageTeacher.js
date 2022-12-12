@@ -17,6 +17,13 @@ import {
 import { IoAdd, IoSearch, IoTrashBin, IoEye } from "react-icons/io5";
 
 function ManagePosting(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Modal after delete item
   const [isModalClose, setIsModalClose] = useState(false);
   const [show, setShow] = useState(false);
@@ -33,7 +40,7 @@ function ManagePosting(props) {
   const [token, setToken] = useState(props.token);
   const [expired, setExpired] = useState(props.expired);
 
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -41,7 +48,7 @@ function ManagePosting(props) {
       const expr = expired * 1000;
       const curDate = currentDate.getTime();
       const exprRes = currentDate.getTime() - expr;
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -72,8 +79,8 @@ function ManagePosting(props) {
   }, [page, keyword, teacherStatus]);
 
   const getTeacher = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/dash-listingteacher?search_query=${keyword}&page=${page}&limit=${limit}&teacher_status=${teacherStatus}`
+    const response = await axiosInstance.get(
+      `/dash-listingteacher?search_query=${keyword}&page=${page}&limit=${limit}&teacher_status=${teacherStatus}`
     );
     setTeacher(response.data.result);
     setPage(response.data.page);
@@ -123,7 +130,7 @@ function ManagePosting(props) {
     console.log(key);
     console.log(photo);
     const response = await axiosJWT.post(
-      `http://localhost:5000/teacher/delete?teacher_id=${key}&teacher_img=${photo}`
+      `/teacher/delete?teacher_id=${key}&teacher_img=${photo}`
     );
     if (response) {
       console.log("success deleted data");
@@ -133,9 +140,6 @@ function ManagePosting(props) {
       console.log("failed deleted data");
     }
   };
-
-  console.log("==========selected id=========");
-  console.log(selectedId);
 
   return (
     <>
@@ -236,7 +240,7 @@ function ManagePosting(props) {
                       <td>
                         {tchr.teacher_photo_dir ? (
                           <img
-                            src={`http://localhost:5000/${tchr.teacher_photo_dir.replace(
+                            src={`${baseURLAPI}/${tchr.teacher_photo_dir.replace(
                               "\\",
                               "/"
                             )}`}

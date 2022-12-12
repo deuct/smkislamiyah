@@ -15,6 +15,13 @@ import {
 } from "react-icons/io5";
 
 function NewPosting(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Const Get params from url
   const [searchParams] = useSearchParams();
   const [paramsId, setParamsId] = useState(searchParams.get("jurusan_id"));
@@ -44,7 +51,7 @@ function NewPosting(props) {
   const [token, setToken] = useState(props.token);
   const [expired, setExpired] = useState(props.expired);
 
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -54,7 +61,7 @@ function NewPosting(props) {
       const exprRes = currentDate.getTime() - expr;
       // if (expired * 1000 > currentDate.getTime()) {
       // if (config.status === 401) {
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -88,10 +95,7 @@ function NewPosting(props) {
       },
       withCredentials: true,
     };
-    const response = await axiosJWT.get(
-      "http://localhost:5000/jurusan/getid/getidjurusan",
-      config
-    );
+    const response = await axiosJWT.get("/jurusan/getid/getidjurusan", config);
 
     if (response) {
       const resId = response.data.jurusan_id;
@@ -120,7 +124,7 @@ function NewPosting(props) {
 
   const getKaprog = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/teachers`);
+      const response = await axiosInstance.get(`/teachers`);
       if (response) {
         setKaprog(response.data);
       }
@@ -144,9 +148,7 @@ function NewPosting(props) {
   }, []);
   const initializeProgram = async () => {
     if (roleAction === "edit") {
-      const singleProgram = await axios.get(
-        `http://localhost:5000/jurusan/${paramsId}`
-      );
+      const singleProgram = await axiosInstance.get(`/jurusan/${paramsId}`);
       if (singleProgram) {
         setSingleProgram(singleProgram.data[0]);
 
@@ -172,8 +174,8 @@ function NewPosting(props) {
 
         setJurusanCode(singleProgram.data[0].jurusan_id);
 
-        const jurusanPrestasi = await axios.get(
-          `http://localhost:5000/jurusan/prestasi/${paramsId}`
+        const jurusanPrestasi = await axiosInstance.get(
+          `/jurusan/prestasi/${paramsId}`
         );
 
         if (jurusanPrestasi) {
@@ -188,14 +190,14 @@ function NewPosting(props) {
                 prestasiName: prestasi.jp_name,
                 prestasiPosisi: prestasi.jp_position,
                 prestasiTahun: prestasi.jp_year,
-                prestasiImgPreview: `http://localhost:5000/${imgprestasi}`,
+                prestasiImgPreview: `${baseURLAPI}/${imgprestasi}`,
               },
             ]);
           });
         }
 
-        const jurusanDokumen = await axios.get(
-          `http://localhost:5000/jurusan/dokumen/${paramsId}`
+        const jurusanDokumen = await axiosInstance.get(
+          `/jurusan/dokumen/${paramsId}`
         );
 
         if (jurusanDokumen) {
@@ -210,8 +212,8 @@ function NewPosting(props) {
           });
         }
 
-        const jurusanGallery = await axios.get(
-          `http://localhost:5000/jurusan/gallery/${paramsId}`
+        const jurusanGallery = await axiosInstance.get(
+          `/jurusan/gallery/${paramsId}`
         );
 
         if (jurusanGallery) {
@@ -220,7 +222,7 @@ function NewPosting(props) {
               ...prev,
               {
                 imgId: image.jg_id,
-                imgPreview: `http://localhost:5000/${image.jg_img_dir.replace(
+                imgPreview: `${baseURLAPI}/${image.jg_img_dir.replace(
                   /\\/g,
                   "/"
                 )}`,
@@ -299,45 +301,39 @@ function NewPosting(props) {
     formDataUpload.append("jurusanSlug", jurusanSlug);
 
     if (roleAction === "add") {
-      var uploadForm = await axiosJWT.post(
-        "http://localhost:5000/jurusan/newjurusan",
-        {
-          headers: {
-            "Content-Type": "multipart/formdata",
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-          body: {
-            jurusanId: formDataUpload.get("jurusanId"),
-            jurusanName: formDataUpload.get("jurusanName"),
-            jurusanKaprogId: formDataUpload.get("jurusanKaprogId"),
-            jurusanAbout: formDataUpload.get("jurusanAbout"),
-            jurusanVisi: formDataUpload.get("jurusanVisi"),
-            jurusanMisi: formDataUpload.get("jurusanMisi"),
-            jurusanSlug: formDataUpload.get("jurusanSlug"),
-          },
-        }
-      );
+      var uploadForm = await axiosJWT.post("/jurusan/newjurusan", {
+        headers: {
+          "Content-Type": "multipart/formdata",
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+        body: {
+          jurusanId: formDataUpload.get("jurusanId"),
+          jurusanName: formDataUpload.get("jurusanName"),
+          jurusanKaprogId: formDataUpload.get("jurusanKaprogId"),
+          jurusanAbout: formDataUpload.get("jurusanAbout"),
+          jurusanVisi: formDataUpload.get("jurusanVisi"),
+          jurusanMisi: formDataUpload.get("jurusanMisi"),
+          jurusanSlug: formDataUpload.get("jurusanSlug"),
+        },
+      });
     } else if (roleAction === "edit") {
-      var uploadForm = await axiosJWT.post(
-        "http://localhost:5000/jurusan/update",
-        {
-          headers: {
-            "Content-Type": "multipart/formdata",
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-          body: {
-            jurusanId: formDataUpload.get("jurusanId"),
-            jurusanName: formDataUpload.get("jurusanName"),
-            jurusanKaprogId: formDataUpload.get("jurusanKaprogId"),
-            jurusanAbout: formDataUpload.get("jurusanAbout"),
-            jurusanVisi: formDataUpload.get("jurusanVisi"),
-            jurusanMisi: formDataUpload.get("jurusanMisi"),
-            jurusanSlug: formDataUpload.get("jurusanSlug"),
-          },
-        }
-      );
+      var uploadForm = await axiosJWT.post("/jurusan/update", {
+        headers: {
+          "Content-Type": "multipart/formdata",
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+        body: {
+          jurusanId: formDataUpload.get("jurusanId"),
+          jurusanName: formDataUpload.get("jurusanName"),
+          jurusanKaprogId: formDataUpload.get("jurusanKaprogId"),
+          jurusanAbout: formDataUpload.get("jurusanAbout"),
+          jurusanVisi: formDataUpload.get("jurusanVisi"),
+          jurusanMisi: formDataUpload.get("jurusanMisi"),
+          jurusanSlug: formDataUpload.get("jurusanSlug"),
+        },
+      });
     }
     if (
       uploadForm &&
@@ -355,7 +351,7 @@ function NewPosting(props) {
             );
 
             const deleteProgramPrestasi = await axiosJWT.post(
-              "http://localhost:5000/programprestasi/delete",
+              "/programprestasi/delete",
               {
                 headers: {
                   "Content-Type": "multipart/formdata",
@@ -378,7 +374,7 @@ function NewPosting(props) {
             formDokumenDel.append("jdId", dokumenDel.jdId);
             formDokumenDel.append("dokumenFor", jurusanCode);
             const deleteProgramDokumen = await axiosJWT.post(
-              "http://localhost:5000/programdokumen/delete",
+              "/programdokumen/delete",
               {
                 headers: {
                   "Content-Type": "multipart/formdata",
@@ -401,7 +397,7 @@ function NewPosting(props) {
             formImageDel.append("imgFor", jurusanCode);
             formImageDel.append("imgDir", imageDel.imgPreview);
             const deleteProgramGallery = await axiosJWT.post(
-              "http://localhost:5000/programgallery/delete",
+              "/programgallery/delete",
               {
                 headers: {
                   "Content-Type": "multipart/formdata",
@@ -433,7 +429,7 @@ function NewPosting(props) {
           }
 
           const uploadProgramPrestasi = await axiosJWT.post(
-            "http://localhost:5000/programprestasi/newprogramprestasi/",
+            "/programprestasi/newprogramprestasi/",
             formPrestasi,
             {
               headers: {
@@ -459,7 +455,7 @@ function NewPosting(props) {
 
           console.log(formDokumen);
           const uploadProgramDokumen = await axiosJWT.post(
-            "http://localhost:5000/programdokumen/newprogramdokumen",
+            "/programdokumen/newprogramdokumen",
             formDokumen,
             {
               headers: {
@@ -484,7 +480,7 @@ function NewPosting(props) {
           }
 
           const uploadProgramImage = await axiosJWT.post(
-            "http://localhost:5000/programgallery/newprogramgallery",
+            "/programgallery/newprogramgallery",
             formImage,
             {
               headers: {

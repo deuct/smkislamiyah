@@ -8,6 +8,13 @@ import { Row, Col, Form, Button, FloatingLabel, Modal } from "react-bootstrap";
 import { IoSunnySharp, IoTrashOutline } from "react-icons/io5";
 
 function NewTeacher(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Const API Token
   const [token, setToken] = useState(props.token);
   const [expired, setExpired] = useState(props.expired);
@@ -49,7 +56,7 @@ function NewTeacher(props) {
   const navigate = useNavigate();
 
   // Generate token for every API post
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -57,7 +64,7 @@ function NewTeacher(props) {
       const expr = expired * 1000;
       const curDate = currentDate.getTime();
       const exprRes = currentDate.getTime() - expr;
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -86,10 +93,7 @@ function NewTeacher(props) {
       },
       withCredentials: true,
     };
-    const response = await axiosJWT.get(
-      "http://localhost:5000/teachers/getid/getidteacher",
-      config
-    );
+    const response = await axiosJWT.get("/teachers/getid/getidteacher", config);
 
     if (response) {
       const resId = response.data.teacher_id;
@@ -126,9 +130,7 @@ function NewTeacher(props) {
 
   const initializeTeacher = async () => {
     if (roleAction === "edit") {
-      const response = await axios.get(
-        `http://localhost:5000/teachers/${paramsId}`
-      );
+      const response = await axiosInstance.get(`/teachers/${paramsId}`);
       if (response) {
         setSingleTeacher(response.data.result);
       }
@@ -158,10 +160,7 @@ function NewTeacher(props) {
         });
         if (teacher.teacher_photo_dir !== "") {
           setShowImgUpload((showImgUpload) => [
-            `http://localhost:5000/${teacher.teacher_photo_dir.replace(
-              "\\",
-              "/"
-            )}`,
+            `${baseURLAPI}/${teacher.teacher_photo_dir.replace("\\", "/")}`,
           ]);
         }
       });
@@ -190,7 +189,7 @@ function NewTeacher(props) {
           formDataUpload.append("teacherMatpel", formData.teacherMatpel);
           formDataUpload.append("teacherStatus", formData.teacherStatus);
           const response = await axiosJWT.post(
-            "http://localhost:5000/teachers/newteacher",
+            "/teachers/newteacher",
             formDataUpload,
             {
               headers: {
@@ -220,11 +219,8 @@ function NewTeacher(props) {
           formDataUpload.append("teacherName", formData.teacherName);
           formDataUpload.append("teacherMatpel", formData.teacherMatpel);
           formDataUpload.append("teacherStatus", formData.teacherStatus);
-          console.log("=======formdata upload==========");
-          console.log(formDataUpload);
-          console.log("=======formdata upload==========");
           const response = await axiosJWT.post(
-            "http://localhost:5000/teachers/updateteacher",
+            "/teachers/updateteacher",
             formDataUpload,
             {
               headers: {
@@ -314,7 +310,7 @@ function NewTeacher(props) {
     if (roleAction === "edit") {
       try {
         const resDelImg = await axiosJWT.post(
-          `http://localhost:5000/teacher/delete/img?teacher_img=${formData.teacherPhoto}&teacher_id=${formData.teacherId}`
+          `/teacher/delete/img?teacher_img=${formData.teacherPhoto}&teacher_id=${formData.teacherId}`
         );
         if (resDelImg) {
           checked.map((chk, index) => {
@@ -425,12 +421,6 @@ function NewTeacher(props) {
     }
   };
   // End set modal body conditional
-  console.log("========form data==========");
-  console.log(formData);
-  console.log(arrImgUpload);
-  console.log(showImgUpload);
-  console.log(image);
-  console.log(roleAction);
 
   return (
     <>

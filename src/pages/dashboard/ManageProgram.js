@@ -17,6 +17,13 @@ import {
 import { IoAdd, IoSearch, IoTrashBin, IoEye } from "react-icons/io5";
 
 function ManageProgram(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Modal after delete item
   const [isModalClose, setIsModalClose] = useState(false);
   const [show, setShow] = useState(false);
@@ -33,7 +40,7 @@ function ManageProgram(props) {
   const [token, setToken] = useState(props.token);
   const [expired, setExpired] = useState(props.expired);
 
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -41,7 +48,7 @@ function ManageProgram(props) {
       const expr = expired * 1000;
       const curDate = currentDate.getTime();
       const exprRes = currentDate.getTime() - expr;
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -71,8 +78,8 @@ function ManageProgram(props) {
   }, [page, keyword]);
 
   const getJurusan = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/jurusan?search_query=${keyword}&page=${page}&limit=${limit}`
+    const response = await axiosInstance.get(
+      `/jurusan?search_query=${keyword}&page=${page}&limit=${limit}`
     );
     setJurusan(response.data.result);
     setPage(response.data.page);
@@ -105,7 +112,7 @@ function ManageProgram(props) {
     console.log(key);
     console.log(photo);
     const response = await axiosJWT.post(
-      `http://localhost:5000/staff/delete?staff_id=${key}&staff_img=${photo}`
+      `/staff/delete?staff_id=${key}&staff_img=${photo}`
     );
     if (response) {
       console.log("success deleted data");
@@ -115,9 +122,6 @@ function ManageProgram(props) {
       console.log("failed deleted data");
     }
   };
-
-  console.log("==========selected id=========");
-  console.log(selectedId);
 
   return (
     <>

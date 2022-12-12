@@ -8,6 +8,13 @@ import { Row, Col, Form, Button, Modal } from "react-bootstrap";
 import { IoSunnySharp, IoTrashOutline } from "react-icons/io5";
 
 function NewHeader(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Const imgupload set
   const [image, setImage] = useState({ preview: "", data: "" });
   const [arrImgUpload, setArrImgUpload] = useState([]); //array for image upload
@@ -44,7 +51,7 @@ function NewHeader(props) {
   const navigate = useNavigate();
 
   // Generate token for every API post
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -52,7 +59,7 @@ function NewHeader(props) {
       const expr = expired * 1000;
       const curDate = currentDate.getTime();
       const exprRes = currentDate.getTime() - expr;
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -120,13 +127,8 @@ function NewHeader(props) {
     initializeHeader();
   }, [paramsId]);
 
-  console.log("======paramsid=======");
-  console.log(paramsId);
-
   const initializeHeader = async () => {
-    const response = await axios.get(
-      `http://localhost:5000/header/${paramsId}`
-    );
+    const response = await axiosInstance.get(`/header/${paramsId}`);
     if (response) {
       setSingleHeader(response.data.result);
     }
@@ -147,7 +149,7 @@ function NewHeader(props) {
         });
         if (heads.header_img_dir !== "") {
           setShowImgUpload((showImgUpload) => [
-            `http://localhost:5000/${heads.header_img_dir.replace("\\", "/")}`,
+            `${baseURLAPI}/${heads.header_img_dir.replace("\\", "/")}`,
           ]);
         }
       });
@@ -170,8 +172,6 @@ function NewHeader(props) {
         let formDataUpload = new FormData();
         formDataUpload.append("headerId", formData.HeaderId);
 
-        console.log("=======imgdata========");
-        console.log(image.data);
         if (image.data === "") {
           formDataUpload.append("headerImg", "");
           formDataUpload.append("isNewImage", "false");
@@ -181,14 +181,10 @@ function NewHeader(props) {
         }
 
         formDataUpload.append("headerTitle", formData.HeaderTitle);
-        console.log("------------headerDesc---------");
-        console.log(formData.HeaderDesc);
         formDataUpload.append("headerDesc", formData.HeaderDesc);
 
-        console.log("===========formdataupload===========");
-        console.log(formDataUpload);
         const response = await axiosJWT.post(
-          "http://localhost:5000/header/updateheader",
+          "/header/updateheader",
           formDataUpload,
           {
             headers: {
@@ -269,7 +265,7 @@ function NewHeader(props) {
   const deleteImg = async () => {
     try {
       const resDelImg = await axiosJWT.post(
-        `http://localhost:5000/header/img/delete?header_img=${formData.HeaderImgDir}&header_id=${formData.HeaderId}`
+        `/header/img/delete?header_img=${formData.HeaderImgDir}&header_id=${formData.HeaderId}`
       );
       if (resDelImg) {
         checked.map((chk, index) => {
@@ -350,8 +346,7 @@ function NewHeader(props) {
     }
   };
   // End set modal body conditional
-  console.log("===========form data==============");
-  console.log(formData);
+
   return (
     <>
       {/* Modal After Insert Header */}

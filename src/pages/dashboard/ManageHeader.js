@@ -17,11 +17,18 @@ import {
 import { IoAdd, IoSearch, IoTrashBin, IoEye } from "react-icons/io5";
 
 function ManageHeader(props) {
+  // Axios change
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  const baseURLAPI = "https://api.smkislamiyahciputattangsel.sch.id";
+
   // Generate token for every API post
   const [token, setToken] = useState(props.token);
   const [expired, setExpired] = useState(props.expired);
 
-  const axiosJWT = axios.create();
+  const axiosJWT = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 
   axiosJWT.interceptors.request.use(
     async (config) => {
@@ -29,7 +36,7 @@ function ManageHeader(props) {
       const expr = expired * 1000;
       const curDate = currentDate.getTime();
       const exprRes = currentDate.getTime() - expr;
-      const response = await axios.get("http://localhost:5000/token", {
+      const response = await axiosInstance.get("/token", {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
@@ -53,7 +60,7 @@ function ManageHeader(props) {
   }, []);
 
   const getHeader = async () => {
-    const response = await axios.get(`http://localhost:5000/header`);
+    const response = await axiosInstance.get(`/header`);
     setHeader(response.data.result);
   };
   //  End Get Header
@@ -81,7 +88,7 @@ function ManageHeader(props) {
                       <td>
                         {heads.header_img_dir ? (
                           <img
-                            src={`http://localhost:5000/${heads.header_img_dir.replace(
+                            src={`${baseURLAPI}/${heads.header_img_dir.replace(
                               "\\",
                               "/"
                             )}`}
